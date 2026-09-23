@@ -1,0 +1,227 @@
+import { Topic } from '@/types';
+
+export const INITIAL_TOPICS: Topic[] = [
+  {
+    id: 'topic-carta-pai-8-1',
+    slug: 'carta-pai',
+    title: 'Carta Pai',
+    code: '8.1',
+    standardKandungan: '8.1 Carta pai',
+    standardPembelajaran: '8.1.1 Melengkapkan carta pai berdasarkan nilai sudut 45°, 90° dan 180° dengan kuantiti diberikan serta mentafsir data.',
+    description: 'Pelajari konsep carta pai, bahagian sektor, hubungan antara nilai sudut (45°, 90°, 180°) dengan jumlah kuantiti data, dan cara mentafsir data carta pai dengan mudah.',
+    objectives: [
+      'Mengenal pasti bahagian carta pai seperti pusat bulatan, jejari, dan sektor.',
+      'Memahami perkaitan nilai sudut 45°, 90°, dan 180° dengan pecahan bulatan.',
+      'Melengkapkan carta pai berdasarkan kuantiti data yang diberi.',
+      'Mentafsir maklumat daripada carta pai untuk membuat kesimpulan.'
+    ],
+    published: true,
+    order: 1,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    sections: [
+      {
+        id: 'sec-1',
+        title: '1. Pengenalan Carta Pai',
+        content: 'Carta pai ialah sejenis graf berbentuk bulatan yang dibahagikan kepada beberapa sektor untuk mewakili kumpulan data.',
+        order: 1,
+        blocks: [
+          {
+            id: 'blk-1',
+            type: 'heading',
+            title: 'Selamat Datang ke Dunia Carta Pai!',
+            order: 1
+          },
+          {
+            id: 'blk-2',
+            type: 'paragraph',
+            body: 'Dalam kehidupan harian, kita sering melihat maklumat dipersembahkan dalam bentuk bulatan berwarna-warni. Bulatan ini dipanggil **Carta Pai**. Setiap bahagian dalam bulatan menggambarkan jumlah atau kuantiti sesuatu kategori.',
+            order: 2
+          },
+          {
+            id: 'blk-3',
+            type: 'callout',
+            title: 'Tahukah Kamu?',
+            body: 'Jumlah keseluruhan sudut di dalam satu bulatan penuh ialah **360°**!',
+            calloutType: 'info',
+            order: 3
+          }
+        ]
+      },
+      {
+        id: 'sec-2',
+        title: '2. Bahagian-Bahagian Carta Pai',
+        content: 'Untuk membina dan memahami carta pai, kamu perlu tahu 3 bahagian utama bulatan.',
+        order: 2,
+        blocks: [
+          {
+            id: 'blk-4',
+            type: 'heading',
+            title: '3 Bahagian Utama Bulatan',
+            order: 1
+          },
+          {
+            id: 'blk-5',
+            type: 'paragraph',
+            body: '1. **Pusat Bulatan (Center):** Titik tengah bulatan.\n2. **Jejari (Radius):** Garis lurus dari pusat bulatan ke tepi bulatan.\n3. **Sektor (Sector):** Ruang dalam bulatan yang dibatasi oleh dua jejari dan lengkok. Sektor inilah yang mewakili data!',
+            order: 2
+          },
+          {
+            id: 'blk-6',
+            type: 'example',
+            title: 'Contoh Sektor',
+            body: 'Fikirkan carta pai seperti sepinggan kek bulat. Setiap potong kek mewakili satu sektor!',
+            order: 3
+          }
+        ]
+      },
+      {
+        id: 'sec-3',
+        title: '3. Nilai Sudut Utama (180°, 90°, 45°)',
+        content: 'Hubungan nilai sudut dengan bahagian bulatan.',
+        order: 3,
+        blocks: [
+          {
+            id: 'blk-7',
+            type: 'heading',
+            title: 'Nilai Sudut & Pecahan Bulatan',
+            order: 1
+          },
+          {
+            id: 'blk-8',
+            type: 'paragraph',
+            body: 'Dalam Tahun 6, kamu perlu menguasai 3 nilai sudut utama:\n- **180°** = Separuh bulatan (1/2 daripada 360°)\n- **90°** = Suku bulatan (1/4 daripada 360°)\n- **45°** = Separuh daripada suku bulatan (1/8 daripada 360°)',
+            order: 2
+          },
+          {
+            id: 'blk-9',
+            type: 'formula',
+            title: 'Formula Kuantiti Sektor',
+            body: 'Kuantiti Sektor = (Nilai Sudut / 360°) × Jumlah Kuantiti Keseluruhan',
+            order: 3
+          }
+        ]
+      },
+      {
+        id: 'sec-4',
+        title: '4. Cara Mentafsir Data Carta Pai',
+        content: 'Langkah-langkah membaca dan mengira kuantiti daripada carta pai.',
+        order: 4,
+        blocks: [
+          {
+            id: 'blk-10',
+            type: 'heading',
+            title: 'Langkah-langkah Mentafsir Data',
+            order: 1
+          },
+          {
+            id: 'blk-11',
+            type: 'paragraph',
+            body: 'Contoh Situasi:\nDalam sebuah kelas Tahun 6 yang mempunyai **20 orang murid**, aktiviti kegemaran murid dibahagikan seperti berikut:\n- **Bersukan:** Sudut 180°\n- **Membaca:** Sudut 90°\n- **Melukis:** Sudut 90°',
+            order: 2
+          },
+          {
+            id: 'blk-12',
+            type: 'callout',
+            title: 'Pengiraan Kuantiti:',
+            body: '• Bersukan (180°): (180°/360°) × 20 = 1/2 × 20 = **10 orang**\n• Membaca (90°): (90°/360°) × 20 = 1/4 × 20 = **5 orang**\n• Melukis (90°): (90°/360°) × 20 = 1/4 × 20 = **5 orang**\n\nJumlah Keseluruhan = 10 + 5 + 5 = **20 orang**.',
+            calloutType: 'success',
+            order: 3
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: 'act-1',
+      title: 'Aktiviti Interaktif Penerokaan Carta Pai',
+      description: 'Gunakan alat interaktif ini untuk meneroka sudut 45°, 90°, dan 180° serta lengkapkan carta pai berdasarkan kuantiti data yang diberi.',
+      totalQuantity: 20,
+      initialData: [
+        { category: 'Bersukan', value: 10, angle: 180, color: '#3B82F6' },
+        { category: 'Membaca', value: 5, angle: 90, color: '#10B981' },
+        { category: 'Melukis', value: 5, angle: 90, color: '#F59E0B' }
+      ],
+      questions: [
+        {
+          id: 'q-act-1',
+          prompt: 'Berapakah nisbah sudut 180° berbanding bulatan penuh 360°?',
+          correctAnswer: '1/2',
+          options: ['1/2', '1/4', '1/8', '1/3'],
+          explanation: '180° dibahagikan dengan 360° bersamaan dengan 1/2 (separuh bulatan).'
+        },
+        {
+          id: 'q-act-2',
+          prompt: 'Jika kuantiti keseluruhan ialah 20 orang murid, berapakah bilangan murid yang mewakili sektor sudut 90°?',
+          correctAnswer: '5',
+          options: ['10', '5', '2.5', '15'],
+          explanation: 'Sudut 90° ialah 1/4 daripada bulatan. (1/4) × 20 = 5 orang murid.'
+        },
+        {
+          id: 'q-act-3',
+          prompt: 'Sudut manakah yang mewakili 1/8 daripada satu bulatan penuh (360°)?',
+          correctAnswer: '45°',
+          options: ['180°', '90°', '45°', '60°'],
+          explanation: '360° dibahagikan dengan 8 ialah 45°.'
+        }
+      ]
+    },
+    quiz: {
+      id: 'quiz-1',
+      title: 'Kuiz Kefahaman Carta Pai Tahun 6',
+      description: 'Uji kefahaman kamu tentang nilai sudut dan mentafsir data carta pai!',
+      passingScore: 70,
+      questions: [
+        {
+          id: 'q1',
+          type: 'mcq',
+          question: 'Apakah jumlah keseluruhan nilai sudut di dalam satu bulatan lengkap?',
+          options: ['90°', '180°', '270°', '360°'],
+          correctAnswer: '360°',
+          explanation: 'Satu bulatan penuh sentiasa mempunyai sudut 360°.',
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q2',
+          type: 'mcq',
+          question: 'Sudut 90° mewakili berapa pecahan daripada bulatan penuh?',
+          options: ['1/2', '1/4', '1/8', '3/4'],
+          correctAnswer: '1/4',
+          explanation: '90° / 360° = 1/4 (suku bulatan).',
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q3',
+          type: 'mcq',
+          question: 'Sebuah carta pai menunjukkan pilihan 40 orang murid. Jika sektor "Membaca" mempunyai sudut 180°, berapakah murid yang memilih membaca?',
+          options: ['10 orang', '20 orang', '30 orang', '40 orang'],
+          correctAnswer: '20 orang',
+          explanation: '180° mewakili 1/2 daripada bulatan. 1/2 daripada 40 orang murid = 20 orang murid.',
+          marks: 10,
+          difficulty: 'sederhana'
+        },
+        {
+          id: 'q4',
+          type: 'mcq',
+          question: 'Dalam satu kajian minat, 8 orang murid memilih "Melukis" daripada jumlah 16 orang murid. Berapakah nilai sudut sektor untuk "Melukis"?',
+          options: ['45°', '90°', '180°', '360°'],
+          correctAnswer: '180°',
+          explanation: '8/16 = 1/2. Pecahan 1/2 daripada 360° ialah 180°.',
+          marks: 10,
+          difficulty: 'sederhana'
+        },
+        {
+          id: 'q5',
+          type: 'mcq',
+          question: 'Sudut 45° mewakili kuantiti murid seramai 3 orang. Berapakah jumlah kuantiti keseluruhan murid dalam carta pai tersebut?',
+          options: ['12 orang', '24 orang', '36 orang', '48 orang'],
+          correctAnswer: '24 orang',
+          explanation: 'Sudut 45° ialah 1/8 daripada bulatan (360°/45° = 8). Jadi jumlah keseluruhan = 3 × 8 = 24 orang murid.',
+          marks: 10,
+          difficulty: 'sukar'
+        }
+      ]
+    }
+  }
+];

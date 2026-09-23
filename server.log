@@ -1,0 +1,24 @@
+
+> tmp-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 593ms
+✓ Running next.config.ts took 43ms
+
+ HEAD / 200 in 3.5s (next.js: 3.2s, application-code: 349ms)
+ GET / 200 in 102ms (next.js: 10ms, application-code: 92ms)
+ GET /topik/carta-pai 200 in 1407ms
+ GET / 200 in 90ms (next.js: 5ms, application-code: 85ms)
+ GET /topik/carta-pai 200 in 139ms (next.js: 21ms, application-code: 118ms)
+ GET / 200 in 93ms (next.js: 14ms, application-code: 79ms)
+ GET /topik/carta-pai 200 in 206ms (next.js: 39ms, application-code: 167ms)
+ GET /topik/carta-pai/aktiviti 200 in 1265ms (next.js: 1144ms, application-code: 121ms)
+ GET /topik/carta-pai/kuiz 200 in 1137ms (next.js: 1042ms, application-code: 95ms)
+ GET /admin/login 200 in 543ms (next.js: 309ms, proxy.ts: 101ms, application-code: 133ms)
+ POST /api/auth/login 200 in 651ms (next.js: 591ms, application-code: 60ms)
+ GET /admin/dashboard 200 in 946ms (next.js: 558ms, proxy.ts: 30ms, application-code: 357ms)
+ GET /admin/dashboard 200 in 63ms (next.js: 5ms, proxy.ts: 15ms, application-code: 43ms)
+[?25h
