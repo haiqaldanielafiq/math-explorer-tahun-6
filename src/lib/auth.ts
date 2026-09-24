@@ -18,6 +18,7 @@ export interface SessionUser {
   email: string;
   role: 'ADMIN' | 'STUDENT';
   isDelima: boolean;
+  picture?: string;
 }
 
 export async function verifyCredentials(u: string, p: string): Promise<boolean> {
@@ -30,6 +31,7 @@ export async function createAdminToken(userObj?: Partial<SessionUser>): Promise<
     user: userObj?.name || ADMIN_USERNAME,
     email: userObj?.email || `${ADMIN_USERNAME}@moe-dl.edu.my`,
     isDelima: userObj?.isDelima ?? false,
+    picture: userObj?.picture || '',
   };
 
   return await new SignJWT(payload)
@@ -48,25 +50,32 @@ export async function verifyAdminToken(token: string): Promise<boolean> {
   }
 }
 
-export async function getAdminSession(): Promise<SessionUser | null> {
+export async function getUserSession(): Promise<SessionUser | null> {
   const cookieStore = await cookies();
   const token = cookieStore.get('admin_session')?.value;
   if (!token) return null;
 
   try {
     const { payload } = await jwtVerify(token, SECRET_KEY);
-    const role = (payload.role === 'ADMIN' || payload.role === 'admin') ? 'ADMIN' : 'STUDENT';
-    if (role !== 'ADMIN') return null;
+    const roleStr = String(payload.role || '').toUpperCase();
+    const role: 'ADMIN' | 'STUDENT' = roleStr === 'ADMIN' ? 'ADMIN' : 'STUDENT';
 
     return {
-      name: (payload.user as string) || ADMIN_USERNAME,
-      email: (payload.email as string) || `${ADMIN_USERNAME}@moe-dl.edu.my`,
-      role: 'ADMIN',
+      name: (payload.user as string) || (role === 'ADMIN' ? 'Guru DELIMa' : 'Murid DELIMa'),
+      email: (payload.email as string) || '',
+      role,
       isDelima: Boolean(payload.isDelima),
+      picture: (payload.picture as string) || '',
     };
   } catch {
     return null;
   }
+}
+
+export async function getAdminSession(): Promise<SessionUser | null> {
+  const session = await getUserSession();
+  if (!session || session.role !== 'ADMIN') return null;
+  return session;
 }
 
 export function isAuthorizedTeacherEmail(email: string): boolean {

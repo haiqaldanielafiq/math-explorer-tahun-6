@@ -17,6 +17,7 @@ export async function POST(request: Request) {
 
     let email = '';
     let name = 'Akaun DELIMa';
+    let picture = '';
 
     // Cryptographic verification of Google ID Token using Google's public JWKS
     try {
@@ -25,22 +26,12 @@ export async function POST(request: Request) {
       });
       email = String(payload.email || '');
       name = String(payload.name || name);
+      picture = String(payload.picture || '');
     } catch (e) {
-      // Fallback for environment verification / unconfigured client ID
-      try {
-        const parts = credential.split('.');
-        if (parts.length === 3) {
-          const payloadJson = Buffer.from(parts[1], 'base64').toString('utf-8');
-          const payload = JSON.parse(payloadJson);
-          email = payload.email || '';
-          name = payload.name || name;
-        }
-      } catch {
-        return NextResponse.json(
-          { success: false, error: 'Format token Google tidak sah.' },
-          { status: 400 }
-        );
-      }
+      return NextResponse.json(
+        { success: false, error: 'Pengesahan token Google gagal atau token tidak sah.' },
+        { status: 401 }
+      );
     }
 
     if (!email) {
@@ -61,6 +52,7 @@ export async function POST(request: Request) {
       email,
       role,
       isDelima: isDelimaDomain,
+      picture,
     });
 
     const redirectUrl = isTeacher ? '/admin/dashboard' : '/';
@@ -71,7 +63,7 @@ export async function POST(request: Request) {
       role,
       isDelimaDomain,
       redirectUrl,
-      user: { name, email, role },
+      user: { name, email, role, picture },
     });
 
     // Set cookie for session persistence (ADMIN or STUDENT)
