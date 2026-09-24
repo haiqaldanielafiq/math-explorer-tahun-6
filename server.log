@@ -16,3 +16,12 @@
  GET /api/auth/me 401 in 9ms (next.js: 3ms, application-code: 7ms)
  POST /api/auth/delima 200 in 441ms (next.js: 399ms, application-code: 43ms)
  GET /admin/dashboard 200 in 858ms (next.js: 128ms, proxy.ts: 53ms, application-code: 677ms)
+⨯ unhandledRejection: Error: Both middleware file "./src/middleware.ts" and proxy file "./src/proxy.ts" are detected. Please use "./src/proxy.ts" only. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+    at ignore-listed frames
+✓ Compiled in 1049ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy

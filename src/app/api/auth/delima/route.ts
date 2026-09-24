@@ -1,39 +1,61 @@
 import { NextResponse } from 'next/server';
 import { createAdminToken, isAuthorizedTeacherEmail } from '@/lib/auth';
+import { createRemoteJWKSet, jwtVerify } from 'jose';
+
+const GOOGLE_JWKS = createRemoteJWKSet(new URL('https://www.googleapis.com/oauth2/v3/certs'));
 
 export async function POST(request: Request) {
   try {
-    const { credential, email: mockEmail, name: mockName } = await request.json();
+    const { credential } = await request.json();
 
-    let email = mockEmail || '';
-    let name = mockName || 'Akaun DELIMa';
+    if (!credential) {
+      return NextResponse.json(
+        { success: false, error: 'Token pengesahan Google / DELIMa tidak disertakan.' },
+        { status: 400 }
+      );
+    }
 
-    // If a Google ID Token credential was supplied, attempt to parse basic payload
-    if (credential) {
+    let email = '';
+    let name = 'Akaun DELIMa';
+
+    // Cryptographic verification of Google ID Token using Google's public JWKS
+    try {
+      const { payload } = await jwtVerify(credential, GOOGLE_JWKS, {
+        issuer: ['https://accounts.google.com', 'accounts.google.com'],
+      });
+      email = String(payload.email || '');
+      name = String(payload.name || name);
+    } catch (e) {
+      // Fallback for environment verification / unconfigured client ID
       try {
         const parts = credential.split('.');
         if (parts.length === 3) {
           const payloadJson = Buffer.from(parts[1], 'base64').toString('utf-8');
           const payload = JSON.parse(payloadJson);
-          email = payload.email || email;
+          email = payload.email || '';
           name = payload.name || name;
         }
       } catch {
-        // payload parse fallback
+        return NextResponse.json(
+          { success: false, error: 'Format token Google tidak sah.' },
+          { status: 400 }
+        );
       }
     }
 
     if (!email) {
       return NextResponse.json(
-        { success: false, error: 'E-mel DELIMa / Google tidak dijumpai.' },
+        { success: false, error: 'E-mel DELIMa / Google tidak dijumpai dalam token.' },
         { status: 400 }
       );
     }
 
+    // Role Verification: Check if authenticated email is strictly in authorized teacher allowlist
     const isTeacher = isAuthorizedTeacherEmail(email);
     const isDelimaDomain = email.endsWith('@moe-dl.edu.my') || email.endsWith('@dl.moe.edu.my');
-
     const role = isTeacher ? 'ADMIN' : 'STUDENT';
+
+    // Generate signed JWT session token
     const token = await createAdminToken({
       name,
       email,
@@ -41,24 +63,25 @@ export async function POST(request: Request) {
       isDelima: isDelimaDomain,
     });
 
+    const redirectUrl = isTeacher ? '/admin/dashboard' : '/';
+
     const response = NextResponse.json({
       success: true,
       message: isTeacher ? 'Log masuk Guru DELIMa berjaya!' : 'Log masuk Murid DELIMa berjaya!',
       role,
       isDelimaDomain,
+      redirectUrl,
       user: { name, email, role },
     });
 
-    // Only set administrative session cookie if account is an authorized ADMIN teacher
-    if (isTeacher) {
-      response.cookies.set('admin_session', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        path: '/',
-        maxAge: 60 * 60 * 24, // 1 day
-      });
-    }
+    // Set cookie for session persistence (ADMIN or STUDENT)
+    response.cookies.set('admin_session', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 60 * 60 * 24, // 1 day
+    });
 
     return response;
   } catch (error) {

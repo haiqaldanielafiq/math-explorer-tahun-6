@@ -8,7 +8,7 @@ const SECRET_KEY = new TextEncoder().encode(
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'cikgu';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'cikgu123';
 
-// Authorized teacher emails for DELIMa Google Workspace login
+// Authorized teacher/admin emails for DELIMa Google Workspace login
 const AUTHORIZED_TEACHER_EMAILS = (
   process.env.AUTHORIZED_TEACHER_EMAILS || 'cikgu@moe-dl.edu.my,admin@moe-dl.edu.my,cikgu@dl.moe.edu.my'
 ).split(',').map((e) => e.trim().toLowerCase());
@@ -73,16 +73,6 @@ export function isAuthorizedTeacherEmail(email: string): boolean {
   if (!email) return false;
   const lower = email.toLowerCase().trim();
 
-  // 1. Direct match in allowlist
-  if (AUTHORIZED_TEACHER_EMAILS.includes(lower)) return true;
-
-  // 2. DELIMa Teacher Email Pattern check
-  // DELIMa teacher emails usually follow g-XXXXXXXX@moe-dl.edu.my or similar teacher prefixes
-  if (lower.endsWith('@moe-dl.edu.my') || lower.endsWith('@dl.moe.edu.my')) {
-    if (lower.startsWith('g-') || lower.startsWith('guru-') || lower.includes('cikgu') || lower.includes('admin')) {
-      return true;
-    }
-  }
-
-  return false;
+  // Strict email allowlist check against configured AUTHORIZED_TEACHER_EMAILS
+  return AUTHORIZED_TEACHER_EMAILS.includes(lower);
 }

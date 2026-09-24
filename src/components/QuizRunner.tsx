@@ -21,7 +21,7 @@ interface QuizRunnerProps {
 }
 
 export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps) {
-  const { tText } = useLanguage();
+  const { language, tText } = useLanguage();
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [showExplanation, setShowExplanation] = useState<boolean>(false);
@@ -92,8 +92,12 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
   if (!currentQ && !isSubmitted) {
     return (
       <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 text-center space-y-2">
-        <h3 className="text-lg font-bold text-slate-700 dark:text-slate-200">Tiada Soalan Kuiz</h3>
-        <p className="text-xs text-slate-500 dark:text-slate-400">Modul kuiz sedang disediakan oleh guru.</p>
+        <h3 className="text-lg font-bold text-slate-700 dark:text-slate-200">
+          {language === 'en' ? 'No Quiz Questions Available' : 'Tiada Soalan Kuiz'}
+        </h3>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          {language === 'en' ? 'Quiz module is being prepared by teacher.' : 'Modul kuiz sedang disediakan oleh guru.'}
+        </p>
       </div>
     );
   }
@@ -105,13 +109,19 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
   let feedbackBadgeColor = '';
 
   if (percentage >= 90) {
-    feedbackMessage = 'Tahniah! Kamu sangat menguasai topik ini. Prestasi yang amat cemerlang!';
+    feedbackMessage = language === 'en'
+      ? 'Congratulations! You have mastered this topic. Excellent performance!'
+      : 'Tahniah! Kamu sangat menguasai topik ini. Prestasi yang amat cemerlang!';
     feedbackBadgeColor = 'bg-emerald-500 text-white';
   } else if (percentage >= 70) {
-    feedbackMessage = 'Bagus! Teruskan latihan untuk mengukuhkan kefahaman kamu.';
+    feedbackMessage = language === 'en'
+      ? 'Good job! Keep practicing to strengthen your understanding.'
+      : 'Bagus! Teruskan latihan untuk mengukuhkan kefahaman kamu.';
     feedbackBadgeColor = 'bg-blue-500 text-white';
   } else {
-    feedbackMessage = 'Jangan risau. Cuba ulang semula bahagian pembelajaran dan cuba kuiz sekali lagi.';
+    feedbackMessage = language === 'en'
+      ? 'Don’t worry. Review the lesson sections and try the quiz again.'
+      : 'Jangan risau. Cuba ulang semula bahagian pembelajaran dan cuba kuiz sekali lagi.';
     feedbackBadgeColor = 'bg-amber-500 text-white';
   }
 
@@ -123,9 +133,10 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
           <div className="space-y-3">
             <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1.5 text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1 rounded-lg border border-indigo-100 dark:border-indigo-800">
-                <HelpCircle className="w-4 h-4" /> Soalan {currentIdx + 1} daripada {totalQuestions}
+                <HelpCircle className="w-4 h-4" />
+                {language === 'en' ? `Question ${currentIdx + 1} of ${totalQuestions}` : `Soalan ${currentIdx + 1} daripada ${totalQuestions}`}
               </span>
-              <span>Kemajuan: {Math.round(((currentIdx + 1) / totalQuestions) * 100)}%</span>
+              <span>{language === 'en' ? 'Progress' : 'Kemajuan'}: {Math.round(((currentIdx + 1) / totalQuestions) * 100)}%</span>
             </div>
             <div className="w-full bg-slate-100 dark:bg-slate-700 h-3 rounded-full overflow-hidden border border-slate-200 dark:border-slate-600">
               <div
@@ -139,11 +150,11 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
           <div className="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 shadow-lg space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-xs font-extrabold uppercase tracking-wider text-amber-300 bg-white/10 px-3 py-1 rounded-md">
-                Soalan Matematik Tahun 6
+                {language === 'en' ? 'Year 6 Mathematics Question' : 'Soalan Matematik Tahun 6'}
               </span>
               {currentQ.difficulty && (
                 <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
-                  Tahap: {currentQ.difficulty}
+                  {language === 'en' ? 'Level' : 'Tahap'}: {currentQ.difficulty}
                 </span>
               )}
             </div>
@@ -198,12 +209,12 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
                 {userAnswers[currentQ.id] === currentQ.correctAnswer ? (
                   <>
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                    <span>Jawapan Betul!</span>
+                    <span>{language === 'en' ? 'Correct Answer!' : 'Jawapan Betul!'}</span>
                   </>
                 ) : (
                   <>
                     <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
-                    <span>Jawapan Kurang Tepat. Jawapan betul ialah: {currentQ.correctAnswer}</span>
+                    <span>{language === 'en' ? `Incorrect. Correct answer is: ${currentQ.correctAnswer}` : `Jawapan Kurang Tepat. Jawapan betul ialah: ${currentQ.correctAnswer}`}</span>
                   </>
                 )}
               </div>
@@ -219,14 +230,14 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
                 disabled={!userAnswers[currentQ.id]}
                 className="px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm rounded-xl shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Semak Jawapan
+                {language === 'en' ? 'Check Answer' : 'Semak Jawapan'}
               </button>
             ) : (
               <button
                 onClick={handleNext}
                 className="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
               >
-                <span>{currentIdx < totalQuestions - 1 ? 'Soalan Seterusnya' : 'Selesaikan Kuiz'}</span>
+                <span>{currentIdx < totalQuestions - 1 ? (language === 'en' ? 'Next Question' : 'Soalan Seterusnya') : (language === 'en' ? 'Complete Quiz' : 'Selesaikan Kuiz')}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             )}
@@ -241,9 +252,11 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
 
           <div className="space-y-3">
             <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider ${feedbackBadgeColor}`}>
-              Pencapaian: {percentage}% Markah
+              {language === 'en' ? `Achievement: ${percentage}% Score` : `Pencapaian: ${percentage}% Markah`}
             </span>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white">Keputusan Kuiz: {topicTitle}</h2>
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white">
+              {language === 'en' ? `Quiz Results: ${topicTitle}` : `Keputusan Kuiz: ${topicTitle}`}
+            </h2>
             <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
               {feedbackMessage}
             </p>
@@ -252,17 +265,17 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
             <div>
               <div className="text-2xl font-black text-indigo-900 dark:text-indigo-300">{totalScore} / {totalQuestions}</div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Soalan Betul</div>
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">{language === 'en' ? 'Correct Questions' : 'Soalan Betul'}</div>
             </div>
             <div>
               <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{percentage}%</div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Markah Peratusan</div>
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">{language === 'en' ? 'Percentage Score' : 'Markah Peratusan'}</div>
             </div>
             <div className="col-span-2 sm:col-span-1">
               <div className="text-2xl font-black text-amber-600 dark:text-amber-400">
-                {percentage >= 70 ? 'LULUS' : 'MULA'}
+                {percentage >= 70 ? (language === 'en' ? 'PASSED' : 'LULUS') : (language === 'en' ? 'RETRY' : 'MULA')}
               </div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Status Modul</div>
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">{language === 'en' ? 'Module Status' : 'Status Modul'}</div>
             </div>
           </div>
 
@@ -271,7 +284,7 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
               onClick={handleReset}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md transition-all"
             >
-              <RotateCw className="w-4 h-4" /> Cuba Kuiz Sekali Lagi
+              <RotateCw className="w-4 h-4" /> {language === 'en' ? 'Try Quiz Again' : 'Cuba Kuiz Sekali Lagi'}
             </button>
           </div>
         </div>

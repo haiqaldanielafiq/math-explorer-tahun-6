@@ -6,7 +6,7 @@ const SECRET_KEY = new TextEncoder().encode(
   process.env.ADMIN_JWT_SECRET || 'math-explorer-tahun-6-super-secret-key-2025'
 );
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   if (path.startsWith('/admin') && path !== '/admin/login') {

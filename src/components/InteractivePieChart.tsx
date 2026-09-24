@@ -20,7 +20,7 @@ interface InteractivePieChartProps {
 }
 
 export function InteractivePieChart({ activityData }: InteractivePieChartProps) {
-  const { tText } = useLanguage();
+  const { language, tText } = useLanguage();
   const [activeTab, setActiveTab] = useState<'explorer' | 'exercise'>('explorer');
 
   // Explorer State
@@ -90,7 +90,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-6">
         <div>
           <span className="bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-            Aktiviti DSKP
+            {language === 'en' ? 'DSKP Activity' : 'Aktiviti DSKP'}
           </span>
           <h2 className="text-2xl font-black text-slate-900 dark:text-white mt-1">{tText(activityData.title)}</h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">{tText(activityData.description)}</p>
@@ -105,7 +105,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
                 : 'text-slate-600 dark:text-slate-400 hover:text-indigo-600'
             }`}
           >
-            <Compass className="w-4 h-4" /> Penerokaan Sudut
+            <Compass className="w-4 h-4" /> {language === 'en' ? 'Angle Explorer' : 'Penerokaan Sudut'}
           </button>
           <button
             onClick={() => setActiveTab('exercise')}
@@ -115,7 +115,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
                 : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600'
             }`}
           >
-            <Layers className="w-4 h-4" /> Latihan Mentafsir
+            <Layers className="w-4 h-4" /> {language === 'en' ? 'Interpretation Practice' : 'Latihan Mentafsir'}
           </button>
         </div>
       </div>
@@ -156,17 +156,20 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
               </svg>
 
               <div className="absolute top-2 bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow">
-                Jejari
+                {language === 'en' ? 'Radius' : 'Jejari'}
               </div>
               <div className="absolute center bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 text-xs font-black px-3 py-1 rounded-full shadow-lg">
-                Pusat Bulatan (100,100)
+                {language === 'en' ? 'Circle Centre (100,100)' : 'Pusat Bulatan (100,100)'}
               </div>
             </div>
 
             <div className="text-center space-y-1">
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Pusat Bulatan & Jejari</span>
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                {language === 'en' ? 'Circle Centre & Radius' : 'Pusat Bulatan & Jejari'}
+              </span>
               <p className="text-xs text-slate-600 dark:text-slate-300">
-                Bulatan penuh = <strong>360°</strong> | Sektor dipilih = <strong className="text-indigo-600 dark:text-indigo-400 font-extrabold">{selectedAngle}°</strong> ({fractionText})
+                {language === 'en' ? 'Full circle = ' : 'Bulatan penuh = '}<strong>360°</strong> | {language === 'en' ? 'Selected sector = ' : 'Sektor dipilih = '}
+                <strong className="text-indigo-600 dark:text-indigo-400 font-extrabold">{selectedAngle}°</strong> ({fractionText})
               </p>
             </div>
           </div>
@@ -174,7 +177,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-3">
               <label className="block text-sm font-extrabold text-slate-900 dark:text-white">
-                Pilih Nilai Sudut DSKP:
+                {language === 'en' ? 'Select DSKP Angle Value:' : 'Pilih Nilai Sudut DSKP:'}
               </label>
               <div className="grid grid-cols-3 gap-3">
                 {[180, 90, 45].map((ang) => (
@@ -189,7 +192,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
                   >
                     {ang}°
                     <span className="block text-[10px] font-normal opacity-80">
-                      ({ang === 180 ? 'Separuh / 1/2' : ang === 90 ? 'Suku / 1/4' : '1/8 Bulatan'})
+                      ({ang === 180 ? (language === 'en' ? 'Half / 1/2' : 'Separuh / 1/2') : ang === 90 ? (language === 'en' ? 'Quarter / 1/4' : 'Suku / 1/4') : (language === 'en' ? '1/8 Circle' : '1/8 Bulatan')})
                     </span>
                   </button>
                 ))}
@@ -199,10 +202,10 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <label className="text-sm font-extrabold text-slate-900 dark:text-white">
-                  Ubah Kuantiti Keseluruhan Data:
+                  {language === 'en' ? 'Adjust Total Data Quantity:' : 'Ubah Kuantiti Keseluruhan Data:'}
                 </label>
                 <span className="text-base font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1 rounded-xl border border-indigo-200 dark:border-indigo-800">
-                  {customTotal} Murid
+                  {customTotal} {language === 'en' ? 'Students' : 'Murid'}
                 </span>
               </div>
               <input
@@ -219,18 +222,18 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
             <div className="bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 rounded-2xl p-5 space-y-3">
               <div className="text-xs font-bold uppercase tracking-wider text-indigo-900 dark:text-indigo-300 flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                <span>Pengiraan Kuantiti Sektor ({selectedAngle}°):</span>
+                <span>{language === 'en' ? `Sector Quantity Calculation (${selectedAngle}°):` : `Pengiraan Kuantiti Sektor (${selectedAngle}°):`}</span>
               </div>
 
               <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900 space-y-2 text-xs sm:text-sm">
                 <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
-                  <span className="text-slate-600 dark:text-slate-400">Formula Kuantiti:</span>
+                  <span className="text-slate-600 dark:text-slate-400">{language === 'en' ? 'Quantity Formula:' : 'Formula Kuantiti:'}</span>
                   <span className="font-mono font-bold text-slate-900 dark:text-white">({selectedAngle}° / 360°) × {customTotal}</span>
                 </div>
                 <div className="flex justify-between items-center pt-1">
-                  <span className="font-bold text-slate-900 dark:text-white">Kuantiti Murid Dalam Sektor:</span>
+                  <span className="font-bold text-slate-900 dark:text-white">{language === 'en' ? 'Sector Student Quantity:' : 'Kuantiti Murid Dalam Sektor:'}</span>
                   <span className="text-lg font-black text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-0.5 rounded-lg border border-emerald-200 dark:border-emerald-800">
-                    {calculatedQuantity} Murid
+                    {calculatedQuantity} {language === 'en' ? 'Students' : 'Murid'}
                   </span>
                 </div>
               </div>
@@ -246,15 +249,17 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
             <div className="space-y-6">
               <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
                 <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
-                  Soalan {currentQuestionIdx + 1} daripada {activityData.questions?.length || 0}
+                  {language === 'en' ? `Question ${currentQuestionIdx + 1} of ${activityData.questions?.length || 0}` : `Soalan ${currentQuestionIdx + 1} daripada ${activityData.questions?.length || 0}`}
                 </span>
                 <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 px-3 py-1 rounded-full">
-                  Markah: {userScore}
+                  {language === 'en' ? `Score: ${userScore}` : `Markah: ${userScore}`}
                 </span>
               </div>
 
               <div className="bg-indigo-900 text-white p-6 rounded-2xl shadow-md space-y-2">
-                <div className="text-xs font-bold text-amber-300 uppercase tracking-wide">Soalan Latihan:</div>
+                <div className="text-xs font-bold text-amber-300 uppercase tracking-wide">
+                  {language === 'en' ? 'Practice Question:' : 'Soalan Latihan:'}
+                </div>
                 <h3 className="text-lg font-bold">{tText(currentQ.prompt)}</h3>
               </div>
 
@@ -301,12 +306,12 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
                     {selectedOption === currentQ.correctAnswer ? (
                       <>
                         <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                        <span>Betul! Syabas!</span>
+                        <span>{language === 'en' ? 'Correct! Excellent!' : 'Betul! Syabas!'}</span>
                       </>
                     ) : (
                       <>
                         <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
-                        <span>Cuba Lagi! Ingat bahawa satu bulatan penuh ialah 360°.</span>
+                        <span>{language === 'en' ? 'Try again! Remember a full circle is 360°.' : 'Cuba Lagi! Ingat bahawa satu bulatan penuh ialah 360°.'}</span>
                       </>
                     )}
                   </div>
@@ -318,7 +323,9 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
                       className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl shadow transition-all flex items-center justify-center gap-2"
                     >
                       <span>
-                        {currentQuestionIdx < (activityData.questions?.length || 0) - 1 ? 'Soalan Seterusnya' : 'Lihat Keputusan Aktiviti'}
+                        {currentQuestionIdx < (activityData.questions?.length || 0) - 1
+                          ? (language === 'en' ? 'Next Question' : 'Soalan Seterusnya')
+                          : (language === 'en' ? 'View Activity Results' : 'Lihat Keputusan Aktiviti')}
                       </span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -333,9 +340,15 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white">Tahniah! Aktiviti Selesai</h3>
+                <h3 className="text-2xl font-black text-slate-900 dark:text-white">
+                  {language === 'en' ? 'Congratulations! Activity Complete' : 'Tahniah! Aktiviti Selesai'}
+                </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Kamu mendapat <strong className="text-indigo-600 dark:text-indigo-400">{userScore}</strong> daripada <strong className="text-indigo-600 dark:text-indigo-400">{activityData.questions?.length || 0}</strong> soalan dengan betul.
+                  {language === 'en' ? 'You answered ' : 'Kamu mendapat '}
+                  <strong className="text-indigo-600 dark:text-indigo-400">{userScore}</strong>
+                  {language === 'en' ? ' out of ' : ' daripada '}
+                  <strong className="text-indigo-600 dark:text-indigo-400">{activityData.questions?.length || 0}</strong>
+                  {language === 'en' ? ' questions correctly.' : ' soalan dengan betul.'}
                 </p>
               </div>
 
@@ -343,7 +356,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
                 onClick={handleResetExercise}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow transition-all"
               >
-                <RotateCw className="w-4 h-4" /> Cuba Semula Aktiviti
+                <RotateCw className="w-4 h-4" /> {language === 'en' ? 'Retry Activity' : 'Cuba Semula Aktiviti'}
               </button>
             </div>
           )}
