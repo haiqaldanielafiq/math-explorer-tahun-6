@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getTopics } from '@/lib/storage';
-import { getText } from '@/context/LanguageContext';
+import { getLocalizedText } from '@/lib/utils';
 import {
   BookOpen,
   CheckCircle,
@@ -119,8 +119,8 @@ export default async function AdminDashboardPage() {
                     {t.code}
                   </td>
                   <td className="py-4 px-2 font-bold text-slate-900 dark:text-white">
-                    {getText(t.title)}
-                    <span className="block text-xs font-normal text-slate-500 dark:text-slate-400 line-clamp-1">{getText(t.standardKandungan)}</span>
+                    {getLocalizedText(t.title)}
+                    <span className="block text-xs font-normal text-slate-500 dark:text-slate-400 line-clamp-1">{getLocalizedText(t.standardKandungan)}</span>
                   </td>
                   <td className="py-4 px-2">
                     {t.published ? (
