@@ -2,45 +2,87 @@
   {
     "id": "topic-carta-pai-8-1",
     "slug": "carta-pai",
-    "title": "Carta Pai",
+    "title": {
+      "ms": "Carta Pai",
+      "en": "Pie Charts"
+    },
     "code": "8.1",
-    "standardKandungan": "8.1 Carta pai",
-    "standardPembelajaran": "8.1.1 Melengkapkan carta pai berdasarkan nilai sudut 45°, 90° dan 180° dengan kuantiti diberikan serta mentafsir data.",
-    "description": "Pelajari konsep carta pai, bahagian sektor, hubungan antara nilai sudut (45°, 90°, 180°) dengan jumlah kuantiti data, dan cara mentafsir data carta pai dengan mudah.",
+    "standardKandungan": {
+      "ms": "8.1 Carta pai",
+      "en": "8.1 Pie charts"
+    },
+    "standardPembelajaran": {
+      "ms": "8.1.1 Melengkapkan carta pai berdasarkan nilai sudut 45°, 90° dan 180° dengan kuantiti diberikan serta mentafsir data.",
+      "en": "8.1.1 Complete pie charts based on angle values of 45°, 90°, and 180° with given quantities and interpret data."
+    },
+    "description": {
+      "ms": "Pelajari konsep carta pai, bahagian sektor, hubungan antara nilai sudut (45°, 90°, 180°) dengan jumlah kuantiti data, dan cara mentafsir data carta pai dengan mudah.",
+      "en": "Learn pie chart concepts, sector parts, the relationship between angle values (45°, 90°, 180°) and total data quantity, and how to interpret pie chart data easily."
+    },
     "objectives": [
-      "Mengenal pasti bahagian carta pai seperti pusat bulatan, jejari, dan sektor.",
-      "Memahami perkaitan nilai sudut 45°, 90°, dan 180° dengan pecahan bulatan.",
-      "Melengkapkan carta pai berdasarkan kuantiti data yang diberi.",
-      "Mentafsir maklumat daripada carta pai untuk membuat kesimpulan."
+      {
+        "ms": "Mengenal pasti bahagian carta pai seperti pusat bulatan, jejari, dan sektor.",
+        "en": "Identify pie chart parts such as center point, radius, and sector."
+      },
+      {
+        "ms": "Memahami perkaitan nilai sudut 45°, 90°, dan 180° dengan pecahan bulatan.",
+        "en": "Understand the relationship of 45°, 90°, and 180° angles to circle fractions."
+      },
+      {
+        "ms": "Melengkapkan carta pai berdasarkan kuantiti data yang diberi.",
+        "en": "Complete pie charts based on given data quantities."
+      },
+      {
+        "ms": "Mentafsir maklumat daripada carta pai untuk membuat kesimpulan.",
+        "en": "Interpret information from pie charts to draw conclusions."
+      }
     ],
     "published": true,
     "order": 1,
-    "createdAt": "2026-09-23T15:20:36.496Z",
-    "updatedAt": "2026-09-23T15:20:36.496Z",
+    "createdAt": "2026-09-24T05:16:41.308Z",
+    "updatedAt": "2026-09-24T05:16:41.309Z",
     "sections": [
       {
         "id": "sec-1",
-        "title": "1. Pengenalan Carta Pai",
-        "content": "Carta pai ialah sejenis graf berbentuk bulatan yang dibahagikan kepada beberapa sektor untuk mewakili kumpulan data.",
+        "title": {
+          "ms": "1. Pengenalan Carta Pai",
+          "en": "1. Introduction to Pie Charts"
+        },
+        "content": {
+          "ms": "Carta pai ialah sejenis graf berbentuk bulatan yang dibahagikan kepada beberapa sektor untuk mewakili kumpulan data.",
+          "en": "A pie chart is a circular graph divided into sectors representing data groups."
+        },
         "order": 1,
         "blocks": [
           {
             "id": "blk-1",
             "type": "heading",
-            "title": "Selamat Datang ke Dunia Carta Pai!",
+            "title": {
+              "ms": "Selamat Datang ke Dunia Carta Pai!",
+              "en": "Welcome to the World of Pie Charts!"
+            },
             "order": 1
           },
           {
             "id": "blk-2",
             "type": "paragraph",
-            "body": "Dalam kehidupan harian, kita sering melihat maklumat dipersembahkan dalam bentuk bulatan berwarna-warni. Bulatan ini dipanggil **Carta Pai**. Setiap bahagian dalam bulatan menggambarkan jumlah atau kuantiti sesuatu kategori.",
+            "body": {
+              "ms": "Dalam kehidupan harian, kita sering melihat maklumat dipersembahkan dalam bentuk bulatan berwarna-warni. Bulatan ini dipanggil Carta Pai.",
+              "en": "In daily life, we often see information presented in colorful circular charts called Pie Charts."
+            },
             "order": 2
           },
           {
             "id": "blk-3",
             "type": "callout",
-            "title": "Tahukah Kamu?",
-            "body": "Jumlah keseluruhan sudut di dalam satu bulatan penuh ialah **360°**!",
+            "title": {
+              "ms": "Tahukah Kamu?",
+              "en": "Did You Know?"
+            },
+            "body": {
+              "ms": "Jumlah keseluruhan sudut di dalam satu bulatan penuh ialah 360°!",
+              "en": "The total angle in a full circle is always 360°!"
+            },
             "calloutType": "info",
             "order": 3
           }
@@ -48,107 +90,72 @@
       },
       {
         "id": "sec-2",
-        "title": "2. Bahagian-Bahagian Carta Pai",
-        "content": "Untuk membina dan memahami carta pai, kamu perlu tahu 3 bahagian utama bulatan.",
+        "title": {
+          "ms": "2. Bahagian-Bahagian Carta Pai",
+          "en": "2. Parts of a Pie Chart"
+        },
+        "content": {
+          "ms": "Untuk membina dan memahami carta pai, kamu perlu tahu 3 bahagian utama bulatan.",
+          "en": "To build and understand a pie chart, you need to know 3 main circle parts."
+        },
         "order": 2,
         "blocks": [
           {
             "id": "blk-4",
             "type": "heading",
-            "title": "3 Bahagian Utama Bulatan",
+            "title": {
+              "ms": "3 Bahagian Utama Bulatan",
+              "en": "3 Main Parts of a Circle"
+            },
             "order": 1
           },
           {
             "id": "blk-5",
             "type": "paragraph",
-            "body": "1. **Pusat Bulatan (Center):** Titik tengah bulatan.\n2. **Jejari (Radius):** Garis lurus dari pusat bulatan ke tepi bulatan.\n3. **Sektor (Sector):** Ruang dalam bulatan yang dibatasi oleh dua jejari dan lengkok. Sektor inilah yang mewakili data!",
+            "body": {
+              "ms": "1. Pusat Bulatan (Center): Titik tengah bulatan.\n2. Jejari (Radius): Garis lurus dari pusat ke tepi bulatan.\n3. Sektor (Sector): Ruang yang dibatasi dua jejari dan lengkok.",
+              "en": "1. Center: The middle point.\n2. Radius: Straight line from center to edge.\n3. Sector: Region enclosed by two radii and an arc."
+            },
             "order": 2
-          },
-          {
-            "id": "blk-6",
-            "type": "example",
-            "title": "Contoh Sektor",
-            "body": "Fikirkan carta pai seperti sepinggan kek bulat. Setiap potong kek mewakili satu sektor!",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "id": "sec-3",
-        "title": "3. Nilai Sudut Utama (180°, 90°, 45°)",
-        "content": "Hubungan nilai sudut dengan bahagian bulatan.",
-        "order": 3,
-        "blocks": [
-          {
-            "id": "blk-7",
-            "type": "heading",
-            "title": "Nilai Sudut & Pecahan Bulatan",
-            "order": 1
-          },
-          {
-            "id": "blk-8",
-            "type": "paragraph",
-            "body": "Dalam Tahun 6, kamu perlu menguasai 3 nilai sudut utama:\n- **180°** = Separuh bulatan (1/2 daripada 360°)\n- **90°** = Suku bulatan (1/4 daripada 360°)\n- **45°** = Separuh daripada suku bulatan (1/8 daripada 360°)",
-            "order": 2
-          },
-          {
-            "id": "blk-9",
-            "type": "formula",
-            "title": "Formula Kuantiti Sektor",
-            "body": "Kuantiti Sektor = (Nilai Sudut / 360°) × Jumlah Kuantiti Keseluruhan",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "id": "sec-4",
-        "title": "4. Cara Mentafsir Data Carta Pai",
-        "content": "Langkah-langkah membaca dan mengira kuantiti daripada carta pai.",
-        "order": 4,
-        "blocks": [
-          {
-            "id": "blk-10",
-            "type": "heading",
-            "title": "Langkah-langkah Mentafsir Data",
-            "order": 1
-          },
-          {
-            "id": "blk-11",
-            "type": "paragraph",
-            "body": "Contoh Situasi:\nDalam sebuah kelas Tahun 6 yang mempunyai **20 orang murid**, aktiviti kegemaran murid dibahagikan seperti berikut:\n- **Bersukan:** Sudut 180°\n- **Membaca:** Sudut 90°\n- **Melukis:** Sudut 90°",
-            "order": 2
-          },
-          {
-            "id": "blk-12",
-            "type": "callout",
-            "title": "Pengiraan Kuantiti:",
-            "body": "• Bersukan (180°): (180°/360°) × 20 = 1/2 × 20 = **10 orang**\n• Membaca (90°): (90°/360°) × 20 = 1/4 × 20 = **5 orang**\n• Melukis (90°): (90°/360°) × 20 = 1/4 × 20 = **5 orang**\n\nJumlah Keseluruhan = 10 + 5 + 5 = **20 orang**.",
-            "calloutType": "success",
-            "order": 3
           }
         ]
       }
     ],
     "activity": {
       "id": "act-1",
-      "title": "Aktiviti Interaktif Penerokaan Carta Pai",
-      "description": "Gunakan alat interaktif ini untuk meneroka sudut 45°, 90°, dan 180° serta lengkapkan carta pai berdasarkan kuantiti data yang diberi.",
+      "title": {
+        "ms": "Aktiviti Interaktif Penerokaan Carta Pai",
+        "en": "Interactive Pie Chart Exploration Activity"
+      },
+      "description": {
+        "ms": "Gunakan alat interaktif ini untuk meneroka sudut 45°, 90°, dan 180° serta lengkapkan carta pai berdasarkan kuantiti data yang diberi.",
+        "en": "Use this interactive tool to explore 45°, 90°, and 180° angles and complete pie charts based on given quantities."
+      },
       "totalQuantity": 20,
       "initialData": [
         {
-          "category": "Bersukan",
+          "category": {
+            "ms": "Bersukan",
+            "en": "Sports"
+          },
           "value": 10,
           "angle": 180,
           "color": "#3B82F6"
         },
         {
-          "category": "Membaca",
+          "category": {
+            "ms": "Membaca",
+            "en": "Reading"
+          },
           "value": 5,
           "angle": 90,
           "color": "#10B981"
         },
         {
-          "category": "Melukis",
+          "category": {
+            "ms": "Melukis",
+            "en": "Drawing"
+          },
           "value": 5,
           "angle": 90,
           "color": "#F59E0B"
@@ -157,7 +164,10 @@
       "questions": [
         {
           "id": "q-act-1",
-          "prompt": "Berapakah nisbah sudut 180° berbanding bulatan penuh 360°?",
+          "prompt": {
+            "ms": "Berapakah nisbah sudut 180° berbanding bulatan penuh 360°?",
+            "en": "What is the ratio of 180° compared to a full circle of 360°?"
+          },
           "correctAnswer": "1/2",
           "options": [
             "1/2",
@@ -165,11 +175,17 @@
             "1/8",
             "1/3"
           ],
-          "explanation": "180° dibahagikan dengan 360° bersamaan dengan 1/2 (separuh bulatan)."
+          "explanation": {
+            "ms": "180° dibahagikan dengan 360° bersamaan dengan 1/2 (separuh bulatan).",
+            "en": "180° divided by 360° equals 1/2 (half circle)."
+          }
         },
         {
           "id": "q-act-2",
-          "prompt": "Jika kuantiti keseluruhan ialah 20 orang murid, berapakah bilangan murid yang mewakili sektor sudut 90°?",
+          "prompt": {
+            "ms": "Jika kuantiti keseluruhan ialah 20 orang murid, berapakah bilangan murid yang mewakili sektor sudut 90°?",
+            "en": "If total quantity is 20 students, how many students represent a 90° sector?"
+          },
           "correctAnswer": "5",
           "options": [
             "10",
@@ -177,32 +193,32 @@
             "2.5",
             "15"
           ],
-          "explanation": "Sudut 90° ialah 1/4 daripada bulatan. (1/4) × 20 = 5 orang murid."
-        },
-        {
-          "id": "q-act-3",
-          "prompt": "Sudut manakah yang mewakili 1/8 daripada satu bulatan penuh (360°)?",
-          "correctAnswer": "45°",
-          "options": [
-            "180°",
-            "90°",
-            "45°",
-            "60°"
-          ],
-          "explanation": "360° dibahagikan dengan 8 ialah 45°."
+          "explanation": {
+            "ms": "Sudut 90° ialah 1/4 daripada bulatan. (1/4) × 20 = 5 orang murid.",
+            "en": "A 90° angle is 1/4 of a circle. (1/4) × 20 = 5 students."
+          }
         }
       ]
     },
     "quiz": {
       "id": "quiz-1",
-      "title": "Kuiz Kefahaman Carta Pai Tahun 6",
-      "description": "Uji kefahaman kamu tentang nilai sudut dan mentafsir data carta pai!",
+      "title": {
+        "ms": "Kuiz Kefahaman Carta Pai Tahun 6",
+        "en": "Year 6 Pie Chart Quiz"
+      },
+      "description": {
+        "ms": "Uji kefahaman kamu tentang nilai sudut dan mentafsir data carta pai!",
+        "en": "Test your understanding of angles and data interpretation!"
+      },
       "passingScore": 70,
       "questions": [
         {
           "id": "q1",
           "type": "mcq",
-          "question": "Apakah jumlah keseluruhan nilai sudut di dalam satu bulatan lengkap?",
+          "question": {
+            "ms": "Apakah jumlah keseluruhan nilai sudut di dalam satu bulatan lengkap?",
+            "en": "What is the total sum of angles in a complete circle?"
+          },
           "options": [
             "90°",
             "180°",
@@ -210,14 +226,20 @@
             "360°"
           ],
           "correctAnswer": "360°",
-          "explanation": "Satu bulatan penuh sentiasa mempunyai sudut 360°.",
+          "explanation": {
+            "ms": "Satu bulatan penuh sentiasa mempunyai sudut 360°.",
+            "en": "A full circle always has an angle sum of 360°."
+          },
           "marks": 10,
           "difficulty": "mudah"
         },
         {
           "id": "q2",
           "type": "mcq",
-          "question": "Sudut 90° mewakili berapa pecahan daripada bulatan penuh?",
+          "question": {
+            "ms": "Sudut 90° mewakili berapa pecahan daripada bulatan penuh?",
+            "en": "What fraction of a full circle does a 90° angle represent?"
+          },
           "options": [
             "1/2",
             "1/4",
@@ -225,54 +247,423 @@
             "3/4"
           ],
           "correctAnswer": "1/4",
-          "explanation": "90° / 360° = 1/4 (suku bulatan).",
+          "explanation": {
+            "ms": "90° / 360° = 1/4 (suku bulatan).",
+            "en": "90° / 360° = 1/4 (quarter circle)."
+          },
           "marks": 10,
           "difficulty": "mudah"
+        }
+      ]
+    }
+  },
+  {
+    "id": "topic-nombor-1-1",
+    "slug": "nombor-dan-operasi",
+    "title": {
+      "ms": "Nombor dan Operasi",
+      "en": "Numbers and Operations"
+    },
+    "code": "1.1",
+    "standardKandungan": {
+      "ms": "1.1 Nombor bulat hingga 10 000 000",
+      "en": "1.1 Whole numbers up to 10 000 000"
+    },
+    "standardPembelajaran": {
+      "ms": "1.1.1 Membaca, menyebut dan menulis sebarang nombor hingga 10 000 000.",
+      "en": "1.1.1 Read, state, and write any whole number up to 10 000 000."
+    },
+    "description": {
+      "ms": "Kuasai nilai tempat, nilai digit, mencerakinkan nombor, dan pengiraan asas melibatkan nilai nombor sehingga 10 juta.",
+      "en": "Master place value, digit value, partitioning numbers, and basic operations involving numbers up to 10 million."
+    },
+    "objectives": [
+      {
+        "ms": "Membaca dan menyebut nombor sehingga 7 digit dengan betul.",
+        "en": "Read and state numbers up to 7 digits correctly."
+      },
+      {
+        "ms": "Menyatakan nilai tempat dan nilai digit bagi nombor 10 000 000.",
+        "en": "State place value and digit value for numbers up to 10 000 000."
+      }
+    ],
+    "published": true,
+    "order": 2,
+    "createdAt": "2026-09-24T05:16:41.309Z",
+    "updatedAt": "2026-09-24T05:16:41.309Z",
+    "sections": [
+      {
+        "id": "sec-n1",
+        "title": {
+          "ms": "1. Membaca dan Menulis Nombor Hingga 10 Juta",
+          "en": "1. Reading & Writing Numbers up to 10 Million"
         },
-        {
-          "id": "q3",
-          "type": "mcq",
-          "question": "Sebuah carta pai menunjukkan pilihan 40 orang murid. Jika sektor \"Membaca\" mempunyai sudut 180°, berapakah murid yang memilih membaca?",
-          "options": [
-            "10 orang",
-            "20 orang",
-            "30 orang",
-            "40 orang"
-          ],
-          "correctAnswer": "20 orang",
-          "explanation": "180° mewakili 1/2 daripada bulatan. 1/2 daripada 40 orang murid = 20 orang murid.",
-          "marks": 10,
-          "difficulty": "sederhana"
+        "content": {
+          "ms": "Nombor 7 digit terdiri daripada nilai tempat Sa, Puluh, Ratus, Ribu, Puluh Ribu, Ratus Ribu, dan Juta.",
+          "en": "A 7-digit number consists of ones, tens, hundreds, thousands, ten thousands, hundred thousands, and millions."
         },
+        "order": 1,
+        "blocks": [
+          {
+            "id": "blk-n1",
+            "type": "heading",
+            "title": {
+              "ms": "Jadual Nilai Tempat",
+              "en": "Place Value Chart"
+            },
+            "order": 1
+          },
+          {
+            "id": "blk-n2",
+            "type": "paragraph",
+            "body": {
+              "ms": "Contoh: 5 420 180 dibaca sebagai \"Lima juta empat ratus dua puluh ribu satu ratus lapan puluh\".",
+              "en": "Example: 5 420 180 is read as \"Five million four hundred twenty thousand one hundred eighty\"."
+            },
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "activity": {
+      "id": "act-2",
+      "title": {
+        "ms": "Aktiviti Nilai Tempat & Cerakan Nombor",
+        "en": "Place Value & Number Partitioning Activity"
+      },
+      "description": {
+        "ms": "Padankan nombor dengan nilai tempat yang betul.",
+        "en": "Match numbers to their correct place values."
+      },
+      "totalQuantity": 10,
+      "initialData": [],
+      "questions": [
         {
-          "id": "q4",
-          "type": "mcq",
-          "question": "Dalam satu kajian minat, 8 orang murid memilih \"Melukis\" daripada jumlah 16 orang murid. Berapakah nilai sudut sektor untuk \"Melukis\"?",
+          "id": "q-act-n1",
+          "prompt": {
+            "ms": "Apakah nilai digit 4 dalam 4 250 000?",
+            "en": "What is the digit value of 4 in 4 250 000?"
+          },
+          "correctAnswer": "4 000 000",
           "options": [
-            "45°",
-            "90°",
-            "180°",
-            "360°"
+            "400 000",
+            "4 000 000",
+            "40 000",
+            "400"
           ],
-          "correctAnswer": "180°",
-          "explanation": "8/16 = 1/2. Pecahan 1/2 daripada 360° ialah 180°.",
+          "explanation": {
+            "ms": "Digit 4 berada di nilai tempat Juta, maka nilainya ialah 4 000 000.",
+            "en": "Digit 4 is at the Millions place, so its value is 4 000 000."
+          }
+        }
+      ]
+    },
+    "quiz": {
+      "id": "quiz-2",
+      "title": {
+        "ms": "Kuiz Nombor dan Operasi Tahun 6",
+        "en": "Year 6 Numbers and Operations Quiz"
+      },
+      "description": {
+        "ms": "Uji kemahiran membaca dan menulis nombor besar!",
+        "en": "Test your skills in reading and writing large numbers!"
+      },
+      "passingScore": 70,
+      "questions": [
+        {
+          "id": "qn1",
+          "type": "mcq",
+          "question": {
+            "ms": "Pilih ejaan yang betul bagi 2 500 000:",
+            "en": "Choose the correct word notation for 2 500 000:"
+          },
+          "options": [
+            "Dua juta lima ratus ribu",
+            "Dua juta lima puluh ribu",
+            "Dua puluh lima juta",
+            "Dua ratus lima puluh ribu"
+          ],
+          "correctAnswer": "Dua juta lima ratus ribu",
+          "explanation": {
+            "ms": "2 500 000 mempunyai 2 juta dan 500 ribu.",
+            "en": "2 500 000 has 2 million and 500 thousand."
+          },
           "marks": 10,
-          "difficulty": "sederhana"
+          "difficulty": "mudah"
+        }
+      ]
+    }
+  },
+  {
+    "id": "topic-pecahan-2-1",
+    "slug": "pecahan-perpuluhan-peratus",
+    "title": {
+      "ms": "Pecahan, Perpuluhan dan Peratus",
+      "en": "Fractions, Decimals and Percentages"
+    },
+    "code": "2.1",
+    "standardKandungan": {
+      "ms": "2.1 Operasi bergabung pecahan, perpuluhan dan peratus",
+      "en": "2.1 Mixed operations involving fractions, decimals and percentages"
+    },
+    "standardPembelajaran": {
+      "ms": "2.1.1 Menyelesaikan ayat matematik operasi bergabung pendaraban dan pembahagian pecahan.",
+      "en": "2.1.1 Solve mixed operation math sentences involving multiplication and division of fractions."
+    },
+    "description": {
+      "ms": "Fahami pertukaran antara pecahan, perpuluhan, dan peratus serta penyelesaian masalah harian.",
+      "en": "Understand conversions between fractions, decimals, and percentages, and solve daily life problems."
+    },
+    "objectives": [
+      {
+        "ms": "Menukar pecahan kepada peratus dan sebaliknya.",
+        "en": "Convert fractions to percentages and vice versa."
+      },
+      {
+        "ms": "Menyelesaikan operasi darab dan bahagi pecahan.",
+        "en": "Solve multiplication and division of fractions."
+      }
+    ],
+    "published": true,
+    "order": 3,
+    "createdAt": "2026-09-24T05:16:41.309Z",
+    "updatedAt": "2026-09-24T05:16:41.309Z",
+    "sections": [
+      {
+        "id": "sec-p1",
+        "title": {
+          "ms": "1. Hubungan Pecahan dan Peratus",
+          "en": "1. Relationship Between Fractions & Percentages"
         },
+        "content": {
+          "ms": "Peratus merujuk kepada kuantiti daripada 100. Contoh: 1/4 = 25%.",
+          "en": "Percentage refers to quantity out of 100. Example: 1/4 = 25%."
+        },
+        "order": 1,
+        "blocks": [
+          {
+            "id": "blk-p1",
+            "type": "heading",
+            "title": {
+              "ms": "Jadual Pertukaran Pantas",
+              "en": "Quick Conversion Table"
+            },
+            "order": 1
+          },
+          {
+            "id": "blk-p2",
+            "type": "paragraph",
+            "body": {
+              "ms": "1/2 = 50%\n1/4 = 25%\n3/4 = 75%\n1/5 = 20%",
+              "en": "1/2 = 50%\n1/4 = 25%\n3/4 = 75%\n1/5 = 20%"
+            },
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "activity": {
+      "id": "act-3",
+      "title": {
+        "ms": "Aktiviti Penukaran Pecahan & Peratus",
+        "en": "Fraction & Percentage Conversion Activity"
+      },
+      "description": {
+        "ms": "Tukar pecahan kepada nilai peratusan secara interaktif.",
+        "en": "Convert fractions to percentages interactively."
+      },
+      "totalQuantity": 100,
+      "initialData": [],
+      "questions": [
         {
-          "id": "q5",
-          "type": "mcq",
-          "question": "Sudut 45° mewakili kuantiti murid seramai 3 orang. Berapakah jumlah kuantiti keseluruhan murid dalam carta pai tersebut?",
+          "id": "q-act-p1",
+          "prompt": {
+            "ms": "Berapakah peratusan bagi 3/5?",
+            "en": "What is the percentage for 3/5?"
+          },
+          "correctAnswer": "60%",
           "options": [
-            "12 orang",
-            "24 orang",
-            "36 orang",
-            "48 orang"
+            "30%",
+            "50%",
+            "60%",
+            "75%"
           ],
-          "correctAnswer": "24 orang",
-          "explanation": "Sudut 45° ialah 1/8 daripada bulatan (360°/45° = 8). Jadi jumlah keseluruhan = 3 × 8 = 24 orang murid.",
+          "explanation": {
+            "ms": "(3/5) × 100% = 60%.",
+            "en": "(3/5) × 100% = 60%."
+          }
+        }
+      ]
+    },
+    "quiz": {
+      "id": "quiz-3",
+      "title": {
+        "ms": "Kuiz Pecahan & Peratus Tahun 6",
+        "en": "Year 6 Fractions & Percentages Quiz"
+      },
+      "description": {
+        "ms": "Uji kepantasan menukar peratus dan pecahan!",
+        "en": "Test your speed in converting percentages and fractions!"
+      },
+      "passingScore": 70,
+      "questions": [
+        {
+          "id": "qp1",
+          "type": "mcq",
+          "question": {
+            "ms": "Tukar 80% kepada pecahan termudah:",
+            "en": "Convert 80% into simplest fraction:"
+          },
+          "options": [
+            "4/5",
+            "8/10",
+            "2/5",
+            "3/4"
+          ],
+          "correctAnswer": "4/5",
+          "explanation": {
+            "ms": "80/100 dibahagi 20 = 4/5.",
+            "en": "80/100 simplified by 20 = 4/5."
+          },
           "marks": 10,
-          "difficulty": "sukar"
+          "difficulty": "mudah"
+        }
+      ]
+    }
+  },
+  {
+    "id": "topic-masa-4-1",
+    "slug": "masa-dan-waktu",
+    "title": {
+      "ms": "Masa dan Waktu",
+      "en": "Time"
+    },
+    "code": "4.1",
+    "standardKandungan": {
+      "ms": "4.1 ZON MASA",
+      "en": "4.1 TIME ZONES"
+    },
+    "standardPembelajaran": {
+      "ms": "4.1.1 Menentukan perbezaan masa antara dua bandar yang terletak dalam zon masa berbeza.",
+      "en": "4.1.1 Determine the time difference between two cities located in different time zones."
+    },
+    "description": {
+      "ms": "Pelajari konsep zon masa dunia, waktu sistem 12-jam dan 24-jam, serta perkiraan beza masa negara.",
+      "en": "Learn world time zones, 12-hour and 24-hour systems, and calculate time differences between countries."
+    },
+    "objectives": [
+      {
+        "ms": "Menentukan waktu di bandar luar negara berdasarkan zon masa GMT/UTC.",
+        "en": "Determine foreign city times based on GMT/UTC time zones."
+      },
+      {
+        "ms": "Menyelesaikan masalah berkaitan waktu berlepas dan tiba penerbangan.",
+        "en": "Solve flight departure and arrival time problems."
+      }
+    ],
+    "published": true,
+    "order": 4,
+    "createdAt": "2026-09-24T05:16:41.309Z",
+    "updatedAt": "2026-09-24T05:16:41.309Z",
+    "sections": [
+      {
+        "id": "sec-m1",
+        "title": {
+          "ms": "1. Pengenalan Zon Masa Dunia",
+          "en": "1. Introduction to World Time Zones"
+        },
+        "content": {
+          "ms": "Bumi dibahagikan kepada 24 zon masa berdasarkan garisan bujur Meridian Greenwich (GMT).",
+          "en": "Earth is divided into 24 time zones based on the Greenwich Meridian (GMT)."
+        },
+        "order": 1,
+        "blocks": [
+          {
+            "id": "blk-m1",
+            "type": "heading",
+            "title": {
+              "ms": "Waktu Malaysia (GMT +8)",
+              "en": "Malaysia Time (GMT +8)"
+            },
+            "order": 1
+          },
+          {
+            "id": "blk-m2",
+            "type": "paragraph",
+            "body": {
+              "ms": "Kuala Lumpur mendahului London (GMT +0) sebanyak 8 jam. Apabila di Kuala Lumpur jam 8:00 malam, di London ialah jam 12:00 tengah hari.",
+              "en": "Kuala Lumpur is 8 hours ahead of London (GMT +0). When it is 8:00 PM in KL, it is 12:00 PM in London."
+            },
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "activity": {
+      "id": "act-4",
+      "title": {
+        "ms": "Aktiviti Pengiraan Beza Masa",
+        "en": "Time Difference Calculation Activity"
+      },
+      "description": {
+        "ms": "Kira waktu bandar dunia secara interaktif.",
+        "en": "Calculate world city times interactively."
+      },
+      "totalQuantity": 24,
+      "initialData": [],
+      "questions": [
+        {
+          "id": "q-act-m1",
+          "prompt": {
+            "ms": "Jika Kuala Lumpur (GMT+8) jam 10:00 pagi, berapakah waktu di Tokyo (GMT+9)?",
+            "en": "If Kuala Lumpur (GMT+8) is 10:00 AM, what time is it in Tokyo (GMT+9)?"
+          },
+          "correctAnswer": "11:00 pagi",
+          "options": [
+            "9:00 pagi",
+            "11:00 pagi",
+            "12:00 tengah hari",
+            "2:00 petang"
+          ],
+          "explanation": {
+            "ms": "Tokyo mendahului KL sebanyak 1 jam. 10:00 + 1 jam = 11:00 pagi.",
+            "en": "Tokyo is 1 hour ahead of KL. 10:00 AM + 1 hour = 11:00 AM."
+          }
+        }
+      ]
+    },
+    "quiz": {
+      "id": "quiz-4",
+      "title": {
+        "ms": "Kuiz Masa dan Waktu Tahun 6",
+        "en": "Year 6 Time Quiz"
+      },
+      "description": {
+        "ms": "Uji pengetahuan anda tentang zon masa dunia!",
+        "en": "Test your knowledge on world time zones!"
+      },
+      "passingScore": 70,
+      "questions": [
+        {
+          "id": "qm1",
+          "type": "mcq",
+          "question": {
+            "ms": "London terletak di GMT+0 dan Malaysia GMT+8. Berapakah beza masa?",
+            "en": "London is GMT+0 and Malaysia GMT+8. What is the time difference?"
+          },
+          "options": [
+            "4 jam",
+            "6 jam",
+            "8 jam",
+            "12 jam"
+          ],
+          "correctAnswer": "8 jam",
+          "explanation": {
+            "ms": "8 - 0 = 8 jam.",
+            "en": "8 - 0 = 8 hours."
+          },
+          "marks": 10,
+          "difficulty": "mudah"
         }
       ]
     }

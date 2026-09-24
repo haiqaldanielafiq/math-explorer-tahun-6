@@ -5,20 +5,25 @@
 ▲ Next.js 16.3.6 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.0.2:3000
-✓ Ready in 593ms
-✓ Running next.config.ts took 43ms
+✓ Ready in 511ms
+✓ Running next.config.ts took 44ms
 
- HEAD / 200 in 3.5s (next.js: 3.2s, application-code: 349ms)
- GET / 200 in 102ms (next.js: 10ms, application-code: 92ms)
- GET /topik/carta-pai 200 in 1407ms
- GET / 200 in 90ms (next.js: 5ms, application-code: 85ms)
- GET /topik/carta-pai 200 in 139ms (next.js: 21ms, application-code: 118ms)
- GET / 200 in 93ms (next.js: 14ms, application-code: 79ms)
- GET /topik/carta-pai 200 in 206ms (next.js: 39ms, application-code: 167ms)
- GET /topik/carta-pai/aktiviti 200 in 1265ms (next.js: 1144ms, application-code: 121ms)
- GET /topik/carta-pai/kuiz 200 in 1137ms (next.js: 1042ms, application-code: 95ms)
- GET /admin/login 200 in 543ms (next.js: 309ms, proxy.ts: 101ms, application-code: 133ms)
- POST /api/auth/login 200 in 651ms (next.js: 591ms, application-code: 60ms)
- GET /admin/dashboard 200 in 946ms (next.js: 558ms, proxy.ts: 30ms, application-code: 357ms)
- GET /admin/dashboard 200 in 63ms (next.js: 5ms, proxy.ts: 15ms, application-code: 43ms)
+ HEAD / 200 in 776ms (next.js: 322ms, application-code: 453ms)
+ GET / 200 in 96ms (next.js: 5ms, application-code: 90ms)
+ GET /topik/carta-pai 200 in 1281ms (next.js: 1115ms, application-code: 166ms)
+ GET /topik/carta-pai/aktiviti 200 in 1017ms (next.js: 898ms, application-code: 119ms)
+ GET /topik/carta-pai/kuiz 200 in 789ms (next.js: 700ms, application-code: 89ms)
+ GET /admin/login 200 in 193ms (next.js: 21ms, proxy.ts: 103ms, application-code: 69ms)
+ GET /api/auth/me 401 in 362ms (next.js: 283ms, application-code: 78ms)
+ GET /api/auth/me 401 in 34ms (next.js: 11ms, application-code: 23ms)
+ GET / 200 in 94ms (next.js: 7ms, application-code: 87ms)
+ GET /topik 200 in 663ms (next.js: 554ms, application-code: 109ms)
+ GET /topik/carta-pai/aktiviti 200 in 166ms (next.js: 27ms, application-code: 138ms)
+ GET /admin/login 200 in 94ms (next.js: 15ms, proxy.ts: 11ms, application-code: 68ms)
+ GET /api/auth/me 401 in 19ms (next.js: 10ms, application-code: 9ms)
+ GET /api/auth/me 401 in 13ms (next.js: 4ms, application-code: 9ms)
+ POST /api/auth/delima 200 in 303ms (next.js: 264ms, application-code: 39ms)
+ GET /admin/login 200 in 228ms (next.js: 19ms, proxy.ts: 10ms, application-code: 199ms)
+ GET /api/auth/me 200 in 21ms (next.js: 10ms, application-code: 11ms)
+ GET /api/auth/me 200 in 8ms (next.js: 2ms, application-code: 6ms)
 [?25h

@@ -3,23 +3,15 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Topic, ContentBlock, LessonSection } from '@/types';
+import { getText } from '@/context/LanguageContext';
 import {
   Save,
   Eye,
   Globe,
   Plus,
   Trash2,
-  MoveUp,
-  MoveDown,
   ArrowLeft,
-  Layers,
-  Type,
-  FileText,
-  Lightbulb,
-  CheckCircle2,
-  Calculator,
-  PieChart,
-  HelpCircle
+  Layers
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -167,7 +159,7 @@ export default function ContentEditorPage({
   return (
     <div className="space-y-8 pb-16 max-w-5xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-6">
         <div>
           <Link
             href="/admin/dashboard"
@@ -175,15 +167,15 @@ export default function ContentEditorPage({
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Kembali ke Papan Pemuka
           </Link>
-          <h1 className="text-2xl font-black text-slate-900">
-            Editor Kandungan: {topic.title} ({topic.code})
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+            Editor Kandungan: {getText(topic.title)} ({topic.code})
           </h1>
         </div>
 
         <div className="flex items-center gap-3">
           <Link
             href={`/admin/preview/${topic.id}`}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition-all"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all"
           >
             <Eye className="w-4 h-4" /> Pratonton
           </Link>
@@ -207,63 +199,63 @@ export default function ContentEditorPage({
       </div>
 
       {message && (
-        <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-sm font-bold">
+        <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-200 text-sm font-bold">
           {message}
         </div>
       )}
 
       {/* Meta Settings */}
-      <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
-        <h2 className="text-lg font-bold text-slate-900">Maklumat Asas Topik DSKP</h2>
+      <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white">Maklumat Asas Topik DSKP</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Tajuk Topik</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Tajuk Topik</label>
             <input
               type="text"
-              value={topic.title}
+              value={getText(topic.title)}
               onChange={(e) => setTopic({ ...topic, title: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-xl text-sm font-semibold"
+              className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm font-semibold dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Kod DSKP (e.g. 8.1)</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Kod DSKP (e.g. 8.1)</label>
             <input
               type="text"
               value={topic.code}
               onChange={(e) => setTopic({ ...topic, code: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-xl text-sm font-semibold"
+              className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm font-semibold dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Standard Kandungan</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Standard Kandungan</label>
             <input
               type="text"
-              value={topic.standardKandungan}
+              value={getText(topic.standardKandungan)}
               onChange={(e) => setTopic({ ...topic, standardKandungan: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-xl text-sm font-semibold"
+              className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm font-semibold dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Standard Pembelajaran</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Standard Pembelajaran</label>
             <input
               type="text"
-              value={topic.standardPembelajaran}
+              value={getText(topic.standardPembelajaran)}
               onChange={(e) => setTopic({ ...topic, standardPembelajaran: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-xl text-sm font-semibold"
+              className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm font-semibold dark:text-white"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1">Penerangan Ringkas Topik</label>
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Penerangan Ringkas Topik</label>
           <textarea
             rows={2}
-            value={topic.description}
+            value={getText(topic.description)}
             onChange={(e) => setTopic({ ...topic, description: e.target.value })}
-            className="w-full p-2.5 border border-slate-200 rounded-xl text-sm font-medium"
+            className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm font-medium dark:text-white"
           />
         </div>
       </div>
@@ -271,30 +263,30 @@ export default function ContentEditorPage({
       {/* Visual Block Sections */}
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
-            <Layers className="w-5 h-5 text-indigo-600" />
+          <h2 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+            <Layers className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
             <span>Bahagian-Bahagian Nota Pembelajaran</span>
           </h2>
           <button
             onClick={handleAddSection}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white font-bold text-xs transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-600 hover:text-white font-bold text-xs transition-colors"
           >
             <Plus className="w-4 h-4" /> Tambah Bahagian
           </button>
         </div>
 
-        {topic.sections?.map((sec, secIdx) => (
-          <div key={sec.id} className="bg-white rounded-3xl p-6 border border-slate-200 shadow-md space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        {topic.sections?.map((sec) => (
+          <div key={sec.id} className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-md space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
               <input
                 type="text"
-                value={sec.title}
+                value={getText(sec.title)}
                 onChange={(e) => handleUpdateSection(sec.id, { title: e.target.value })}
-                className="text-lg font-black text-indigo-900 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-600 focus:outline-none w-full max-w-lg"
+                className="text-lg font-black text-indigo-900 dark:text-indigo-300 bg-transparent border-b border-transparent hover:border-slate-300 focus:border-indigo-600 focus:outline-none w-full max-w-lg"
               />
               <button
                 onClick={() => handleDeleteSection(sec.id)}
-                className="p-2 text-rose-500 hover:bg-rose-50 rounded-xl transition-colors"
+                className="p-2 text-rose-500 hover:bg-rose-50 dark:hover:bg-slate-700 rounded-xl transition-colors"
                 title="Padam Bahagian Ini"
               >
                 <Trash2 className="w-4 h-4" />
@@ -302,11 +294,11 @@ export default function ContentEditorPage({
             </div>
 
             {/* Block Items List */}
-            <div className="space-y-4 pl-2 sm:pl-4 border-l-2 border-indigo-100">
+            <div className="space-y-4 pl-2 sm:pl-4 border-l-2 border-indigo-100 dark:border-indigo-900">
               {sec.blocks?.map((block) => (
-                <div key={block.id} className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-3 relative group">
+                <div key={block.id} className="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700 space-y-3 relative group">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 bg-slate-200 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded">
                       Blok: {block.type}
                     </span>
                     <button
@@ -320,20 +312,20 @@ export default function ContentEditorPage({
                   {block.type === 'heading' && (
                     <input
                       type="text"
-                      value={block.title || ''}
+                      value={getText(block.title)}
                       onChange={(e) => handleUpdateBlock(sec.id, block.id, { title: e.target.value })}
                       placeholder="Masukkan tajuk kecil..."
-                      className="w-full p-2 bg-white border border-slate-200 rounded-xl text-sm font-bold"
+                      className="w-full p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold dark:text-white"
                     />
                   )}
 
                   {block.type === 'paragraph' && (
                     <textarea
                       rows={3}
-                      value={block.body || ''}
+                      value={getText(block.body)}
                       onChange={(e) => handleUpdateBlock(sec.id, block.id, { body: e.target.value })}
                       placeholder="Tuliskan perenggan nota..."
-                      className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-sm"
+                      className="w-full p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm dark:text-white"
                     />
                   )}
 
@@ -341,17 +333,17 @@ export default function ContentEditorPage({
                     <div className="space-y-2">
                       <input
                         type="text"
-                        value={block.title || ''}
+                        value={getText(block.title)}
                         onChange={(e) => handleUpdateBlock(sec.id, block.id, { title: e.target.value })}
                         placeholder="Tajuk Peringatan / Tips..."
-                        className="w-full p-2 bg-white border border-slate-200 rounded-xl text-sm font-bold text-indigo-900"
+                        className="w-full p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-indigo-900 dark:text-indigo-300"
                       />
                       <textarea
                         rows={2}
-                        value={block.body || ''}
+                        value={getText(block.body)}
                         onChange={(e) => handleUpdateBlock(sec.id, block.id, { body: e.target.value })}
                         placeholder="Teks penerangan tips..."
-                        className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-sm"
+                        className="w-full p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm dark:text-white"
                       />
                     </div>
                   )}
@@ -360,17 +352,17 @@ export default function ContentEditorPage({
                     <div className="space-y-2">
                       <input
                         type="text"
-                        value={block.title || ''}
+                        value={getText(block.title)}
                         onChange={(e) => handleUpdateBlock(sec.id, block.id, { title: e.target.value })}
-                        placeholder="Nama Formula (Contoh: Formula Kuantiti Sektor)"
-                        className="w-full p-2 bg-white border border-slate-200 rounded-xl text-sm font-bold text-amber-900"
+                        placeholder="Nama Formula"
+                        className="w-full p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-amber-900 dark:text-amber-300"
                       />
                       <input
                         type="text"
-                        value={block.body || ''}
+                        value={getText(block.body)}
                         onChange={(e) => handleUpdateBlock(sec.id, block.id, { body: e.target.value })}
                         placeholder="Teks Formula Math..."
-                        className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-sm font-mono font-bold"
+                        className="w-full p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-mono font-bold dark:text-white"
                       />
                     </div>
                   )}
@@ -379,17 +371,17 @@ export default function ContentEditorPage({
                     <div className="space-y-2">
                       <input
                         type="text"
-                        value={block.title || ''}
+                        value={getText(block.title)}
                         onChange={(e) => handleUpdateBlock(sec.id, block.id, { title: e.target.value })}
-                        placeholder="Tajuk Contoh Pengiraan..."
-                        className="w-full p-2 bg-white border border-slate-200 rounded-xl text-sm font-bold text-emerald-900"
+                        placeholder="Tajuk Contoh..."
+                        className="w-full p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-emerald-900 dark:text-emerald-300"
                       />
                       <textarea
                         rows={3}
-                        value={block.body || ''}
+                        value={getText(block.body)}
                         onChange={(e) => handleUpdateBlock(sec.id, block.id, { body: e.target.value })}
-                        placeholder="Penerangan langkah demi langkah contoh..."
-                        className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-sm"
+                        placeholder="Penerangan contoh..."
+                        className="w-full p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm dark:text-white"
                       />
                     </div>
                   )}
@@ -399,34 +391,34 @@ export default function ContentEditorPage({
 
             {/* Add Block Toolbar */}
             <div className="pt-2 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold text-slate-500 mr-2">+ Tambah Blok:</span>
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 mr-2">+ Tambah Blok:</span>
               <button
                 onClick={() => handleAddBlock(sec.id, 'heading')}
-                className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"
+                className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold"
               >
                 Tajuk
               </button>
               <button
                 onClick={() => handleAddBlock(sec.id, 'paragraph')}
-                className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"
+                className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold"
               >
                 Perenggan
               </button>
               <button
                 onClick={() => handleAddBlock(sec.id, 'callout')}
-                className="px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold"
+                className="px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold"
               >
                 Tips / Callout
               </button>
               <button
                 onClick={() => handleAddBlock(sec.id, 'formula')}
-                className="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-bold"
+                className="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-xs font-bold"
               >
                 Formula
               </button>
               <button
                 onClick={() => handleAddBlock(sec.id, 'example')}
-                className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold"
+                className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold"
               >
                 Contoh
               </button>

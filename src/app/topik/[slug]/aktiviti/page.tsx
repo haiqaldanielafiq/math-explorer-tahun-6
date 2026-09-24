@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTopicBySlug } from '@/lib/storage';
+import { getLocalizedText } from '@/lib/utils';
 import { InteractivePieChart } from '@/components/InteractivePieChart';
-import { ArrowLeft, BookOpen, ChevronRight, HelpCircle } from 'lucide-react';
+import { BookOpen, ChevronRight, HelpCircle } from 'lucide-react';
 
 export const revalidate = 0;
 
@@ -18,24 +19,26 @@ export default async function ActivityPage({
     notFound();
   }
 
+  const topicTitle = getLocalizedText(topic.title);
+
   return (
     <div className="space-y-8 pb-16">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-        <Link href="/" className="hover:text-indigo-600">Utama</Link>
+      <nav className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+        <Link href="/" className="hover:text-indigo-600 dark:hover:text-indigo-400">Utama</Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/topik" className="hover:text-indigo-600">Topik Matematik</Link>
+        <Link href="/topik" className="hover:text-indigo-600 dark:hover:text-indigo-400">Topik Matematik</Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href={`/topik/${topic.slug}`} className="hover:text-indigo-600">{topic.title}</Link>
+        <Link href={`/topik/${topic.slug}`} className="hover:text-indigo-600 dark:hover:text-indigo-400">{topicTitle}</Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-emerald-600 font-bold">Aktiviti Interaktif</span>
+        <span className="text-emerald-600 dark:text-emerald-400 font-bold">Aktiviti Interaktif</span>
       </nav>
 
       {/* Top Banner Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 text-white rounded-2xl p-6 shadow-md">
         <div>
           <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Aktiviti Pembelajaran</span>
-          <h1 className="text-2xl font-black">{topic.title} - Penerokaan Sudut 45°, 90°, 180°</h1>
+          <h1 className="text-2xl font-black">{topicTitle} - Modul Aktiviti</h1>
         </div>
 
         <div className="flex items-center gap-3 shrink-0">

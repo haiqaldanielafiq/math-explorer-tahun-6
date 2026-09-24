@@ -2,15 +2,13 @@
 
 import { useState } from 'react';
 import { QuizData, Question } from '@/types';
+import { useLanguage } from '@/context/LanguageContext';
 import {
   CheckCircle2,
   XCircle,
   Award,
   RotateCw,
   HelpCircle,
-  Sparkles,
-  ArrowRight,
-  BarChart3,
   Check,
   ChevronRight
 } from 'lucide-react';
@@ -23,21 +21,23 @@ interface QuizRunnerProps {
 }
 
 export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps) {
+  const { tText } = useLanguage();
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [showExplanation, setShowExplanation] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const currentQ: Question = quizData.questions[currentIdx];
-  const totalQuestions = quizData.questions.length;
+  const questions = quizData.questions || [];
+  const currentQ: Question | undefined = questions[currentIdx];
+  const totalQuestions = questions.length;
 
-  const handleSelectOption = (opt: string) => {
-    if (showExplanation || isSubmitted) return;
-    setUserAnswers((prev) => ({ ...prev, [currentQ.id]: opt }));
+  const handleSelectOption = (optText: string) => {
+    if (showExplanation || isSubmitted || !currentQ) return;
+    setUserAnswers((prev) => ({ ...prev, [currentQ.id]: optText }));
   };
 
   const handleCheckAnswer = () => {
-    if (!userAnswers[currentQ.id]) return;
+    if (!currentQ || !userAnswers[currentQ.id]) return;
     setShowExplanation(true);
   };
 
@@ -46,7 +46,6 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
       setCurrentIdx((prev) => prev + 1);
       setShowExplanation(false);
     } else {
-      // Finish quiz
       setIsSubmitted(true);
       const score = calculateScore();
       const pct = Math.round((score / totalQuestions) * 100);
@@ -55,7 +54,6 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
         confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
       }
 
-      // Save progress to local storage
       try {
         const stored = localStorage.getItem('math_explorer_progress');
         const list = stored ? JSON.parse(stored) : [];
@@ -83,7 +81,7 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
 
   const calculateScore = () => {
     let score = 0;
-    quizData.questions.forEach((q) => {
+    questions.forEach((q) => {
       if (userAnswers[q.id] === q.correctAnswer) {
         score += 1;
       }
@@ -91,8 +89,17 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
     return score;
   };
 
+  if (!currentQ && !isSubmitted) {
+    return (
+      <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 text-center space-y-2">
+        <h3 className="text-lg font-bold text-slate-700 dark:text-slate-200">Tiada Soalan Kuiz</h3>
+        <p className="text-xs text-slate-500 dark:text-slate-400">Modul kuiz sedang disediakan oleh guru.</p>
+      </div>
+    );
+  }
+
   const totalScore = calculateScore();
-  const percentage = Math.round((totalScore / totalQuestions) * 100);
+  const percentage = totalQuestions > 0 ? Math.round((totalScore / totalQuestions) * 100) : 0;
 
   let feedbackMessage = '';
   let feedbackBadgeColor = '';
@@ -109,18 +116,18 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
   }
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-xl space-y-8">
-      {!isSubmitted ? (
+    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8">
+      {!isSubmitted && currentQ ? (
         <div className="space-y-8 max-w-3xl mx-auto">
           {/* Header Progress Bar */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-500">
-              <span className="flex items-center gap-1.5 text-indigo-700 bg-indigo-50 px-3 py-1 rounded-lg border border-indigo-100">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+              <span className="flex items-center gap-1.5 text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1 rounded-lg border border-indigo-100 dark:border-indigo-800">
                 <HelpCircle className="w-4 h-4" /> Soalan {currentIdx + 1} daripada {totalQuestions}
               </span>
               <span>Kemajuan: {Math.round(((currentIdx + 1) / totalQuestions) * 100)}%</span>
             </div>
-            <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+            <div className="w-full bg-slate-100 dark:bg-slate-700 h-3 rounded-full overflow-hidden border border-slate-200 dark:border-slate-600">
               <div
                 className="bg-indigo-600 h-full transition-all duration-300 rounded-full"
                 style={{ width: `${((currentIdx + 1) / totalQuestions) * 100}%` }}
@@ -140,16 +147,17 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
                 </span>
               )}
             </div>
-            <h2 className="text-lg sm:text-xl font-bold leading-snug">{currentQ.question}</h2>
+            <h2 className="text-lg sm:text-xl font-bold leading-snug">{tText(currentQ.question)}</h2>
           </div>
 
           {/* Options Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {currentQ.options?.map((opt) => {
-              const isSelected = userAnswers[currentQ.id] === opt;
-              const isCorrect = opt === currentQ.correctAnswer;
+              const optText = tText(opt);
+              const isSelected = userAnswers[currentQ.id] === optText;
+              const isCorrect = optText === currentQ.correctAnswer;
 
-              let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100 hover:border-slate-300';
+              let style = 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-100';
 
               if (showExplanation) {
                 if (isCorrect) {
@@ -157,7 +165,7 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
                 } else if (isSelected && !isCorrect) {
                   style = 'bg-rose-500 text-white border-rose-600';
                 } else {
-                  style = 'bg-slate-100 border-slate-200 text-slate-400 opacity-60';
+                  style = 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 opacity-60';
                 }
               } else if (isSelected) {
                 style = 'bg-indigo-600 text-white border-indigo-700 shadow-lg shadow-indigo-200';
@@ -165,12 +173,12 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
 
               return (
                 <button
-                  key={opt}
-                  onClick={() => handleSelectOption(opt)}
+                  key={optText}
+                  onClick={() => handleSelectOption(optText)}
                   disabled={showExplanation}
                   className={`p-5 rounded-2xl border font-bold text-sm sm:text-base text-left transition-all flex items-center justify-between ${style}`}
                 >
-                  <span>{opt}</span>
+                  <span>{optText}</span>
                   {showExplanation && isCorrect && <CheckCircle2 className="w-5 h-5 text-white" />}
                   {showExplanation && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-white" />}
                   {!showExplanation && isSelected && <Check className="w-5 h-5 text-white" />}
@@ -183,28 +191,28 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
           {showExplanation && (
             <div className={`p-5 rounded-2xl border text-sm space-y-2 ${
               userAnswers[currentQ.id] === currentQ.correctAnswer
-                ? 'bg-emerald-50 border-emerald-200 text-emerald-950'
-                : 'bg-rose-50 border-rose-200 text-rose-950'
+                ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200'
+                : 'bg-rose-50 dark:bg-rose-950/60 border-rose-200 dark:border-rose-800 text-rose-950 dark:text-rose-200'
             }`}>
               <div className="font-extrabold flex items-center gap-2">
                 {userAnswers[currentQ.id] === currentQ.correctAnswer ? (
                   <>
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                     <span>Jawapan Betul!</span>
                   </>
                 ) : (
                   <>
-                    <XCircle className="w-5 h-5 text-rose-600" />
+                    <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
                     <span>Jawapan Kurang Tepat. Jawapan betul ialah: {currentQ.correctAnswer}</span>
                   </>
                 )}
               </div>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{currentQ.explanation}</p>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{tText(currentQ.explanation)}</p>
             </div>
           )}
 
           {/* Bottom Action Controls */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-700">
             {!showExplanation ? (
               <button
                 onClick={handleCheckAnswer}
@@ -235,26 +243,26 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
             <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider ${feedbackBadgeColor}`}>
               Pencapaian: {percentage}% Markah
             </span>
-            <h2 className="text-3xl font-black text-slate-900">Keputusan Kuiz: {topicTitle}</h2>
-            <p className="text-slate-600 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white">Keputusan Kuiz: {topicTitle}</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
               {feedbackMessage}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
             <div>
-              <div className="text-2xl font-black text-indigo-900">{totalScore} / {totalQuestions}</div>
-              <div className="text-xs font-bold text-slate-500">Soalan Betul</div>
+              <div className="text-2xl font-black text-indigo-900 dark:text-indigo-300">{totalScore} / {totalQuestions}</div>
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Soalan Betul</div>
             </div>
             <div>
-              <div className="text-2xl font-black text-emerald-600">{percentage}%</div>
-              <div className="text-xs font-bold text-slate-500">Markah Peratusan</div>
+              <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{percentage}%</div>
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Markah Peratusan</div>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <div className="text-2xl font-black text-amber-600">
+              <div className="text-2xl font-black text-amber-600 dark:text-amber-400">
                 {percentage >= 70 ? 'LULUS' : 'MULA'}
               </div>
-              <div className="text-xs font-bold text-slate-500">Status Modul</div>
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Status Modul</div>
             </div>
           </div>
 

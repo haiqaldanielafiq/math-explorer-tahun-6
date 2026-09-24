@@ -1,20 +1,38 @@
 import fs from 'fs';
 import path from 'path';
-import { Topic } from '@/types';
+import { Topic, LocalizedString } from '@/types';
 import { INITIAL_TOPICS } from './seedData';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const FILE_PATH = path.join(DATA_DIR, 'topics.json');
 
-// Memory cache fallback for environment where disk writing is read-only
+// Memory cache fallback
 let memoryTopicsStore: Topic[] | null = null;
+
+export function getLocalizedText(field?: string | LocalizedString, lang: 'ms' | 'en' = 'ms'): string {
+  if (!field) return '';
+  if (typeof field === 'string') return field;
+  return field[lang] || field.ms || '';
+}
 
 function ensureDataFile() {
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
+    // Always overwrite with seed data if file doesn't exist or if it has fewer than 4 topics
+    let shouldSeed = false;
     if (!fs.existsSync(FILE_PATH)) {
+      shouldSeed = true;
+    } else {
+      const existing = fs.readFileSync(FILE_PATH, 'utf-8');
+      const parsed = JSON.parse(existing) as Topic[];
+      if (!Array.isArray(parsed) || parsed.length < 4) {
+        shouldSeed = true;
+      }
+    }
+
+    if (shouldSeed) {
       fs.writeFileSync(FILE_PATH, JSON.stringify(INITIAL_TOPICS, null, 2), 'utf-8');
     }
   } catch (error) {
@@ -28,14 +46,16 @@ export async function getTopics(): Promise<Topic[]> {
     if (fs.existsSync(FILE_PATH)) {
       const data = fs.readFileSync(FILE_PATH, 'utf-8');
       const parsed = JSON.parse(data) as Topic[];
-      memoryTopicsStore = parsed;
-      return parsed;
+      if (Array.isArray(parsed) && parsed.length >= 4) {
+        memoryTopicsStore = parsed;
+        return parsed;
+      }
     }
   } catch (error) {
     console.warn('Failed to read topics from file system:', error);
   }
 
-  if (!memoryTopicsStore) {
+  if (!memoryTopicsStore || memoryTopicsStore.length < 4) {
     memoryTopicsStore = [...INITIAL_TOPICS];
   }
   return memoryTopicsStore;
@@ -54,7 +74,7 @@ export async function saveTopics(topics: Topic[]): Promise<boolean> {
     return true;
   } catch (error) {
     console.error('Failed to write topics to file system, stored in memory:', error);
-    return true; // memory store holds it
+    return true;
   }
 }
 

@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTopicBySlug } from '@/lib/storage';
-import { ArrowLeft, BookOpen, Eye, Globe, Sparkles, Lightbulb, CheckCircle2 } from 'lucide-react';
+import { getLocalizedText } from '@/lib/utils';
+import { Eye } from 'lucide-react';
 
 export const revalidate = 0;
 
@@ -16,6 +17,10 @@ export default async function AdminPreviewPage({
   if (!topic) {
     notFound();
   }
+
+  const topicTitle = getLocalizedText(topic.title);
+  const topicDesc = getLocalizedText(topic.description);
+  const stdPembelajaran = getLocalizedText(topic.standardPembelajaran);
 
   return (
     <div className="space-y-8 pb-16 max-w-4xl mx-auto">
@@ -43,56 +48,56 @@ export default async function AdminPreviewPage({
       </div>
 
       {/* Render Student View Preview */}
-      <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-xl space-y-8">
+      <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8">
         <div className="space-y-3">
           <span className="bg-indigo-600 text-white font-extrabold text-xs px-3 py-1 rounded-lg">
             Topik {topic.code}
           </span>
-          <h1 className="text-3xl font-black text-slate-900">{topic.title}</h1>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            {topic.description}
+          <h1 className="text-3xl font-black text-slate-900 dark:text-white">{topicTitle}</h1>
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            {topicDesc}
           </p>
 
-          <div className="bg-indigo-50 rounded-2xl p-4 border border-indigo-100 text-xs text-indigo-950 space-y-1">
+          <div className="bg-indigo-50 dark:bg-indigo-950/60 rounded-2xl p-4 border border-indigo-100 dark:border-indigo-900 text-xs text-indigo-950 dark:text-indigo-200 space-y-1">
             <span className="font-bold">Standard Pembelajaran:</span>
-            <p>{topic.standardPembelajaran}</p>
+            <p>{stdPembelajaran}</p>
           </div>
         </div>
 
-        <div className="border-t border-slate-100 pt-6 space-y-8">
+        <div className="border-t border-slate-100 dark:border-slate-700 pt-6 space-y-8">
           {topic.sections?.map((section) => (
-            <div key={section.id} className="space-y-4 bg-slate-50/60 p-6 rounded-2xl border border-slate-200/60">
-              <h2 className="text-xl font-extrabold text-indigo-900">{section.title}</h2>
-              {section.content && <p className="text-slate-700 text-sm leading-relaxed">{section.content}</p>}
+            <div key={section.id} className="space-y-4 bg-slate-50/60 dark:bg-slate-900/60 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700">
+              <h2 className="text-xl font-extrabold text-indigo-900 dark:text-indigo-300">{getLocalizedText(section.title)}</h2>
+              {section.content && <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{getLocalizedText(section.content)}</p>}
 
               <div className="space-y-3">
                 {section.blocks?.map((block) => {
                   if (block.type === 'heading') {
-                    return <h3 key={block.id} className="text-base font-bold text-slate-900">{block.title}</h3>;
+                    return <h3 key={block.id} className="text-base font-bold text-slate-900 dark:text-white">{getLocalizedText(block.title)}</h3>;
                   }
                   if (block.type === 'paragraph') {
-                    return <p key={block.id} className="text-slate-700 text-sm whitespace-pre-line">{block.body}</p>;
+                    return <p key={block.id} className="text-slate-700 dark:text-slate-300 text-sm whitespace-pre-line">{getLocalizedText(block.body)}</p>;
                   }
                   if (block.type === 'callout') {
                     return (
-                      <div key={block.id} className="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-xl p-4 text-xs text-indigo-950 space-y-1">
-                        {block.title && <div className="font-bold">{block.title}</div>}
-                        <p>{block.body}</p>
+                      <div key={block.id} className="bg-indigo-50 dark:bg-indigo-950/60 border-l-4 border-indigo-500 rounded-r-xl p-4 text-xs text-indigo-950 dark:text-indigo-200 space-y-1">
+                        {block.title && <div className="font-bold">{getLocalizedText(block.title)}</div>}
+                        <p>{getLocalizedText(block.body)}</p>
                       </div>
                     );
                   }
                   if (block.type === 'formula') {
                     return (
-                      <div key={block.id} className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-center font-mono font-bold text-amber-950 text-sm">
-                        {block.body}
+                      <div key={block.id} className="bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 rounded-xl p-4 text-center font-mono font-bold text-amber-950 dark:text-amber-200 text-sm">
+                        {getLocalizedText(block.body)}
                       </div>
                     );
                   }
                   if (block.type === 'example') {
                     return (
-                      <div key={block.id} className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-xs text-emerald-950 space-y-1">
-                        {block.title && <div className="font-bold">{block.title}</div>}
-                        <p>{block.body}</p>
+                      <div key={block.id} className="bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 rounded-xl p-4 text-xs text-emerald-950 dark:text-emerald-200 space-y-1">
+                        {block.title && <div className="font-bold">{getLocalizedText(block.title)}</div>}
+                        <p>{getLocalizedText(block.body)}</p>
                       </div>
                     );
                   }

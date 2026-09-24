@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Topic } from '@/types';
-import { PieChart, Save, RefreshCw, Layers } from 'lucide-react';
+import { getText } from '@/context/LanguageContext';
+import { Save } from 'lucide-react';
 
 export default function ActivityManagerPage() {
   const [topics, setTopics] = useState<Topic[]>([]);
@@ -59,10 +60,10 @@ export default function ActivityManagerPage() {
 
   return (
     <div className="space-y-8 pb-12 max-w-4xl mx-auto">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-6">
         <div>
-          <h1 className="text-2xl font-black text-slate-900">Pengurus Aktiviti Interaktif</h1>
-          <p className="text-slate-600 text-sm">Kemaskini data aktiviti simulasi carta pai DSKP.</p>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white">Pengurus Aktiviti Interaktif</h1>
+          <p className="text-slate-600 dark:text-slate-300 text-sm">Kemaskini data aktiviti simulasi DSKP.</p>
         </div>
 
         <button
@@ -75,70 +76,70 @@ export default function ActivityManagerPage() {
       </div>
 
       {msg && (
-        <div className="p-4 rounded-xl bg-indigo-50 text-indigo-900 text-sm font-bold border border-indigo-200">
+        <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-200 text-sm font-bold border border-indigo-200 dark:border-indigo-800">
           {msg}
         </div>
       )}
 
       {/* Select Topic */}
-      <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-        <label className="block text-xs font-bold text-slate-700">Pilih Topik Untuk Ditingkatkan:</label>
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">Pilih Topik Untuk Ditingkatkan:</label>
         <select
           value={selectedTopicId}
           onChange={(e) => setSelectedTopicId(e.target.value)}
-          className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900"
+          className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-900 dark:text-white"
         >
           {topics.map((t) => (
             <option key={t.id} value={t.id}>
-              Topik {t.code}: {t.title}
+              Topik {t.code}: {getText(t.title)}
             </option>
           ))}
         </select>
       </div>
 
       {currentTopic && currentTopic.activity && (
-        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-md space-y-6">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-md space-y-6">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Tajuk Aktiviti</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Tajuk Aktiviti</label>
             <input
               type="text"
-              value={currentTopic.activity.title}
+              value={getText(currentTopic.activity.title)}
               onChange={(e) => {
                 const updated = { ...currentTopic.activity, title: e.target.value };
                 setTopics(topics.map((t) => (t.id === currentTopic.id ? { ...t, activity: updated } : t)));
               }}
-              className="w-full p-2.5 border border-slate-200 rounded-xl text-sm font-bold"
+              className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm font-bold dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Penerangan Aktiviti</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Penerangan Aktiviti</label>
             <textarea
               rows={3}
-              value={currentTopic.activity.description}
+              value={getText(currentTopic.activity.description)}
               onChange={(e) => {
                 const updated = { ...currentTopic.activity, description: e.target.value };
                 setTopics(topics.map((t) => (t.id === currentTopic.id ? { ...t, activity: updated } : t)));
               }}
-              className="w-full p-2.5 border border-slate-200 rounded-xl text-sm"
+              className="w-full p-2.5 border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded-xl text-sm dark:text-white"
             />
           </div>
 
-          <div className="space-y-4 pt-4 border-t border-slate-100">
-            <h3 className="text-base font-bold text-slate-900">Soalan Latihan Aktiviti ({currentTopic.activity.questions?.length || 0})</h3>
+          <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Soalan Latihan Aktiviti ({currentTopic.activity.questions?.length || 0})</h3>
             {currentTopic.activity.questions?.map((q, qIdx) => (
-              <div key={q.id} className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-                <div className="text-xs font-bold text-slate-500">Soalan Latihan #{qIdx + 1}</div>
+              <div key={q.id} className="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Soalan Latihan #{qIdx + 1}</div>
                 <input
                   type="text"
-                  value={q.prompt}
+                  value={getText(q.prompt)}
                   onChange={(e) => {
                     const questions = [...currentTopic.activity.questions];
                     questions[qIdx].prompt = e.target.value;
                     const updated = { ...currentTopic.activity, questions };
                     setTopics(topics.map((t) => (t.id === currentTopic.id ? { ...t, activity: updated } : t)));
                   }}
-                  className="w-full p-2 bg-white border border-slate-200 rounded-xl text-sm font-bold"
+                  className="w-full p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold dark:text-white"
                 />
               </div>
             ))}
