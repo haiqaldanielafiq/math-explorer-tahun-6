@@ -12,7 +12,7 @@ import {
   Check,
   ChevronRight
 } from 'lucide-react';
-import { StarField, AstronautBadge, RocketIcon } from '@/components/SpaceDecorations';
+import { StarField } from '@/components/SpaceDecorations';
 import confetti from 'canvas-confetti';
 
 interface QuizRunnerProps {
@@ -128,8 +128,10 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8 relative overflow-hidden">
+      <StarField />
+
       {!isSubmitted && currentQ ? (
-        <div className="space-y-8 max-w-3xl mx-auto">
+        <div className="space-y-8 max-w-3xl mx-auto relative z-10">
           {/* Header Progress Bar */}
           <div className="space-y-3">
             <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
@@ -155,7 +157,7 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
               </span>
               {currentQ.difficulty && (
                 <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
-                  {language === 'en' ? 'Level' : 'Tahap'}: {currentQ.difficulty}
+                  {language === 'en' ? 'Level' : 'Tahap'}: {currentQ.difficulty === 'mudah' ? (language === 'en' ? 'Easy' : 'Mudah') : currentQ.difficulty}
                 </span>
               )}
             </div>
@@ -246,7 +248,7 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
         </div>
       ) : (
         /* QUIZ SUMMARY CARD */
-        <div className="max-w-2xl mx-auto text-center space-y-8 py-6">
+        <div className="max-w-2xl mx-auto text-center space-y-8 py-6 relative z-10">
           <div className="w-20 h-20 bg-amber-400 text-slate-950 rounded-3xl flex items-center justify-center mx-auto shadow-xl">
             <Award className="w-10 h-10" />
           </div>

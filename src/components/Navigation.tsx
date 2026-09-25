@@ -251,7 +251,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/topik" className="hover:text-amber-400 transition-colors">
-                  {language === 'en' ? 'All 4 Mathematics Topics' : '4 Topik Utama Matematik'}
+                  {language === 'en' ? 'Pie Chart Topic' : 'Topik Utama Carta Pai'}
                 </Link>
               </li>
               <li>

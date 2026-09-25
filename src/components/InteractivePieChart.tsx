@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { PieChartActivityData } from '@/types';
 import { useLanguage } from '@/context/LanguageContext';
 import {
-  Sparkles,
   CheckCircle2,
   XCircle,
   Award,
@@ -13,7 +12,7 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
-import { StarField, SaturnPlanet, CutePlanet } from '@/components/SpaceDecorations';
+import { StarField } from '@/components/SpaceDecorations';
 import confetti from 'canvas-confetti';
 
 interface InteractivePieChartProps {
@@ -87,8 +86,10 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8 relative overflow-hidden">
+      <StarField />
+
       {/* Header Tabs */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-6">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-6 relative z-10">
         <div>
           <span className="bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
             {language === 'en' ? 'DSKP Activity' : 'Aktiviti DSKP'}
@@ -123,7 +124,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
 
       {/* TAB 1: PENEROKAAN SUDUT INTERAKTIF */}
       {activeTab === 'explorer' && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
           <div className="lg:col-span-6 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900/50 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 space-y-4">
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center">
               <svg viewBox="0 0 200 200" className="w-full h-full shadow-inner rounded-full bg-white dark:bg-slate-800">
@@ -221,9 +222,8 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
             </div>
 
             <div className="bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 rounded-2xl p-5 space-y-3">
-              <div className="text-xs font-bold uppercase tracking-wider text-indigo-900 dark:text-indigo-300 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                <span>{language === 'en' ? `Sector Quantity Calculation (${selectedAngle}°):` : `Pengiraan Kuantiti Sektor (${selectedAngle}°):`}</span>
+              <div className="text-xs font-bold uppercase tracking-wider text-indigo-900 dark:text-indigo-300">
+                {language === 'en' ? `Sector Quantity Calculation (${selectedAngle}°):` : `Pengiraan Kuantiti Sektor (${selectedAngle}°):`}
               </div>
 
               <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900 space-y-2 text-xs sm:text-sm">
@@ -245,7 +245,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
 
       {/* TAB 2: LATIHAN MENTAFSIR */}
       {activeTab === 'exercise' && currentQ && (
-        <div className="max-w-2xl mx-auto space-y-6">
+        <div className="max-w-2xl mx-auto space-y-6 relative z-10">
           {!completed ? (
             <div className="space-y-6">
               <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">

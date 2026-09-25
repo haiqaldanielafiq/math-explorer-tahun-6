@@ -1,7 +1,10 @@
+'use client';
+
+import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getTopicBySlug } from '@/lib/storage';
-import { getLocalizedText } from '@/lib/utils';
+import { Topic } from '@/types';
+import { useLanguage } from '@/context/LanguageContext';
 import {
   BookOpen,
   PieChart,
@@ -10,36 +13,64 @@ import {
   CheckCircle2,
   Sparkles,
   Lightbulb,
-  ChevronRight
+  ChevronRight,
+  Loader2
 } from 'lucide-react';
 import { StarField } from '@/components/SpaceDecorations';
 
-export const revalidate = 0;
-
-export default async function LessonPage({
+export default function LessonPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const topic = await getTopicBySlug(slug);
+  const { slug } = use(params);
+  const { language, tText } = useLanguage();
+  const [topic, setTopic] = useState<Topic | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`/api/topics/${slug}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.data) {
+          setTopic(data.data);
+        } else {
+          setTopic(null);
+        }
+      })
+      .catch(() => setTopic(null))
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[300px] text-slate-500 gap-2">
+        <Loader2 className="w-6 h-6 animate-spin text-indigo-600" />
+        <span>{language === 'en' ? 'Loading lesson content...' : 'Memuatkan kandungan nota...'}</span>
+      </div>
+    );
+  }
 
   if (!topic || !topic.published) {
     notFound();
   }
 
-  const titleText = getLocalizedText(topic.title);
-  const descText = getLocalizedText(topic.description);
-  const stdKandunganText = getLocalizedText(topic.standardKandungan);
-  const stdPembelajaranText = getLocalizedText(topic.standardPembelajaran);
+  const titleText = tText(topic.title);
+  const descText = tText(topic.description);
+  const stdKandunganText = tText(topic.standardKandungan);
+  const stdPembelajaranText = tText(topic.standardPembelajaran);
 
   return (
     <div className="space-y-10 pb-16">
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
-        <Link href="/" className="hover:text-indigo-600 dark:hover:text-indigo-400">Utama</Link>
+        <Link href="/" className="hover:text-indigo-600 dark:hover:text-indigo-400">
+          {language === 'en' ? 'Home' : 'Utama'}
+        </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/topik" className="hover:text-indigo-600 dark:hover:text-indigo-400">Topik Matematik</Link>
+        <Link href="/topik" className="hover:text-indigo-600 dark:hover:text-indigo-400">
+          {language === 'en' ? 'Math Topics' : 'Topik Matematik'}
+        </Link>
         <ChevronRight className="w-3.5 h-3.5" />
         <span className="text-indigo-600 dark:text-indigo-400 font-bold">{titleText}</span>
       </nav>
@@ -50,10 +81,10 @@ export default async function LessonPage({
         <div className="max-w-3xl space-y-4 relative z-10">
           <div className="flex flex-wrap items-center gap-2">
             <span className="bg-amber-400 text-slate-950 font-extrabold text-xs px-3 py-1 rounded-lg">
-              Topik {topic.code}
+              {language === 'en' ? 'Topic' : 'Topik'} {topic.code}
             </span>
             <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-lg backdrop-blur-sm">
-              Standard Kandungan {stdKandunganText}
+              {language === 'en' ? 'Content Standard' : 'Standard Kandungan'} {stdKandunganText}
             </span>
           </div>
 
@@ -64,7 +95,8 @@ export default async function LessonPage({
 
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 space-y-2 text-xs sm:text-sm">
             <div className="font-bold text-amber-300 flex items-center gap-2">
-              <Sparkles className="w-4 h-4" /> Standard Pembelajaran {topic.code}.1:
+              <Sparkles className="w-4 h-4" />
+              {language === 'en' ? `Learning Standard ${topic.code}.1:` : `Standard Pembelajaran ${topic.code}.1:`}
             </div>
             <p className="text-slate-100">{stdPembelajaranText}</p>
           </div>
@@ -82,8 +114,12 @@ export default async function LessonPage({
               <PieChart className="w-6 h-6" />
             </div>
             <div>
-              <div className="font-extrabold text-base">Aktiviti Visual Interaktif</div>
-              <div className="text-xs text-emerald-100">Bina & teroka konsep modul ini</div>
+              <div className="font-extrabold text-base">
+                {language === 'en' ? 'Interactive Visual Activity' : 'Aktiviti Visual Interaktif'}
+              </div>
+              <div className="text-xs text-emerald-100">
+                {language === 'en' ? 'Build & explore module concepts' : 'Bina & teroka konsep modul ini'}
+              </div>
             </div>
           </div>
           <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -98,8 +134,12 @@ export default async function LessonPage({
               <HelpCircle className="w-6 h-6" />
             </div>
             <div>
-              <div className="font-extrabold text-base">Kuiz Uji Kefahaman</div>
-              <div className="text-xs text-amber-100">Jawab soalan & terima skor peratusan</div>
+              <div className="font-extrabold text-base">
+                {language === 'en' ? 'Understanding Quiz' : 'Kuiz Uji Kefahaman'}
+              </div>
+              <div className="text-xs text-amber-100">
+                {language === 'en' ? 'Answer questions & receive percentage score' : 'Jawab soalan & terima skor peratusan'}
+              </div>
             </div>
           </div>
           <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -110,19 +150,21 @@ export default async function LessonPage({
       <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-700 shadow-lg space-y-10">
         <div className="border-b border-slate-100 dark:border-slate-700 pb-4 flex items-center gap-3">
           <BookOpen className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
-          <h2 className="text-2xl font-black text-slate-900 dark:text-white">Modul Nota Pembelajaran</h2>
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white">
+            {language === 'en' ? 'Learning Notes Module' : 'Modul Nota Pembelajaran'}
+          </h2>
         </div>
 
         {topic.sections?.map((section) => (
           <div key={section.id} className="space-y-6 bg-slate-50/50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700">
             <h3 className="text-xl font-extrabold text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-indigo-600 dark:bg-indigo-400 inline-block" />
-              {getLocalizedText(section.title)}
+              {tText(section.title)}
             </h3>
 
             {section.content && (
               <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
-                {getLocalizedText(section.content)}
+                {tText(section.content)}
               </p>
             )}
 
@@ -132,7 +174,7 @@ export default async function LessonPage({
                 if (block.type === 'heading') {
                   return (
                     <h4 key={block.id} className="text-lg font-bold text-slate-900 dark:text-white pt-2">
-                      {getLocalizedText(block.title)}
+                      {tText(block.title)}
                     </h4>
                   );
                 }
@@ -140,7 +182,7 @@ export default async function LessonPage({
                 if (block.type === 'paragraph') {
                   return (
                     <div key={block.id} className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
-                      {getLocalizedText(block.body)}
+                      {tText(block.body)}
                     </div>
                   );
                 }
@@ -151,11 +193,13 @@ export default async function LessonPage({
                       key={block.id}
                       className="bg-indigo-50 dark:bg-indigo-950/60 border-l-4 border-indigo-500 rounded-r-xl p-4 text-sm text-indigo-950 dark:text-indigo-200 space-y-1"
                     >
-                      {block.title && <div className="font-bold text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
-                        <Lightbulb className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                        {getLocalizedText(block.title)}
-                      </div>}
-                      <p className="whitespace-pre-line">{getLocalizedText(block.body)}</p>
+                      {block.title && (
+                        <div className="font-bold text-indigo-900 dark:text-indigo-300 flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                          {tText(block.title)}
+                        </div>
+                      )}
+                      <p className="whitespace-pre-line">{tText(block.body)}</p>
                     </div>
                   );
                 }
@@ -166,9 +210,9 @@ export default async function LessonPage({
                       key={block.id}
                       className="bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 rounded-2xl p-5 text-center space-y-2"
                     >
-                      {block.title && <div className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">{getLocalizedText(block.title)}</div>}
+                      {block.title && <div className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">{tText(block.title)}</div>}
                       <div className="text-base sm:text-xl font-black text-amber-950 dark:text-amber-200 font-mono">
-                        {getLocalizedText(block.body)}
+                        {tText(block.body)}
                       </div>
                     </div>
                   );
@@ -182,10 +226,10 @@ export default async function LessonPage({
                     >
                       {block.title && (
                         <div className="font-extrabold text-emerald-900 dark:text-emerald-300 flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> {getLocalizedText(block.title)}
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> {tText(block.title)}
                         </div>
                       )}
-                      <p className="text-emerald-950 dark:text-emerald-200 whitespace-pre-line">{getLocalizedText(block.body)}</p>
+                      <p className="text-emerald-950 dark:text-emerald-200 whitespace-pre-line">{tText(block.body)}</p>
                     </div>
                   );
                 }
@@ -200,9 +244,13 @@ export default async function LessonPage({
       {/* Bottom CTA Card */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-3xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div className="space-y-2 text-center sm:text-left">
-          <h3 className="text-2xl font-extrabold">Bersedia Uji Minda?</h3>
+          <h3 className="text-2xl font-extrabold">
+            {language === 'en' ? 'Ready to Test Your Mind?' : 'Bersedia Uji Minda?'}
+          </h3>
           <p className="text-slate-100 text-sm">
-            Ayo teruskan ke aktiviti interaktif dan kuiz kefahaman modul ini!
+            {language === 'en'
+              ? 'Proceed to interactive activity and test your understanding quiz!'
+              : 'Ayo teruskan ke aktiviti interaktif dan kuiz kefahaman modul ini!'}
           </p>
         </div>
         <div className="flex gap-3">
@@ -210,7 +258,7 @@ export default async function LessonPage({
             href={`/topik/${topic.slug}/aktiviti`}
             className="px-6 py-3 rounded-xl bg-white text-indigo-700 font-extrabold text-sm shadow hover:bg-slate-100 transition-colors"
           >
-            Mula Aktiviti
+            {language === 'en' ? 'Start Activity' : 'Mula Aktiviti'}
           </Link>
         </div>
       </div>
