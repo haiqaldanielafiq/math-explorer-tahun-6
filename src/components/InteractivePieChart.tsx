@@ -13,6 +13,7 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
+import { StarField, SaturnPlanet, CutePlanet } from '@/components/SpaceDecorations';
 import confetti from 'canvas-confetti';
 
 interface InteractivePieChartProps {
@@ -85,7 +86,7 @@ export function InteractivePieChart({ activityData }: InteractivePieChartProps) 
   const fractionText = selectedAngle === 180 ? '1/2' : selectedAngle === 90 ? '1/4' : selectedAngle === 45 ? '1/8' : `${selectedAngle}°/360°`;
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8">
+    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8 relative overflow-hidden">
       {/* Header Tabs */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-6">
         <div>

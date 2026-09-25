@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getTopics } from '@/lib/storage';
 import { getLocalizedText } from '@/lib/utils';
 import { BookOpen, Layers, ArrowRight, CheckCircle } from 'lucide-react';
+import { StarField, SaturnPlanet, CutePlanet } from '@/components/SpaceDecorations';
 
 export const revalidate = 0;
 
@@ -12,7 +13,11 @@ export default async function TopicsPage() {
   return (
     <div className="space-y-10 pb-12">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-indigo-800 via-indigo-700 to-blue-800 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden border border-indigo-500/30">
+        <StarField />
+        <div className="absolute right-6 top-6 hidden sm:block opacity-80">
+          <SaturnPlanet className="w-16 h-16" />
+        </div>
         <div className="max-w-2xl space-y-3 relative z-10">
           <span className="bg-white/20 text-white font-bold text-xs px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm">
             Kurikulum DSKP Tahun 6 (4 Topik Utama / 4 Main Topics)
@@ -41,11 +46,14 @@ export default async function TopicsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {publishedTopics.map((topic) => (
+            {publishedTopics.map((topic, idx) => (
               <div
                 key={topic.id}
-                className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-200 p-6 flex flex-col justify-between group hover:border-indigo-300 dark:hover:border-indigo-500"
+                className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-200 p-6 flex flex-col justify-between group hover:border-indigo-300 dark:hover:border-indigo-500 hover:-translate-y-1 relative overflow-hidden"
               >
+                <div className="absolute -right-4 -bottom-4 opacity-15 pointer-events-none group-hover:opacity-30 transition-opacity">
+                  <CutePlanet className="w-24 h-24" color={idx % 3 === 0 ? 'cyan' : idx % 3 === 1 ? 'purple' : 'amber'} />
+                </div>
                 <div className="space-y-4">
                   <div className="flex items-start justify-between gap-3">
                     <span className="bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-lg">

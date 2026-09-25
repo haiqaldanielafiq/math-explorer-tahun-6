@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { getAdminSession } from '@/lib/auth';
 import { getTopics } from '@/lib/storage';
 import { getLocalizedText } from '@/lib/utils';
 import {
@@ -15,6 +17,11 @@ import { TopicActionButtons } from '@/components/TopicActionButtons';
 export const revalidate = 0;
 
 export default async function AdminDashboardPage() {
+  const session = await getAdminSession();
+  if (!session) {
+    redirect('/admin/login');
+  }
+
   const topics = await getTopics();
 
   const totalTopics = topics.length;

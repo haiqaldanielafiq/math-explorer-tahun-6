@@ -12,6 +12,7 @@ import {
   Lightbulb,
   ChevronRight
 } from 'lucide-react';
+import { StarField } from '@/components/SpaceDecorations';
 
 export const revalidate = 0;
 
@@ -44,7 +45,8 @@ export default async function LessonPage({
       </nav>
 
       {/* Lesson Header Hero */}
-      <div className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-blue-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden border border-indigo-500/30">
+        <StarField />
         <div className="max-w-3xl space-y-4 relative z-10">
           <div className="flex flex-wrap items-center gap-2">
             <span className="bg-amber-400 text-slate-950 font-extrabold text-xs px-3 py-1 rounded-lg">

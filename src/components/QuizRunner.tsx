@@ -12,6 +12,7 @@ import {
   Check,
   ChevronRight
 } from 'lucide-react';
+import { StarField, AstronautBadge, RocketIcon } from '@/components/SpaceDecorations';
 import confetti from 'canvas-confetti';
 
 interface QuizRunnerProps {
@@ -126,7 +127,7 @@ export function QuizRunner({ quizData, topicTitle, topicSlug }: QuizRunnerProps)
   }
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8">
+    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-700 shadow-xl space-y-8 relative overflow-hidden">
       {!isSubmitted && currentQ ? (
         <div className="space-y-8 max-w-3xl mx-auto">
           {/* Header Progress Bar */}

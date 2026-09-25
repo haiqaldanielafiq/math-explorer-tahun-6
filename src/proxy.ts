@@ -7,6 +7,10 @@ const SECRET_KEY = new TextEncoder().encode(
 );
 
 export async function proxy(request: NextRequest) {
+  return middleware(request);
+}
+
+export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   if (path.startsWith('/admin') && path !== '/admin/login') {

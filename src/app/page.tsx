@@ -10,6 +10,7 @@ import {
   Award,
   Compass
 } from 'lucide-react';
+import { StarField, SaturnPlanet, AstronautBadge, RocketIcon, CutePlanet } from '@/components/SpaceDecorations';
 
 export const revalidate = 0;
 
@@ -21,13 +22,22 @@ export default async function HomePage() {
   return (
     <div className="space-y-16 pb-12">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-indigo-800 to-blue-900 text-white rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl border border-indigo-500/30">
+        <StarField />
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
 
+        {/* Decorative Space Icons */}
+        <div className="absolute top-6 right-8 hidden lg:block opacity-90 animate-bounce transition-transform duration-1000">
+          <SaturnPlanet className="w-20 h-20" />
+        </div>
+        <div className="absolute bottom-6 right-36 hidden lg:block opacity-80">
+          <AstronautBadge className="w-16 h-16" />
+        </div>
+
         <div className="relative z-10 max-w-3xl space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/30 border border-indigo-400/40 text-cyan-300 text-xs sm:text-sm font-semibold backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-amber-300" />
+            <RocketIcon className="w-5 h-5" />
             <span>Matematik KSSR Semakan Tahun 6 / Primary Year 6</span>
           </div>
 
