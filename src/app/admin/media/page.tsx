@@ -24,13 +24,13 @@ export default function MediaManagerPage() {
 
   return (
     <div className="space-y-8 pb-12 max-w-4xl mx-auto">
-      <div className="border-b border-slate-200 pb-6">
-        <h1 className="text-2xl font-black text-slate-900">Pengurus Media & Pautan</h1>
-        <p className="text-slate-600 text-sm">Pautan imej, rajah, dan video luar untuk disertakan dalam nota.</p>
+      <div className="border-b border-slate-200 dark:border-slate-700 pb-6">
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white">Pengurus Media & Pautan</h1>
+        <p className="text-slate-600 dark:text-slate-300 text-sm">Pautan imej, rajah, dan video luar untuk disertakan dalam nota.</p>
       </div>
 
-      <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-        <h3 className="text-sm font-bold text-slate-900">Tambah Pautan Media Baharu</h3>
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white">Tambah Pautan Media Baharu</h3>
         <form onSubmit={handleAddMedia} className="flex gap-3">
           <input
             type="url"
@@ -38,7 +38,7 @@ export default function MediaManagerPage() {
             placeholder="Masukkan URL imej (https://...)"
             value={newUrl}
             onChange={(e) => setNewUrl(e.target.value)}
-            className="flex-1 p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm"
+            className="flex-1 p-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium dark:text-white"
           />
           <button
             type="submit"
@@ -51,19 +51,19 @@ export default function MediaManagerPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {mediaList.map((url, idx) => (
-          <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm space-y-2 group">
-            <div className="h-40 bg-slate-100 overflow-hidden relative">
+          <div key={idx} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm space-y-2 group">
+            <div className="h-40 bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={url} alt="Media" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
             </div>
-            <div className="p-3 flex items-center justify-between text-xs text-slate-600">
-              <a href={url} target="_blank" rel="noreferrer" className="truncate flex items-center gap-1 hover:text-indigo-600 max-w-[80%]">
+            <div className="p-3 flex items-center justify-between text-xs text-slate-600 dark:text-slate-300">
+              <a href={url} target="_blank" rel="noreferrer" className="truncate flex items-center gap-1 hover:text-indigo-600 dark:hover:text-indigo-400 max-w-[80%]">
                 <LinkIcon className="w-3.5 h-3.5 shrink-0" />
                 <span className="truncate">{url}</span>
               </a>
               <button
                 onClick={() => handleDeleteMedia(url)}
-                className="text-rose-500 hover:bg-rose-50 p-1.5 rounded-lg transition-colors"
+                className="text-rose-500 hover:bg-rose-50 dark:hover:bg-slate-700 p-1.5 rounded-lg transition-colors"
               >
                 <Trash2 className="w-4 h-4" />
               </button>

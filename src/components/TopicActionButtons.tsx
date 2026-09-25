@@ -47,7 +47,7 @@ export function TopicActionButtons({ topic }: TopicActionButtonsProps) {
     <div className="inline-flex items-center gap-2">
       <Link
         href={`/admin/editor/${topic.id}`}
-        className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg border border-slate-200 transition-colors"
+        className="p-2 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors"
         title="Sunting Kandungan"
       >
         <FileEdit className="w-4 h-4" />
@@ -55,7 +55,7 @@ export function TopicActionButtons({ topic }: TopicActionButtonsProps) {
 
       <Link
         href={`/admin/preview/${topic.id}`}
-        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg border border-slate-200 transition-colors"
+        className="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors"
         title="Pratonton Draf"
       >
         <Eye className="w-4 h-4" />
@@ -64,10 +64,10 @@ export function TopicActionButtons({ topic }: TopicActionButtonsProps) {
       <button
         onClick={handleTogglePublish}
         disabled={loading}
-        className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+        className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
           topic.published
-            ? 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'
-            : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
+            ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900'
+            : 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900'
         }`}
       >
         {topic.published ? 'Nyah-terbit' : 'Terbitkan'}
@@ -76,7 +76,7 @@ export function TopicActionButtons({ topic }: TopicActionButtonsProps) {
       <button
         onClick={handleDelete}
         disabled={loading}
-        className="p-2 text-rose-600 hover:bg-rose-50 rounded-lg border border-slate-200 transition-colors"
+        className="p-2 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
         title="Padam Topik"
       >
         <Trash2 className="w-4 h-4" />
