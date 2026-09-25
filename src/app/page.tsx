@@ -40,12 +40,20 @@ export default function HomePage() {
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Decorative Space Icons */}
-        <div className="absolute top-6 right-8 hidden lg:block opacity-90 animate-bounce transition-transform duration-1000">
-          <SaturnPlanet className="w-20 h-20" />
+        {/* Decorative Space Visual Elements */}
+        <div className="absolute top-6 right-8 hidden lg:block opacity-90 animate-pulse transition-transform duration-1000">
+          <img
+            src="/images/planet-decor.png"
+            alt="Space Planet Decoration"
+            className="w-24 h-24 object-contain drop-shadow-xl hover:scale-110 transition-transform"
+          />
         </div>
-        <div className="absolute bottom-6 right-36 hidden lg:block opacity-80">
-          <AstronautBadge className="w-16 h-16" />
+        <div className="absolute bottom-6 right-36 hidden lg:block opacity-90">
+          <img
+            src="/images/rocket-decor.png"
+            alt="Space Rocket Decoration"
+            className="w-20 h-20 object-contain drop-shadow-2xl animate-bounce"
+          />
         </div>
 
         <div className="relative z-10 max-w-3xl space-y-6">
