@@ -20,14 +20,17 @@ function ensureDataFile() {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
-    // Always overwrite with seed data if file doesn't exist or if it has fewer than 4 topics
     let shouldSeed = false;
     if (!fs.existsSync(FILE_PATH)) {
       shouldSeed = true;
     } else {
       const existing = fs.readFileSync(FILE_PATH, 'utf-8');
-      const parsed = JSON.parse(existing) as Topic[];
-      if (!Array.isArray(parsed) || parsed.length < 4) {
+      try {
+        const parsed = JSON.parse(existing) as Topic[];
+        if (!Array.isArray(parsed)) {
+          shouldSeed = true;
+        }
+      } catch {
         shouldSeed = true;
       }
     }
@@ -46,7 +49,7 @@ export async function getTopics(): Promise<Topic[]> {
     if (fs.existsSync(FILE_PATH)) {
       const data = fs.readFileSync(FILE_PATH, 'utf-8');
       const parsed = JSON.parse(data) as Topic[];
-      if (Array.isArray(parsed) && parsed.length >= 4) {
+      if (Array.isArray(parsed)) {
         memoryTopicsStore = parsed;
         return parsed;
       }
@@ -55,7 +58,7 @@ export async function getTopics(): Promise<Topic[]> {
     console.warn('Failed to read topics from file system:', error);
   }
 
-  if (!memoryTopicsStore || memoryTopicsStore.length < 4) {
+  if (!memoryTopicsStore) {
     memoryTopicsStore = [...INITIAL_TOPICS];
   }
   return memoryTopicsStore;
