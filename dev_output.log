@@ -1,0 +1,30 @@
+
+> tmp-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 586ms
+✓ Running next.config.ts took 46ms
+
+ HEAD / 200 in 3.7s (next.js: 3.3s, application-code: 385ms)
+ GET /topik 200 in 979ms (next.js: 866ms, application-code: 113ms)
+ GET /api/auth/me 200 in 1221ms (next.js: 1107ms, application-code: 114ms)
+ GET /api/topics 200 in 1350ms (next.js: 1333ms, application-code: 17ms)
+ GET /api/auth/me 200 in 13ms (next.js: 4ms, application-code: 9ms)
+ GET /api/topics 200 in 25ms (next.js: 14ms, application-code: 11ms)
+ GET /topik/sudut/aktiviti 200 in 2.1s (next.js: 1937ms, application-code: 118ms)
+ GET /api/auth/me 200 in 14ms (next.js: 5ms, application-code: 9ms)
+ GET /api/auth/me 200 in 23ms (next.js: 12ms, application-code: 11ms)
+ GET /topik/bulatan/aktiviti 200 in 152ms (next.js: 54ms, application-code: 99ms)
+ GET /api/topics/sudut 200 in 1048ms
+ GET /api/auth/me 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET /api/auth/me 200 in 35ms (next.js: 22ms, application-code: 13ms)
+ GET /api/topics/bulatan 200 in 248ms (next.js: 215ms, application-code: 33ms)
+ GET /api/topics/bulatan 200 in 41ms (next.js: 23ms, application-code: 18ms)
+ GET /topik/nisbah/aktiviti 200 in 215ms (next.js: 20ms, application-code: 194ms)
+ GET /api/auth/me 200 in 22ms (next.js: 8ms, application-code: 14ms)
+ GET /api/auth/me 200 in 24ms (next.js: 9ms, application-code: 15ms)
+ GET /api/topics/nisbah 200 in 23ms (next.js: 4ms, application-code: 19ms)
+ GET /api/topics/nisbah 200 in 20ms (next.js: 9ms, application-code: 11ms)
