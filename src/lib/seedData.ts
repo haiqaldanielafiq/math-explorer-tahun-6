@@ -2,6 +2,541 @@ import { Topic } from '@/types';
 
 export const INITIAL_TOPICS: Topic[] = [
   {
+    id: 'topic-sudut-6-1',
+    slug: 'sudut',
+    title: { ms: 'Sudut', en: 'Angles' },
+    code: '6.1',
+    standardKandungan: { ms: '6.1 Sudut', en: '6.1 Angles' },
+    standardPembelajaran: {
+      ms: '6.1.1 Melukis bentuk poligon sekata hingga lapan sisi pada grid segi empat sama, grid segi tiga sama sisi atau perisian komputer dan mengukur sudut pedalaman yang terbentuk.\n6.1.2 Membentuk sudut berdasarkan nilai sudut yang diberi.',
+      en: '6.1.1 Draw regular polygon shapes up to eight sides on square grids, equilateral triangle grids, or computer software and measure interior angles formed.\n6.1.2 Form angles based on given angle values.'
+    },
+    description: {
+      ms: 'Pelajari cara melukis poligon sekata hingga lapan sisi pada grid, mengukur sudut pedalaman menggunakan protraktor, serta membentuk sudut pelbagai ukuran hingga 180°.',
+      en: 'Learn how to draw regular polygons up to eight sides on grids, measure interior angles using a protractor, and form angles of various sizes up to 180°.'
+    },
+    objectives: [
+      { ms: 'Melukis poligon sekata hingga lapan sisi pada grid segi empat sama dan grid segi tiga sama sisi.', en: 'Draw regular polygons up to eight sides on square grids and equilateral triangle grids.' },
+      { ms: 'Mengukur sudut pedalaman yang terbentuk dalam poligon sekata menggunakan protraktor.', en: 'Measure interior angles formed in regular polygons using a protractor.' },
+      { ms: 'Membentuk sudut berdasarkan nilai sudut yang diberi sehingga 180° menggunakan protraktor dan pembaris.', en: 'Form angles based on given angle values up to 180° using a protractor and ruler.' }
+    ],
+    published: true,
+    order: 1,
+    createdAt: '2025-01-01T00:00:00.000Z',
+    updatedAt: '2025-01-01T00:00:00.000Z',
+    sections: [
+      {
+        id: 'sec-sudut-1',
+        title: { ms: '1. Pengenalan Sudut & Poligon Sekata', en: '1. Introduction to Angles & Regular Polygons' },
+        content: { ms: 'Poligon sekata ialah bentuk dua dimensi yang mempunyai semua sisi sama panjang dan semua sudut pedalaman sama saiz.', en: 'A regular polygon is a two-dimensional shape with all sides of equal length and all interior angles of equal size.' },
+        order: 1,
+        blocks: [
+          {
+            id: 'blk-sudut-1',
+            type: 'heading',
+            title: { ms: 'Ciri-Ciri Utama Poligon Sekata', en: 'Key Features of Regular Polygons' },
+            order: 1
+          },
+          {
+            id: 'blk-sudut-2',
+            type: 'paragraph',
+            body: {
+              ms: 'Poligon sekata mempunyai bilangan sisi, bucu, dan sudut pedalaman yang sama. Contoh poligon sekata hingga 8 sisi:\n• Segi Tiga Sama Sisi (3 sisi, sudut 60°)\n• Segi Empat Sama (4 sisi, sudut 90°)\n• Pentagon Sekata (5 sisi, sudut 108°)\n• Heksagon Sekata (6 sisi, sudut 120°)\n• Heptagon Sekata (7 sisi, sudut ~128.57°)\n• Oktagon Sekata (8 sisi, sudut 135°)',
+              en: 'Regular polygons have an equal number of sides, vertices, and interior angles. Examples up to 8 sides:\n• Equilateral Triangle (3 sides, angle 60°)\n• Square (4 sides, angle 90°)\n• Regular Pentagon (5 sides, angle 108°)\n• Regular Hexagon (6 sides, angle 120°)\n• Regular Heptagon (7 sides, angle ~128.57°)\n• Regular Octagon (8 sides, angle 135°)'
+            },
+            order: 2
+          },
+          {
+            id: 'blk-sudut-3',
+            type: 'callout',
+            title: { ms: 'Formula Sudut Pedalaman Poligon', en: 'Polygon Interior Angle Formula' },
+            body: {
+              ms: 'Jumlah Sudut Pedalaman = (n - 2) × 180° (di mana n ialah bilangan sisi).\nSudut Setiap Bucu = Jumlah Sudut ÷ n.',
+              en: 'Sum of Interior Angles = (n - 2) × 180° (where n is number of sides).\nAngle at Each Vertex = Sum of Angles ÷ n.'
+            },
+            calloutType: 'info',
+            order: 3
+          }
+        ]
+      },
+      {
+        id: 'sec-sudut-2',
+        title: { ms: '2. Melukis Poligon Sekata pada Grid', en: '2. Drawing Regular Polygons on Grids' },
+        content: { ms: 'Grid segi empat sama dan grid segi tiga sama sisi memudahkan kita melukis poligon sekata dengan tepat.', en: 'Square grids and equilateral triangle grids make it easy to draw regular polygons accurately.' },
+        order: 2,
+        blocks: [
+          {
+            id: 'blk-sudut-4',
+            type: 'heading',
+            title: { ms: 'Langkah Melukis pada Grid', en: 'Steps for Drawing on Grids' },
+            order: 1
+          },
+          {
+            id: 'blk-sudut-5',
+            type: 'paragraph',
+            body: {
+              ms: '1. Pilih titik mula pada grid segi empat atau grid segi tiga.\n2. Tanda titik-titik bucu mengikut bilangan sisi poligon.\n3. Sambungkan titik bucu menggunakan pembaris lurus.\n4. Ukur sudut pedalaman di setiap bucu dengan protraktor untuk memastikan ketepatan.',
+              en: '1. Choose a starting point on the square grid or triangle grid.\n2. Mark vertex points according to the number of polygon sides.\n3. Connect the vertex points using a straight ruler.\n4. Measure the interior angle at each vertex with a protractor to confirm accuracy.'
+            },
+            order: 2
+          },
+          {
+            id: 'blk-sudut-6',
+            type: 'example',
+            title: { ms: 'Cadangan Perisian Komputer', en: 'Suggested Computer Software' },
+            body: {
+              ms: 'Kamu juga boleh melukis poligon sekata menggunakan perisian GeoGebra, Geometer’s Sketchpad (GSP), Microsoft Word, atau Excel.',
+              en: 'You can also draw regular polygons using GeoGebra, Geometer’s Sketchpad (GSP), Microsoft Word, or Excel software.'
+            },
+            order: 3
+          }
+        ]
+      },
+      {
+        id: 'sec-sudut-3',
+        title: { ms: '3. Membentuk & Mengukur Sudut hingga 180°', en: '3. Forming & Measuring Angles up to 180°' },
+        content: { ms: 'Protraktor dan pembaris digunakan untuk mengukur dan membentuk sudut tirus, sudut tegak, dan sudut tumpul hingga 180°.', en: 'A protractor and ruler are used to measure and form acute, right, and obtuse angles up to 180°.' },
+        order: 3,
+        blocks: [
+          {
+            id: 'blk-sudut-7',
+            type: 'heading',
+            title: { ms: 'Panduan Menggunakan Protraktor', en: 'Guide to Using a Protractor' },
+            order: 1
+          },
+          {
+            id: 'blk-sudut-8',
+            type: 'paragraph',
+            body: {
+              ms: '1. Letakkan pusat protraktor pada bucu sudut.\n2. Selajutkan garis tapak protraktor dengan salah satu kaki sudut.\n3. Baca nilai sudut pada skala protraktor dari 0° hingga 180°.\n• Sudut Tirus: Kurang daripada 90°\n• Sudut Tegak: Tepat 90°\n• Sudut Tumpul: Lebih daripada 90° hingga kurang daripada 180°\n• Sudut Lurus: Tepat 180°',
+              en: '1. Place the center of the protractor on the angle vertex.\n2. Align the baseline of the protractor with one arm of the angle.\n3. Read the angle value on the scale from 0° to 180°.\n• Acute Angle: Less than 90°\n• Right Angle: Exactly 90°\n• Obtuse Angle: Greater than 90° up to less than 180°\n• Straight Angle: Exactly 180°'
+            },
+            order: 2
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: 'act-sudut-6-1',
+      title: { ms: 'Aktiviti Interaktif Bina Poligon & Ukur Sudut', en: 'Interactive Polygon Construction & Angle Measurement Activity' },
+      description: { ms: 'Bina poligon sekata 3 hingga 8 sisi pada grid interaktif, ukur sudut pedalaman, dan bentukkan sudut mengikut nilai yang diberi hingga 180°.', en: 'Construct regular polygons from 3 to 8 sides on an interactive grid, measure interior angles, and form angles up to 180°.' },
+      totalQuantity: 180,
+      initialData: [],
+      questions: [
+        {
+          id: 'q-act-sudut-1',
+          prompt: { ms: 'Berapakah nilai sudut pedalaman bagi setiap bucu segi empat sama?', en: 'What is the interior angle value at each vertex of a square?' },
+          correctAnswer: '90°',
+          options: ['60°', '90°', '108°', '120°'],
+          explanation: { ms: 'Jumlah sudut segi empat sama ialah (4-2)×180° = 360°. Setiap bucu = 360° ÷ 4 = 90°.', en: 'Sum of square interior angles is (4-2)×180° = 360°. Each vertex = 360° ÷ 4 = 90°.' }
+        },
+        {
+          id: 'q-act-sudut-2',
+          prompt: { ms: 'Berapakah jumlah sudut pedalaman bagi sebuah heksagon sekata (6 sisi)?', en: 'What is the sum of interior angles for a regular hexagon (6 sides)?' },
+          correctAnswer: '720°',
+          options: ['540°', '720°', '900°', '1080°'],
+          explanation: { ms: 'Gunakan formula (n-2)×180°. Untuk n=6: (6-2)×180° = 4 × 180° = 720°.', en: 'Use the formula (n-2)×180°. For n=6: (6-2)×180° = 4 × 180° = 720°.' }
+        }
+      ]
+    },
+    quiz: {
+      id: 'quiz-sudut-6-1',
+      title: { ms: 'Kuiz Kefahaman Sudut & Poligon Sekata', en: 'Angles & Regular Polygons Understanding Quiz' },
+      description: { ms: 'Uji kefahaman kamu tentang melukis poligon sekata, mengukur sudut pedalaman, dan membentuk sudut hingga 180°!', en: 'Test your understanding of drawing regular polygons, measuring interior angles, and forming angles up to 180°!' },
+      passingScore: 70,
+      questions: [
+        {
+          id: 'q-sudut-1',
+          type: 'mcq',
+          question: { ms: 'Apakah nama poligon sekata yang mempunyai 5 sisi dan sudut pedalaman 108°?', en: 'What is the name of a regular polygon with 5 sides and an interior angle of 108°?' },
+          options: ['Heksagon', 'Pentagon', 'Heptagon', 'Oktagon'],
+          correctAnswer: 'Pentagon',
+          explanation: { ms: 'Pentagon sekata mempunyai 5 sisi sama panjang dan sudut pedalaman 108°.', en: 'A regular pentagon has 5 equal sides and an interior angle of 108°.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-sudut-2',
+          type: 'mcq',
+          question: { ms: 'Apakah alat geometri yang digunakan untuk mengukur dan membentuk sudut?', en: 'Which geometry tool is used to measure and form angles?' },
+          options: ['Pembaris', 'Protraktor', 'Jangka Lukis', 'Sesiku T'],
+          correctAnswer: 'Protraktor',
+          explanation: { ms: 'Protraktor (atau jangka sudut) digunakan khas untuk mengukur dan membentuk nilai sudut.', en: 'A protractor is specifically used to measure and form angle values.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-sudut-3',
+          type: 'mcq',
+          question: { ms: 'Berapakah nilai sudut pedalaman bagi sebuah segi tiga sama sisi (3 sisi)?', en: 'What is the interior angle value of an equilateral triangle (3 sides)?' },
+          options: ['45°', '60°', '90°', '120°'],
+          correctAnswer: '60°',
+          explanation: { ms: 'Jumlah sudut segi tiga ialah 180°. 180° ÷ 3 = 60°.', en: 'Sum of triangle angles is 180°. 180° ÷ 3 = 60°.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-sudut-4',
+          type: 'mcq',
+          question: { ms: 'Apakah jenis sudut bagi nilai sudut 135°?', en: 'What type of angle is an angle value of 135°?' },
+          options: ['Sudut Tirus', 'Sudut Tegak', 'Sudut Tumpul', 'Sudut Refleks'],
+          correctAnswer: 'Sudut Tumpul',
+          explanation: { ms: 'Sudut lebih daripada 90° dan kurang daripada 180° dipanggil sudut tumpul.', en: 'An angle greater than 90° and less than 180° is called an obtuse angle.' },
+          marks: 10,
+          difficulty: 'sederhana'
+        }
+      ]
+    }
+  },
+  {
+    id: 'topic-bulatan-6-2',
+    slug: 'bulatan',
+    title: { ms: 'Bulatan', en: 'Circles' },
+    code: '6.2',
+    standardKandungan: { ms: '6.2 Bulatan', en: '6.2 Circles' },
+    standardPembelajaran: {
+      ms: '6.2.1 Mengenal pusat bulatan, diameter dan jejari.\n6.2.2 Melukis bulatan berdasarkan ukuran jejari yang diberi dan melabelkan pusat bulatan, jejari dan diameter.',
+      en: '6.2.1 Identify circle center, diameter, and radius.\n6.2.2 Draw circles based on given radius measurements and label circle center, radius, and diameter.'
+    },
+    description: {
+      ms: 'Kenali 3 bahagian utama bulatan (pusat bulatan, jejari, diameter), fahami konsep satu putaran lengkap (360°), dan kuasai kemahiran melukis bulatan dengan ukuran jejari yang tepat.',
+      en: 'Identify 3 main circle parts (center, radius, diameter), understand a full turn (360°), and master drawing circles with precise radius measurements.'
+    },
+    objectives: [
+      { ms: 'Mengenal dan melabel pusat bulatan, jejari, dan diameter pada bentuk bulatan.', en: 'Identify and label circle center, radius, and diameter on a circle shape.' },
+      { ms: 'Memahami bahawa satu putaran lengkap bulatan ialah 360°.', en: 'Understand that one complete turn of a circle is 360°.' },
+      { ms: 'Melukis bulatan mengikut ukuran jejari yang diberi dan melabel bahagiannya.', en: 'Draw circles according to given radius measurements and label its parts.' }
+    ],
+    published: true,
+    order: 2,
+    createdAt: '2025-01-01T00:00:00.000Z',
+    updatedAt: '2025-01-01T00:00:00.000Z',
+    sections: [
+      {
+        id: 'sec-bulatan-1',
+        title: { ms: '1. Bahagian-Bahagian Utama Bulatan', en: '1. Main Parts of a Circle' },
+        content: { ms: 'Bulatan ialah bentuk dua dimensi simetri yang dibatasi oleh satu garisan lengkung tertutup.', en: 'A circle is a symmetrical two-dimensional shape enclosed by a single curved line.' },
+        order: 1,
+        blocks: [
+          {
+            id: 'blk-bulatan-1',
+            type: 'heading',
+            title: { ms: '3 Bahagian Penting Bulatan', en: '3 Essential Parts of a Circle' },
+            order: 1
+          },
+          {
+            id: 'blk-bulatan-2',
+            type: 'paragraph',
+            body: {
+              ms: '1. Pusat Bulatan (Center): Titik tetap di tengah-tengah bulatan yang mempunyai jarak yang sama ke mana-mana titik pada lilitan bulatan.\n2. Jejari (Radius): Garis lurus yang menyambungkan pusat bulatan ke mana-mana titik pada lilitan bulatan.\n3. Diameter: Garis lurus yang lalu melalui pusat bulatan dan menyambungkan dua titik pada lilitan bulatan.',
+              en: '1. Center: The fixed middle point of the circle that is equidistant to any point on the circumference.\n2. Radius: Straight line connecting the center of the circle to any point on the circumference.\n3. Diameter: Straight line passing through the center of the circle connecting two points on the circumference.'
+            },
+            order: 2
+          },
+          {
+            id: 'blk-bulatan-3',
+            type: 'callout',
+            title: { ms: 'Tahukah Kamu?', en: 'Did You Know?' },
+            body: {
+              ms: 'Satu putaran lengkap bulatan ialah 360°!\nPanjang Diameter sentiasa dua kali ganda panjang Jejari (Diameter = 2 × Jejari).',
+              en: 'One complete turn of a circle is 360°!\nThe length of Diameter is always twice the length of Radius (Diameter = 2 × Radius).'
+            },
+            calloutType: 'info',
+            order: 3
+          },
+          {
+            id: 'blk-bulatan-4',
+            type: 'formula',
+            title: { ms: 'Formula Hubungan Diameter & Jejari', en: 'Diameter & Radius Relationship Formula' },
+            body: {
+              ms: 'Diameter = 2 × Jejari    |    Jejari = Diameter ÷ 2',
+              en: 'Diameter = 2 × Radius    |    Radius = Diameter ÷ 2'
+            },
+            order: 4
+          }
+        ]
+      },
+      {
+        id: 'sec-bulatan-2',
+        title: { ms: '2. Cara Melukis & Melabel Bulatan', en: '2. How to Draw & Label a Circle' },
+        content: { ms: 'Menggunakan jangka lukis dan pembaris, kita boleh melukis bulatan dengan tepat mengikut ukuran jejari yang ditetapkan.', en: 'Using a pair of compasses and a ruler, we can draw circles accurately based on assigned radius measurements.' },
+        order: 2,
+        blocks: [
+          {
+            id: 'blk-bulatan-5',
+            type: 'heading',
+            title: { ms: 'Langkah-Langkah Melukis Bulatan', en: 'Steps to Draw a Circle' },
+            order: 1
+          },
+          {
+            id: 'blk-bulatan-6',
+            type: 'paragraph',
+            body: {
+              ms: '1. Ukur jarak jarum dan pensel pada jangka lukis mengikut ukuran jejari yang diberi (contoh: 4 cm) menggunakan pembaris.\n2. Tanda titik pusat bulatan pada kertas dan namakannya (contoh: Titik O).\n3. Letakkan jarum jangka lukis tepat pada titik pusat O.\n4. Putarkan pensel 360° (satu putaran lengkap) untuk membentuk bulatan.\n5. Lukis dan labelkan garis jejari (O ke lilitan) dan garis diameter (merentasi O).',
+              en: '1. Measure the distance between compass needle and pencil according to given radius (e.g., 4 cm) using a ruler.\n2. Mark the center point of the circle on paper and name it (e.g., Point O).\n3. Place the compass needle firmly on the center point O.\n4. Rotate the pencil 360° (one full turn) to form the circle.\n5. Draw and label the radius line (O to circumference) and diameter line (across O).'
+            },
+            order: 2
+          },
+          {
+            id: 'blk-bulatan-7',
+            type: 'example',
+            title: { ms: 'Aktiviti Bahan Kreatif', en: 'Creative Material Activity' },
+            body: {
+              ms: 'Kamu juga boleh mengenal dan melukis bahagian bulatan menggunakan bahan seperti benang, piring, gelung, atau perisian simulasi interaktif.',
+              en: 'You can also identify and draw circle parts using materials like string, plates, hoops, or interactive simulation tools.'
+            },
+            order: 3
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: 'act-bulatan-6-2',
+      title: { ms: 'Aktiviti Interaktif Melukis & Mengenal Bahagian Bulatan', en: 'Interactive Circle Drawing & Parts Identification Activity' },
+      description: { ms: 'Teroka bahagian pusat bulatan, jejari, dan diameter, simulasi satu putaran lengkap 360°, dan lukis bulatan mengikut ukuran jejari yang diberi.', en: 'Explore circle center, radius, and diameter parts, simulate a full 360° rotation, and draw circles with specified radius measurements.' },
+      totalQuantity: 360,
+      initialData: [],
+      questions: [
+        {
+          id: 'q-act-bulatan-1',
+          prompt: { ms: 'Jika jejari sebuah bulatan ialah 5 cm, berapakah panjang diameternya?', en: 'If the radius of a circle is 5 cm, what is its diameter length?' },
+          correctAnswer: '10 cm',
+          options: ['5 cm', '10 cm', '15 cm', '20 cm'],
+          explanation: { ms: 'Diameter = 2 × Jejari. 2 × 5 cm = 10 cm.', en: 'Diameter = 2 × Radius. 2 × 5 cm = 10 cm.' }
+        },
+        {
+          id: 'q-act-bulatan-2',
+          prompt: { ms: 'Berapakah nilai sudut untuk satu putaran lengkap bulatan?', en: 'What is the angle value for one complete turn of a circle?' },
+          correctAnswer: '360°',
+          options: ['90°', '180°', '270°', '360°'],
+          explanation: { ms: 'Satu putaran lengkap bulatan sentiasa bersamaan dengan 360°.', en: 'One complete turn of a circle is always equal to 360°.' }
+        }
+      ]
+    },
+    quiz: {
+      id: 'quiz-bulatan-6-2',
+      title: { ms: 'Kuiz Kefahaman Bulatan', en: 'Circles Understanding Quiz' },
+      description: { ms: 'Uji kefahaman kamu tentang pusat bulatan, diameter, jejari, dan sudut putaran 360°!', en: 'Test your understanding of circle center, diameter, radius, and 360° rotation angle!' },
+      passingScore: 70,
+      questions: [
+        {
+          id: 'q-bulatan-1',
+          type: 'mcq',
+          question: { ms: 'Apakah garisan yang menyambungkan pusat bulatan ke mana-mana titik pada lilitan bulatan?', en: 'What line connects the center of a circle to any point on the circumference?' },
+          options: ['Diameter', 'Jejari', 'Perimeter', 'Sektor'],
+          correctAnswer: 'Jejari',
+          explanation: { ms: 'Jejari ialah garisan lurus dari pusat bulatan ke lilitan bulatan.', en: 'Radius is the straight line from circle center to circumference.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-bulatan-2',
+          type: 'mcq',
+          question: { ms: 'Jika diameter sebuah bulatan ialah 14 cm, berapakah panjang jejarinya?', en: 'If the diameter of a circle is 14 cm, what is its radius length?' },
+          options: ['7 cm', '14 cm', '28 cm', '3.5 cm'],
+          correctAnswer: '7 cm',
+          explanation: { ms: 'Jejari = Diameter ÷ 2. 14 cm ÷ 2 = 7 cm.', en: 'Radius = Diameter ÷ 2. 14 cm ÷ 2 = 7 cm.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-bulatan-3',
+          type: 'mcq',
+          question: { ms: 'Apakah syarat utama garisan diameter pada sebuah bulatan?', en: 'What is the main requirement for a diameter line in a circle?' },
+          options: ['Mesti menyentuh tepi sahaja', 'Mesti lalu melalui pusat bulatan', 'Mesti separuh daripada jejari', 'Mesti berbentuk lengkok'],
+          correctAnswer: 'Mesti lalu melalui pusat bulatan',
+          explanation: { ms: 'Diameter mesti lalu melalui titik pusat bulatan dan menyambung 2 titik pada lilitan.', en: 'Diameter must pass through the circle center point connecting 2 points on the circumference.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-bulatan-4',
+          type: 'mcq',
+          question: { ms: 'Berapakah sudut bagi separuh putaran bulatan (separuh bulatan)?', en: 'What is the angle of half a circle rotation (semi-circle)?' },
+          options: ['90°', '180°', '270°', '360°'],
+          correctAnswer: '180°',
+          explanation: { ms: 'Satu putaran lengkap ialah 360°. Separuh putaran = 360° ÷ 2 = 180°.', en: 'A full turn is 360°. Half a turn = 360° ÷ 2 = 180°.' },
+          marks: 10,
+          difficulty: 'sederhana'
+        }
+      ]
+    }
+  },
+  {
+    id: 'topic-nisbah-7-2',
+    slug: 'nisbah',
+    title: { ms: 'Nisbah', en: 'Ratios' },
+    code: '7.2',
+    standardKandungan: { ms: '7.2 Nisbah', en: '7.2 Ratios' },
+    standardPembelajaran: {
+      ms: '7.2.1 Mewakilkan nisbah dua kuantiti dalam bentuk termudah.',
+      en: '7.2.1 Represent the ratio of two quantities in simplest form.'
+    },
+    description: {
+      ms: 'Pelajari konsep nisbah dua kuantiti, cara membandingkan kuantiti menggunakan nombor bulat, dan langkah mempermudahkan nisbah kepada bentuk termudah.',
+      en: 'Learn ratio of two quantities, how to compare quantities using whole numbers, and steps to simplify ratios to simplest form.'
+    },
+    objectives: [
+      { ms: 'Memahami konsep nisbah dua kuantiti yang melibatkan nombor bulat.', en: 'Understand the ratio concept of two quantities involving whole numbers.' },
+      { ms: 'Menulis nisbah dalam bentuk a : b.', en: 'Write ratios in the form a : b.' },
+      { ms: 'Mempermudahkan nisbah dua kuantiti kepada bentuk termudah.', en: 'Simplify ratios of two quantities to simplest form.' }
+    ],
+    published: true,
+    order: 3,
+    createdAt: '2025-01-01T00:00:00.000Z',
+    updatedAt: '2025-01-01T00:00:00.000Z',
+    sections: [
+      {
+        id: 'sec-nisbah-1',
+        title: { ms: '1. Pengenalan Nisbah Dua Kuantiti', en: '1. Introduction to Ratio of Two Quantities' },
+        content: { ms: 'Nisbah digunakan untuk membandingkan dua kuantiti yang mempunyai unit yang sama atau sejenis.', en: 'A ratio is used to compare two quantities that have the same or similar units.' },
+        order: 1,
+        blocks: [
+          {
+            id: 'blk-nisbah-1',
+            type: 'heading',
+            title: { ms: 'Cara Menulis Nisbah', en: 'How to Write a Ratio' },
+            order: 1
+          },
+          {
+            id: 'blk-nisbah-2',
+            type: 'paragraph',
+            body: {
+              ms: 'Nisbah ditulis menggunakan simbol bertitik bertindih ( : ). Contohnya, jika terdapat 3 bola merah dan 5 bola biru:\n• Nisbah bola merah kepada bola biru ialah 3 : 5 (dibaca "3 kepada 5").\n• Nisbah bola biru kepada bola merah ialah 5 : 3.',
+              en: 'Ratios are written using the colon symbol ( : ). For example, if there are 3 red balls and 5 blue balls:\n• Ratio of red balls to blue balls is 3 : 5 (read as "3 to 5").\n• Ratio of blue balls to red balls is 5 : 3.'
+            },
+            order: 2
+          },
+          {
+            id: 'blk-nisbah-3',
+            type: 'callout',
+            title: { ms: 'Syarat Nisbah DSKP Tahun 6', en: 'Year 6 DSKP Ratio Rules' },
+            body: {
+              ms: 'Nisbah hanya melibatkan nombor bulat! Tiada perpuluhan atau pecahan dalam nilai nisbah asas.',
+              en: 'Ratios only involve whole numbers! No decimals or fractions in basic ratio values.'
+            },
+            calloutType: 'info',
+            order: 3
+          }
+        ]
+      },
+      {
+        id: 'sec-nisbah-2',
+        title: { ms: '2. Mempermudahkan Nisbah kepada Bentuk Termudah', en: '2. Simplifying Ratios to Simplest Form' },
+        content: { ms: 'Mempermudahkan nisbah bermaksud membahagikan kedua-dua nombor kuantiti dengan nombor bulat (Faktor Sepunya Terbesar - FSTB) hingga tidak boleh dibahagikan lagi.', en: 'Simplifying a ratio means dividing both quantity numbers by a whole number (Highest Common Factor - HCF) until they cannot be divided further.' },
+        order: 2,
+        blocks: [
+          {
+            id: 'blk-nisbah-4',
+            type: 'heading',
+            title: { ms: 'Langkah Mempermudahkan Nisbah', en: 'Steps to Simplify a Ratio' },
+            order: 1
+          },
+          {
+            id: 'blk-nisbah-5',
+            type: 'paragraph',
+            body: {
+              ms: '1. Tentukan nombor nisbah awal, contohnya 6 : 8.\n2. Cari Faktor Sepunya Terbesar (FSTB) bagi 6 dan 8, iaitu 2.\n3. Bahagikan kedua-dua bahagian nisbah dengan 2:\n   • 6 ÷ 2 = 3\n   • 8 ÷ 2 = 4\n4. Nisbah bentuk termudah ialah 3 : 4.',
+              en: '1. Identify the initial ratio numbers, e.g., 6 : 8.\n2. Find the Highest Common Factor (HCF) of 6 and 8, which is 2.\n3. Divide both sides of the ratio by 2:\n   • 6 ÷ 2 = 3\n   • 8 ÷ 2 = 4\n4. The simplified ratio is 3 : 4.'
+            },
+            order: 2
+          },
+          {
+            id: 'blk-nisbah-6',
+            type: 'formula',
+            title: { ms: 'Formula Bentuk Termudah', en: 'Simplest Form Formula' },
+            body: {
+              ms: 'a : b  ⟶  (a ÷ k) : (b ÷ k)',
+              en: 'a : b  ⟶  (a ÷ k) : (b ÷ k)'
+            },
+            order: 3
+          },
+          {
+            id: 'blk-nisbah-7',
+            type: 'example',
+            title: { ms: 'Contoh Latihan Mempermudahkan Nisbah', en: 'Ratio Simplification Example' },
+            body: {
+              ms: 'Nisbah 10 : 15 ⟶ Bahagi dengan 5 ⟶ (10 ÷ 5) : (15 ÷ 5) = 2 : 3\nNisbah 12 : 18 ⟶ Bahagi dengan 6 ⟶ (12 ÷ 6) : (18 ÷ 6) = 2 : 3',
+              en: 'Ratio 10 : 15 ⟶ Divide by 5 ⟶ (10 ÷ 5) : (15 ÷ 5) = 2 : 3\nRatio 12 : 18 ⟶ Divide by 6 ⟶ (12 ÷ 6) : (18 ÷ 6) = 2 : 3'
+            },
+            order: 4
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: 'act-nisbah-7-2',
+      title: { ms: 'Aktiviti Interaktif Pemadanan & Mempermudahkan Nisbah', en: 'Interactive Ratio Matching & Simplification Activity' },
+      description: { ms: 'Gunakan alat visual ini untuk membandingkan kuantiti objek, mencari Faktor Sepunya Terbesar (FSTB), dan permudahkan nisbah kepada bentuk termudah.', en: 'Use this visual tool to compare object quantities, find the Highest Common Factor (HCF), and simplify ratios to simplest form.' },
+      totalQuantity: 20,
+      initialData: [],
+      questions: [
+        {
+          id: 'q-act-nisbah-1',
+          prompt: { ms: 'Permudahkan nisbah 8 : 12 kepada bentuk termudah.', en: 'Simplify the ratio 8 : 12 to its simplest form.' },
+          correctAnswer: '2 : 3',
+          options: ['4 : 6', '2 : 3', '1 : 2', '3 : 4'],
+          explanation: { ms: 'Faktor Sepunya Terbesar (FSTB) bagi 8 dan 12 ialah 4. (8÷4) : (12÷4) = 2 : 3.', en: 'Highest Common Factor (HCF) of 8 and 12 is 4. (8÷4) : (12÷4) = 2 : 3.' }
+        },
+        {
+          id: 'q-act-nisbah-2',
+          prompt: { ms: 'Apakah nisbah 15 : 20 dalam bentuk termudah?', en: 'What is the ratio 15 : 20 in simplest form?' },
+          correctAnswer: '3 : 4',
+          options: ['3 : 4', '5 : 4', '2 : 3', '3 : 5'],
+          explanation: { ms: 'Bahagikan 15 dan 20 dengan FSTB 5. (15÷5) : (20÷5) = 3 : 4.', en: 'Divide 15 and 20 by HCF 5. (15÷5) : (20÷5) = 3 : 4.' }
+        }
+      ]
+    },
+    quiz: {
+      id: 'quiz-nisbah-7-2',
+      title: { ms: 'Kuiz Kefahaman Nisbah', en: 'Ratios Understanding Quiz' },
+      description: { ms: 'Uji kefahaman kamu tentang mewakilkan nisbah dan mempermudahkan nisbah dua kuantiti!', en: 'Test your understanding of representing ratios and simplifying ratios of two quantities!' },
+      passingScore: 70,
+      questions: [
+        {
+          id: 'q-nisbah-1',
+          type: 'mcq',
+          question: { ms: 'Apakah bentuk termudah bagi nisbah 6 : 9?', en: 'What is the simplest form for the ratio 6 : 9?' },
+          options: ['1 : 3', '2 : 3', '3 : 2', '2 : 4'],
+          correctAnswer: '2 : 3',
+          explanation: { ms: 'Bahagikan kedua-dua nombor dengan 3. (6÷3) : (9÷3) = 2 : 3.', en: 'Divide both numbers by 3. (6÷3) : (9÷3) = 2 : 3.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-nisbah-2',
+          type: 'mcq',
+          question: { ms: 'Di dalam sebuah kelas terdapat 10 murid lelaki dan 14 murid perempuan. Apakah nisbah murid lelaki kepada murid perempuan dalam bentuk termudah?', en: 'In a class there are 10 male students and 14 female students. What is the ratio of male students to female students in simplest form?' },
+          options: ['5 : 7', '7 : 5', '10 : 14', '2 : 3'],
+          correctAnswer: '5 : 7',
+          explanation: { ms: 'Nisbah asal 10 : 14. Bahagikan dengan FSTB 2 ⟶ (10÷2) : (14÷2) = 5 : 7.', en: 'Original ratio 10 : 14. Divide by HCF 2 ⟶ (10÷2) : (14÷2) = 5 : 7.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-nisbah-3',
+          type: 'mcq',
+          question: { ms: 'Adakah nisbah boleh mengandungi nombor perpuluhan dalam jawapan DSKP Tahun 6?', en: 'Can a ratio contain decimal numbers in Year 6 DSKP answers?' },
+          options: ['Boleh', 'Tidak, nisbah hanya melibatkan nombor bulat', 'Hanya untuk kuantiti besar', 'Hanya jika ada pecahan'],
+          correctAnswer: 'Tidak, nisbah hanya melibatkan nombor bulat',
+          explanation: { ms: 'Mengikut DSKP Matematik Tahun 6, nisbah hanya melibatkan nombor bulat.', en: 'According to Year 6 Mathematics DSKP, ratios only involve whole numbers.' },
+          marks: 10,
+          difficulty: 'mudah'
+        },
+        {
+          id: 'q-nisbah-4',
+          type: 'mcq',
+          question: { ms: 'Apakah nisbah 18 : 24 dalam bentuk termudah?', en: 'What is the ratio 18 : 24 in simplest form?' },
+          options: ['9 : 12', '3 : 4', '2 : 3', '4 : 3'],
+          correctAnswer: '3 : 4',
+          explanation: { ms: 'Faktor Sepunya Terbesar (FSTB) ialah 6. (18÷6) : (24÷6) = 3 : 4.', en: 'Highest Common Factor (HCF) is 6. (18÷6) : (24÷6) = 3 : 4.' },
+          marks: 10,
+          difficulty: 'sederhana'
+        }
+      ]
+    }
+  },
+  {
     id: 'topic-carta-pai-8-1',
     slug: 'carta-pai',
     title: { ms: 'Carta Pai', en: 'Pie Charts' },
@@ -22,9 +557,9 @@ export const INITIAL_TOPICS: Topic[] = [
       { ms: 'Mentafsir maklumat daripada carta pai untuk membuat kesimpulan.', en: 'Interpret information from pie charts to draw conclusions.' }
     ],
     published: true,
-    order: 1,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    order: 4,
+    createdAt: '2025-01-01T00:00:00.000Z',
+    updatedAt: '2025-01-01T00:00:00.000Z',
     sections: [
       {
         id: 'sec-1',

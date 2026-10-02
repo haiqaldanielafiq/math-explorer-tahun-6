@@ -6,6 +6,9 @@ import { notFound } from 'next/navigation';
 import { Topic } from '@/types';
 import { useLanguage } from '@/context/LanguageContext';
 import { InteractivePieChart } from '@/components/InteractivePieChart';
+import { InteractiveSudutActivity } from '@/components/InteractiveSudutActivity';
+import { InteractiveBulatanActivity } from '@/components/InteractiveBulatanActivity';
+import { InteractiveNisbahActivity } from '@/components/InteractiveNisbahActivity';
 import { BookOpen, ChevronRight, HelpCircle, Loader2 } from 'lucide-react';
 
 export default function ActivityPage({
@@ -46,6 +49,23 @@ export default function ActivityPage({
   }
 
   const topicTitle = tText(topic.title);
+
+  // Render activity component based on topic code/slug
+  const renderActivityComponent = () => {
+    if (!topic.activity) return null;
+
+    if (topic.code === '6.1' || topic.slug === 'sudut') {
+      return <InteractiveSudutActivity activityData={topic.activity} />;
+    }
+    if (topic.code === '6.2' || topic.slug === 'bulatan') {
+      return <InteractiveBulatanActivity activityData={topic.activity} />;
+    }
+    if (topic.code === '7.2' || topic.slug === 'nisbah') {
+      return <InteractiveNisbahActivity activityData={topic.activity} />;
+    }
+    // Default / 8.1 Carta Pai
+    return <InteractivePieChart activityData={topic.activity} />;
+  };
 
   return (
     <div className="space-y-8 pb-16">
@@ -95,8 +115,8 @@ export default function ActivityPage({
         </div>
       </div>
 
-      {/* Interactive Pie Chart Component */}
-      <InteractivePieChart activityData={topic.activity} />
+      {/* Render Dynamic Activity Component */}
+      {renderActivityComponent()}
     </div>
   );
 }

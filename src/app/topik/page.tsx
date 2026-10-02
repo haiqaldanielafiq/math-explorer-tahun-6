@@ -33,8 +33,8 @@ export default function TopicsPage() {
         <div className="max-w-2xl space-y-3 relative z-10">
           <span className="bg-white/20 text-white font-bold text-xs px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm">
             {language === 'en'
-              ? 'Year 6 DSKP Curriculum (Pie Chart Topic)'
-              : 'Kurikulum DSKP Tahun 6 (Topik Carta Pai)'}
+              ? 'Year 6 DSKP Curriculum Modules'
+              : 'Modul Kurikulum DSKP Tahun 6'}
           </span>
           <h1 className="text-3xl sm:text-4xl font-black">
             {language === 'en' ? 'Mathematics Topic List' : 'Senarai Topik Matematik'}
