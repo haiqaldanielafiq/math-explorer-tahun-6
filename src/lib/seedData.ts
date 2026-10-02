@@ -2,131 +2,454 @@ import { Topic } from '@/types';
 
 export const INITIAL_TOPICS: Topic[] = [
   {
-    id: 'topic-carta-pai-8-1',
-    slug: 'carta-pai',
-    title: { ms: 'Carta Pai', en: 'Pie Charts' },
-    code: '8.1',
-    standardKandungan: { ms: '8.1 Carta pai', en: '8.1 Pie charts' },
+    id: "topic-sudut-6-1",
+    slug: "sudut",
+    title: { ms: "Sudut", en: "Angles" },
+    code: "6.1",
+    standardKandungan: { ms: "6.1 Sudut", en: "6.1 Angles" },
     standardPembelajaran: {
-      ms: '8.1.1 Melengkapkan carta pai berdasarkan nilai sudut 45°, 90° dan 180° dengan kuantiti diberikan serta mentafsir data.',
-      en: '8.1.1 Complete pie charts based on angle values of 45°, 90°, and 180° with given quantities and interpret data.'
+      ms: "6.1.1 Melukis bentuk poligon sekata hingga lapan sisi pada grid segi empat sama, grid segi tiga sama sisi atau perisian komputer dan mengukur sudut pedalaman yang terbentuk.\n6.1.2 Membentuk sudut berdasarkan nilai sudut yang diberi (hingga 180°).",
+      en: "6.1.1 Draw regular polygons up to eight sides on square grid, equilateral triangle grid, or computer software and measure interior angles.\n6.1.2 Form angles based on given angle values (up to 180°)."
     },
     description: {
-      ms: 'Pelajari konsep carta pai, bahagian sektor, hubungan antara nilai sudut (45°, 90°, 180°) dengan jumlah kuantiti data, dan cara mentafsir data carta pai dengan mudah.',
-      en: 'Learn pie chart concepts, sector parts, the relationship between angle values (45°, 90°, 180°) and total data quantity, and how to interpret pie chart data easily.'
+      ms: "Pelajari cara melukis dan mengukur sudut pedalaman poligon sekata serta membina sudut hingga 180° menggunakan protraktor dan alat geometri.",
+      en: "Learn how to draw and measure interior angles of regular polygons and construct angles up to 180° using a protractor and geometry tools."
     },
     objectives: [
-      { ms: 'Mengenal pasti bahagian carta pai seperti pusat bulatan, jejari, dan sektor.', en: 'Identify pie chart parts such as center point, radius, and sector.' },
-      { ms: 'Memahami perkaitan nilai sudut 45°, 90°, dan 180° dengan pecahan bulatan.', en: 'Understand the relationship of 45°, 90°, and 180° angles to circle fractions.' },
-      { ms: 'Melengkapkan carta pai berdasarkan kuantiti data yang diberi.', en: 'Complete pie charts based on given data quantities.' },
-      { ms: 'Mentafsir maklumat daripada carta pai untuk membuat kesimpulan.', en: 'Interpret information from pie charts to draw conclusions.' }
+      { ms: "Mengenal pasti dan mengukur sudut pedalaman poligon sekata hingga 8 sisi.", en: "Identify and measure interior angles of regular polygons up to 8 sides." },
+      { ms: "Membentuk dan melukis sudut tepat hingga 180° menggunakan protraktor.", en: "Form and draw accurate angles up to 180° using a protractor." },
+      { ms: "Memahami konsep sudut tirus, sudut tegak (90°), dan sudut cakar.", en: "Understand acute, right (90°), and obtuse angle concepts." }
     ],
     published: true,
     order: 1,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z",
     sections: [
       {
-        id: 'sec-1',
-        title: { ms: '1. Pengenalan Carta Pai', en: '1. Introduction to Pie Charts' },
-        content: { ms: 'Carta pai ialah sejenis graf berbentuk bulatan yang dibahagikan kepada beberapa sektor untuk mewakili kumpulan data.', en: 'A pie chart is a circular graph divided into sectors representing data groups.' },
+        id: "sec-sudut-1",
+        title: { ms: "1. Pengenalan Sudut & Protraktor", en: "1. Introduction to Angles & Protractor" },
+        content: { ms: "Sudut terbentuk apabila dua garis lurus bertemu pada satu titik yang dipanggil bucu. Sudut diukur dalam unit darjah (°).", en: "An angle is formed when two straight lines meet at a vertex point. Angles are measured in degrees (°)." },
         order: 1,
         blocks: [
           {
-            id: 'blk-1',
-            type: 'heading',
-            title: { ms: 'Selamat Datang ke Dunia Carta Pai!', en: 'Welcome to the World of Pie Charts!' },
+            id: "blk-s1",
+            type: "heading",
+            title: { ms: "Jenis-Jenis Sudut Utama (Hingga 180°)", en: "Main Types of Angles (Up to 180°)" },
             order: 1
           },
           {
-            id: 'blk-2',
-            type: 'paragraph',
-            body: { ms: 'Dalam kehidupan harian, kita sering melihat maklumat dipersembahkan dalam bentuk bulatan berwarna-warni. Bulatan ini dipanggil Carta Pai.', en: 'In daily life, we often see information presented in colorful circular charts called Pie Charts.' },
+            id: "blk-s2",
+            type: "paragraph",
+            body: { ms: "• Sudut Tirus: Lebih kecil daripada 90° (contoh: 45°, 60°)\n• Sudut Tegak: Tepat 90° (garis bersudut tegak)\n• Sudut Cakar: Lebih besar daripada 90° dan kurang daripada 180° (contoh: 120°, 135°)\n• Garis Lurus: Tepat 180°", en: "• Acute Angle: Less than 90° (e.g., 45°, 60°)\n• Right Angle: Exactly 90°\n• Obtuse Angle: Greater than 90° and less than 180° (e.g., 120°, 135°)\n• Straight Line: Exactly 180°" },
             order: 2
           },
           {
-            id: 'blk-3',
-            type: 'callout',
-            title: { ms: 'Tahukah Kamu?', en: 'Did You Know?' },
-            body: { ms: 'Jumlah keseluruhan sudut di dalam satu bulatan penuh ialah 360°!', en: 'The total angle in a full circle is always 360°!' },
-            calloutType: 'info',
+            id: "blk-s3",
+            type: "callout",
+            title: { ms: "Petua Mengukur Sudut dengan Protraktor", en: "Tips for Measuring Angles with a Protractor" },
+            body: { ms: "Pastikan titik pusat protraktor bertindih tepat pada bucu sudut, dan garis asas protraktor sejajar dengan salah satu garis sudut.", en: "Ensure the center point of the protractor aligns directly over the angle vertex, and the baseline aligns with one side line." },
+            calloutType: "info",
             order: 3
           }
         ]
       },
       {
-        id: 'sec-2',
-        title: { ms: '2. Bahagian-Bahagian Carta Pai', en: '2. Parts of a Pie Chart' },
-        content: { ms: 'Untuk membina dan memahami carta pai, kamu perlu tahu 3 bahagian utama bulatan.', en: 'To build and understand a pie chart, you need to know 3 main circle parts.' },
+        id: "sec-sudut-2",
+        title: { ms: "2. Sudut Pedalaman Poligon Sekata", en: "2. Interior Angles of Regular Polygons" },
+        content: { ms: "Poligon sekata mempunyai semua sisi yang sama panjang dan semua sudut pedalaman yang sama saiz.", en: "A regular polygon has all sides of equal length and all interior angles of equal size." },
         order: 2,
         blocks: [
           {
-            id: 'blk-4',
-            type: 'heading',
-            title: { ms: '3 Bahagian Utama Bulatan', en: '3 Main Parts of a Circle' },
+            id: "blk-s4",
+            type: "paragraph",
+            body: { ms: "• Segi Tiga Sama Sisi (3 sisi): Sudut pedalaman = 60°\n• Segi Empat Sama (4 sisi): Sudut pedalaman = 90°\n• Pentagon Sekata (5 sisi): Sudut pedalaman = 108°\n• Heksagon Sekata (6 sisi): Sudut pedalaman = 120°\n• Oktagon Sekata (8 sisi): Sudut pedalaman = 135°", en: "• Equilateral Triangle (3 sides): Interior angle = 60°\n• Square (4 sides): Interior angle = 90°\n• Regular Pentagon (5 sides): Interior angle = 108°\n• Regular Hexagon (6 sides): Interior angle = 120°\n• Regular Octagon (8 sides): Interior angle = 135°" },
+            order: 1
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: "act-sudut",
+      title: { ms: "Aktiviti Interaktif Pembina & Pengukur Sudut", en: "Interactive Angle Builder & Protractor Activity" },
+      description: { ms: "Laraskan nilai sudut dari 0° hingga 180°, perhatikan protraktor interaktif, dan teroka sudut pedalaman poligon sekata hingga 8 sisi.", en: "Adjust angle values from 0° to 180°, view the interactive protractor, and explore interior angles of regular polygons up to 8 sides." },
+      questions: [
+        {
+          id: "q-s-1",
+          prompt: { ms: "Berapakah nilai sudut pedalaman bagi segi empat sama?", en: "What is the interior angle value of a square?" },
+          correctAnswer: "90°",
+          options: ["60°", "90°", "108°", "120°"],
+          explanation: { ms: "Segi empat sama mempunyai 4 sudut tegak yang bernilai 90° setiap satu.", en: "A square has 4 right angles measuring 90° each." }
+        },
+        {
+          id: "q-s-2",
+          prompt: { ms: "Berapakah sudut pedalaman bagi heksagon sekata (6 sisi)?", en: "What is the interior angle of a regular hexagon (6 sides)?" },
+          correctAnswer: "120°",
+          options: ["108°", "120°", "135°", "180°"],
+          explanation: { ms: "Sudut pedalaman heksagon sekata ialah (6 - 2) × 180° / 6 = 120°.", en: "Interior angle of a regular hexagon is (6 - 2) × 180° / 6 = 120°." }
+        }
+      ]
+    },
+    quiz: {
+      id: "quiz-sudut",
+      title: { ms: "Kuiz Sudut & Poligon Sekata Tahun 6", en: "Year 6 Angles & Regular Polygons Quiz" },
+      description: { ms: "Uji kemahiran kamu mengukur dan mengenal pasti sudut hingga 180°!", en: "Test your skills in measuring and identifying angles up to 180°!" },
+      passingScore: 70,
+      questions: [
+        {
+          id: "qs1",
+          type: "mcq",
+          question: { ms: "Apakah jenis sudut yang bernilai 45°?", en: "What type of angle measures 45°?" },
+          options: ["Sudut Tirus", "Sudut Tegak", "Sudut Cakar", "Sudut Garis Lurus"],
+          correctAnswer: "Sudut Tirus",
+          explanation: { ms: "Sudut yang kurang daripada 90° dipanggil sudut tirus.", en: "Angles less than 90° are called acute angles." },
+          marks: 10,
+          difficulty: "mudah"
+        },
+        {
+          id: "qs2",
+          type: "mcq",
+          question: { ms: "Berapakah jumlah sudut pedalaman bagi segi tiga sama sisi?", en: "What is the interior angle of an equilateral triangle?" },
+          options: ["45°", "60°", "90°", "120°"],
+          correctAnswer: "60°",
+          explanation: { ms: "180° ÷ 3 = 60° bagi setiap sudut segi tiga sama sisi.", en: "180° ÷ 3 = 60° for each interior angle of an equilateral triangle." },
+          marks: 10,
+          difficulty: "mudah"
+        }
+      ]
+    }
+  },
+  {
+    id: "topic-bulatan-6-2",
+    slug: "bulatan",
+    title: { ms: "Bulatan", en: "Circles" },
+    code: "6.2",
+    standardKandungan: { ms: "6.2 Bulatan", en: "6.2 Circles" },
+    standardPembelajaran: {
+      ms: "6.2.1 Mengenal pusat bulatan, diameter dan jejari.\n6.2.2 Melukis bulatan berdasarkan ukuran jejari yang diberi dan melabelkan pusat bulatan, jejari dan diameter.",
+      en: "6.2.1 Identify the center of circle, diameter, and radius.\n6.2.2 Draw circles based on given radius measurements and label the center, radius, and diameter."
+    },
+    description: {
+      ms: "Kenali bahagian utama bulatan seperti pusat bulatan, jejari, dan diameter. Pelajari hubungan Diameter = 2 × Jejari dan satu putaran lengkap 360°.",
+      en: "Learn main circle parts including center, radius, and diameter. Understand the relationship Diameter = 2 × Radius and full rotation of 360°."
+    },
+    objectives: [
+      { ms: "Mengenal pasti titik pusat bulatan, jejari, dan diameter.", en: "Identify center point, radius, and diameter." },
+      { ms: "Memahami bahawa Diameter = 2 × Jejari.", en: "Understand that Diameter = 2 × Radius." },
+      { ms: "Melukis bulatan mengikut jejari yang diberi dan melabel bahagian bulatan.", en: "Draw circles according to given radii and label parts." }
+    ],
+    published: true,
+    order: 2,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z",
+    sections: [
+      {
+        id: "sec-b-1",
+        title: { ms: "1. Bahagian Utama Bulatan", en: "1. Main Parts of a Circle" },
+        content: { ms: "Bulatan ialah satu bentuk 2D yang mana semua titik di atas lilitannya berada pada jarak yang sama dari pusat bulatan.", en: "A circle is a 2D shape where all points on the boundary are equidistant from the center." },
+        order: 1,
+        blocks: [
+          {
+            id: "blk-b1",
+            type: "heading",
+            title: { ms: "Pusat Bulatan, Jejari, dan Diameter", en: "Center, Radius, and Diameter" },
             order: 1
           },
           {
-            id: 'blk-5',
-            type: 'paragraph',
-            body: { ms: '1. Pusat Bulatan (Center): Titik tengah bulatan.\n2. Jejari (Radius): Garis lurus dari pusat ke tepi bulatan.\n3. Sektor (Sector): Ruang yang dibatasi dua jejari dan lengkok.', en: '1. Center: The middle point.\n2. Radius: Straight line from center to edge.\n3. Sector: Region enclosed by two radii and an arc.' },
+            id: "blk-b2",
+            type: "paragraph",
+            body: { ms: "• Pusat Bulatan (Center): Titik tengah bulatan.\n• Jejari (Radius): Garis lurus dari pusat ke mana-mana titik pada lilitan bulatan.\n• Diameter: Garis lurus yang melalui pusat bulatan dan menyambungkan dua titik pada lilitan.", en: "• Center: The fixed point in the middle.\n• Radius: Line segment from center to boundary.\n• Diameter: Line segment passing through center connecting two boundary points." },
+            order: 2
+          },
+          {
+            id: "blk-b3",
+            type: "callout",
+            title: { ms: "Formula Penting!", en: "Important Formula!" },
+            body: { ms: "Diameter = 2 × Jejari  (atau Jejari = Diameter ÷ 2)\nSatu putaran lengkap bulatan ialah 360°.", en: "Diameter = 2 × Radius (or Radius = Diameter ÷ 2)\nA full rotation circle equals 360°." },
+            calloutType: "info",
+            order: 3
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: "act-bulatan",
+      title: { ms: "Aktiviti Interaktif Penerokaan & Melukis Bulatan", en: "Interactive Circle Exploration & Drawing Activity" },
+      description: { ms: "Ubah saiz jejari bulatan secara interaktif, lihat garis diameter dikira secara automatik, dan jawab soalan pengecaman bahagian bulatan.", en: "Interactively change circle radius, see automatic diameter line calculation, and answer circle labeling questions." },
+      questions: [
+        {
+          id: "q-b-1",
+          prompt: { ms: "Jika jejari sebuah bulatan ialah 4 cm, berapakah nilai diameternya?", en: "If a circle radius is 4 cm, what is its diameter?" },
+          correctAnswer: "8 cm",
+          options: ["2 cm", "4 cm", "8 cm", "16 cm"],
+          explanation: { ms: "Diameter = 2 × Jejari = 2 × 4 cm = 8 cm.", en: "Diameter = 2 × Radius = 2 × 4 cm = 8 cm." }
+        },
+        {
+          id: "q-b-2",
+          prompt: { ms: "Apakah nama garis lurus dari pusat bulatan ke lilitan bulatan?", en: "What is the name of the straight line from center to boundary?" },
+          correctAnswer: "Jejari",
+          options: ["Jejari", "Diameter", "Perimeter", "Sektor"],
+          explanation: { ms: "Jejari (radius) menyambungkan titik pusat ke lilitan.", en: "Radius connects the center point to the boundary." }
+        }
+      ]
+    },
+    quiz: {
+      id: "quiz-bulatan",
+      title: { ms: "Kuiz Bulatan Tahun 6", en: "Year 6 Circle Quiz" },
+      description: { ms: "Uji ingatan dan kefahaman kamu tentang pusat bulatan, jejari, dan diameter!", en: "Test your knowledge on center, radius, and diameter!" },
+      passingScore: 70,
+      questions: [
+        {
+          id: "qb1",
+          type: "mcq",
+          question: { ms: "Jika diameter bulatan ialah 10 cm, berapakah jejari bulatan tersebut?", en: "If circle diameter is 10 cm, what is the radius?" },
+          options: ["2.5 cm", "5 cm", "10 cm", "20 cm"],
+          correctAnswer: "5 cm",
+          explanation: { ms: "Jejari = Diameter ÷ 2 = 10 cm ÷ 2 = 5 cm.", en: "Radius = Diameter ÷ 2 = 10 cm ÷ 2 = 5 cm." },
+          marks: 10,
+          difficulty: "mudah"
+        },
+        {
+          id: "qb2",
+          type: "mcq",
+          question: { ms: "Berapakah sudut satu putaran lengkap bulatan?", en: "What is the total angle of one full circle rotation?" },
+          options: ["90°", "180°", "270°", "360°"],
+          correctAnswer: "360°",
+          explanation: { ms: "Satu putaran lengkap bulatan sentiasa bersamaan dengan 360°.", en: "A full circle rotation is always equal to 360°." },
+          marks: 10,
+          difficulty: "mudah"
+        }
+      ]
+    }
+  },
+  {
+    id: "topic-nisbah-7-2",
+    slug: "nisbah",
+    title: { ms: "Nisbah", en: "Ratio" },
+    code: "7.2",
+    standardKandungan: { ms: "7.2 Nisbah", en: "7.2 Ratio" },
+    standardPembelajaran: {
+      ms: "7.2.1 Mewakilkan nisbah dua kuantiti dalam bentuk termudah (melibatkan nombor bulat).",
+      en: "7.2.1 Represent ratios of two quantities in simplest form (involving whole numbers)."
+    },
+    description: {
+      ms: "Memahami konsep perbandingan nisbah dua kuantiti a : b dan langkah-langkah mempermudahkan nisbah menggunakan Pembahagi Sepunya Terbesar (PST).",
+      en: "Understand ratio comparison of two quantities a : b and steps to simplify ratios using Great Common Divisor (GCD)."
+    },
+    objectives: [
+      { ms: "Mewakilkan nisbah dua kuantiti menggunakan simbol colons (:).", en: "Represent ratio of two quantities using colon symbol (:)." },
+      { ms: "Mempermudahkan nisbah dua kuantiti kepada bentuk termudah.", en: "Simplify two-quantity ratios into simplest form." },
+      { ms: "Membaca dan menyelesaikan masalah nisbah harian.", en: "Read and solve daily ratio problems." }
+    ],
+    published: true,
+    order: 3,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z",
+    sections: [
+      {
+        id: "sec-n-1",
+        title: { ms: "1. Pengenalan Nisbah", en: "1. Introduction to Ratio" },
+        content: { ms: "Nisbah digunakan untuk membandingkan dua kuantiti yang mempunyai unit yang sama. Ditulis sebagai a : b.", en: "Ratio is used to compare two quantities of the same unit. Written as a : b." },
+        order: 1,
+        blocks: [
+          {
+            id: "blk-n1",
+            type: "heading",
+            title: { ms: "Cara Membaca dan Mempermudahkan Nisbah", en: "How to Read and Simplify Ratios" },
+            order: 1
+          },
+          {
+            id: "blk-n2",
+            type: "paragraph",
+            body: { ms: "Contoh: Ada 6 guli merah dan 8 guli biru.\nNisbah guli merah kepada guli biru = 6 : 8.\nUntuk permudahkan, bahagikan kedua-dua nombor dengan 2:\n6 ÷ 2 = 3 dan 8 ÷ 2 = 4.\nBentuk termudah = 3 : 4.", en: "Example: There are 6 red marbles and 8 blue marbles.\nRatio of red to blue marbles = 6 : 8.\nTo simplify, divide both numbers by 2:\n6 ÷ 2 = 3 and 8 ÷ 2 = 4.\nSimplest form = 3 : 4." },
+            order: 2
+          },
+          {
+            id: "blk-n3",
+            type: "callout",
+            title: { ms: "Ingat!", en: "Remember!" },
+            body: { ms: "Nisbah hanya melibatkan nombor bulat dan tidak mempunyai unit seperti cm, kg, atau RM.", en: "Ratios only involve whole numbers and do not carry units like cm, kg, or RM." },
+            calloutType: "info",
+            order: 3
+          }
+        ]
+      }
+    ],
+    activity: {
+      id: "act-nisbah",
+      title: { ms: "Aktiviti Interaktif Visual & Permudahan Nisbah", en: "Interactive Visual & Ratio Simplification Activity" },
+      description: { ms: "Pilih bilangan blok warna secara interaktif, lihat pembentukan nisbah, dan lengkapkan padanan nisbah dalam bentuk termudah.", en: "Interactively pick color block counts, view ratio formation, and complete ratio simplification matching." },
+      questions: [
+        {
+          id: "q-n-1",
+          prompt: { ms: "Apakah bentuk termudah bagi nisbah 10 : 15?", en: "What is the simplest form of ratio 10 : 15?" },
+          correctAnswer: "2 : 3",
+          options: ["1 : 2", "2 : 3", "5 : 15", "10 : 15"],
+          explanation: { ms: "Bahagikan kedua-dua belah dengan 5: 10 ÷ 5 = 2 dan 15 ÷ 5 = 3.", en: "Divide both sides by 5: 10 ÷ 5 = 2 and 15 ÷ 5 = 3." }
+        },
+        {
+          id: "q-n-2",
+          prompt: { ms: "Di dalam kelas ada 12 murid lelaki dan 16 murid perempuan. Berapakah nisbah lelaki kepada perempuan dalam bentuk termudah?", en: "In a class there are 12 boys and 16 girls. What is the simplified ratio of boys to girls?" },
+          correctAnswer: "3 : 4",
+          options: ["3 : 4", "6 : 8", "12 : 16", "4 : 3"],
+          explanation: { ms: "Bahagikan dengan 4: 12 ÷ 4 = 3 dan 16 ÷ 4 = 4.", en: "Divide by 4: 12 ÷ 4 = 3 and 16 ÷ 4 = 4." }
+        }
+      ]
+    },
+    quiz: {
+      id: "quiz-nisbah",
+      title: { ms: "Kuiz Nisbah Tahun 6", en: "Year 6 Ratio Quiz" },
+      description: { ms: "Uji kebolehan kamu mewakilkan dan mempermudahkan nisbah dua kuantiti!", en: "Test your skills in representing and simplifying ratios of two quantities!" },
+      passingScore: 70,
+      questions: [
+        {
+          id: "qn1",
+          type: "mcq",
+          question: { ms: "Permudahkan nisbah 14 : 21.", en: "Simplify the ratio 14 : 21." },
+          options: ["2 : 3", "1 : 3", "7 : 21", "2 : 7"],
+          correctAnswer: "2 : 3",
+          explanation: { ms: "Bahagi dengan 7: 14 ÷ 7 = 2 dan 21 ÷ 7 = 3.", en: "Divide by 7: 14 ÷ 7 = 2 and 21 ÷ 7 = 3." },
+          marks: 10,
+          difficulty: "mudah"
+        },
+        {
+          id: "qn2",
+          type: "mcq",
+          question: { ms: "Nisbah epal kepada oren ialah 4 : 5. Jika terdapat 20 epal, berapakah bilangan oren?", en: "Ratio of apples to oranges is 4 : 5. If there are 20 apples, how many oranges are there?" },
+          options: ["20", "25", "30", "15"],
+          correctAnswer: "25",
+          explanation: { ms: "4 × 5 = 20 epal. Oleh itu, 5 × 5 = 25 oren.", en: "4 × 5 = 20 apples. Thus 5 × 5 = 25 oranges." },
+          marks: 10,
+          difficulty: "sederhana"
+        }
+      ]
+    }
+  },
+  {
+    id: "topic-carta-pai-8-1",
+    slug: "carta-pai",
+    title: { ms: "Carta Pai", en: "Pie Charts" },
+    code: "8.1",
+    standardKandungan: { ms: "8.1 Carta pai", en: "8.1 Pie charts" },
+    standardPembelajaran: {
+      ms: "8.1.1 Melengkapkan carta pai berdasarkan nilai sudut 45°, 90° dan 180° dengan kuantiti diberikan serta mentafsir data.",
+      en: "8.1.1 Complete pie charts based on angle values of 45°, 90°, and 180° with given quantities and interpret data."
+    },
+    description: {
+      ms: "Pelajari konsep carta pai, bahagian sektor, hubungan antara nilai sudut (45°, 90°, 180°) dengan jumlah kuantiti data, dan cara mentafsir data carta pai dengan mudah.",
+      en: "Learn pie chart concepts, sector parts, the relationship between angle values (45°, 90°, 180°) and total data quantity, and how to interpret pie chart data easily."
+    },
+    objectives: [
+      { ms: "Mengenal pasti bahagian carta pai seperti pusat bulatan, jejari, dan sektor.", en: "Identify pie chart parts such as center point, radius, and sector." },
+      { ms: "Memahami perkaitan nilai sudut 45°, 90°, dan 180° dengan pecahan bulatan.", en: "Understand the relationship of 45°, 90°, and 180° angles to circle fractions." },
+      { ms: "Melengkapkan carta pai berdasarkan kuantiti data yang diberi.", en: "Complete pie charts based on given data quantities." },
+      { ms: "Mentafsir maklumat daripada carta pai untuk membuat kesimpulan.", en: "Interpret information from pie charts to draw conclusions." }
+    ],
+    published: true,
+    order: 4,
+    createdAt: "2025-01-01T00:00:00.000Z",
+    updatedAt: "2025-01-01T00:00:00.000Z",
+    sections: [
+      {
+        id: "sec-1",
+        title: { ms: "1. Pengenalan Carta Pai", en: "1. Introduction to Pie Charts" },
+        content: { ms: "Carta pai ialah sejenis graf berbentuk bulatan yang dibahagikan kepada beberapa sektor untuk mewakili kumpulan data.", en: "A pie chart is a circular graph divided into sectors representing data groups." },
+        order: 1,
+        blocks: [
+          {
+            id: "blk-1",
+            type: "heading",
+            title: { ms: "Selamat Datang ke Dunia Carta Pai!", en: "Welcome to the World of Pie Charts!" },
+            order: 1
+          },
+          {
+            id: "blk-2",
+            type: "paragraph",
+            body: { ms: "Dalam kehidupan harian, kita sering melihat maklumat dipersembahkan dalam bentuk bulatan berwarna-warni. Bulatan ini dipanggil Carta Pai.", en: "In daily life, we often see information presented in colorful circular charts called Pie Charts." },
+            order: 2
+          },
+          {
+            id: "blk-3",
+            type: "callout",
+            title: { ms: "Tahukah Kamu?", en: "Did You Know?" },
+            body: { ms: "Jumlah keseluruhan sudut di dalam satu bulatan penuh ialah 360°!", en: "The total angle in a full circle is always 360°!" },
+            calloutType: "info",
+            order: 3
+          }
+        ]
+      },
+      {
+        id: "sec-2",
+        title: { ms: "2. Bahagian-Bahagian Carta Pai", en: "2. Parts of a Pie Chart" },
+        content: { ms: "Untuk membina dan memahami carta pai, kamu perlu tahu 3 bahagian utama bulatan.", en: "To build and understand a pie chart, you need to know 3 main circle parts." },
+        order: 2,
+        blocks: [
+          {
+            id: "blk-4",
+            type: "heading",
+            title: { ms: "3 Bahagian Utama Bulatan", en: "3 Main Parts of a Circle" },
+            order: 1
+          },
+          {
+            id: "blk-5",
+            type: "paragraph",
+            body: { ms: "1. Pusat Bulatan (Center): Titik tengah bulatan.\n2. Jejari (Radius): Garis lurus dari pusat ke tepi bulatan.\n3. Sektor (Sector): Ruang yang dibatasi dua jejari dan lengkok.", en: "1. Center: The middle point.\n2. Radius: Straight line from center to edge.\n3. Sector: Region enclosed by two radii and an arc." },
             order: 2
           }
         ]
       }
     ],
     activity: {
-      id: 'act-1',
-      title: { ms: 'Aktiviti Interaktif Penerokaan Carta Pai', en: 'Interactive Pie Chart Exploration Activity' },
-      description: { ms: 'Gunakan alat interaktif ini untuk meneroka sudut 45°, 90°, dan 180° serta lengkapkan carta pai berdasarkan kuantiti data yang diberi.', en: 'Use this interactive tool to explore 45°, 90°, and 180° angles and complete pie charts based on given quantities.' },
+      id: "act-1",
+      title: { ms: "Aktiviti Interaktif Penerokaan Carta Pai", en: "Interactive Pie Chart Exploration Activity" },
+      description: { ms: "Gunakan alat interaktif ini untuk meneroka sudut 45°, 90°, dan 180° serta lengkapkan carta pai berdasarkan kuantiti data yang diberi.", en: "Use this interactive tool to explore 45°, 90°, and 180° angles and complete pie charts based on given quantities." },
       totalQuantity: 20,
       initialData: [
-        { category: { ms: 'Bersukan', en: 'Sports' }, value: 10, angle: 180, color: '#3B82F6' },
-        { category: { ms: 'Membaca', en: 'Reading' }, value: 5, angle: 90, color: '#10B981' },
-        { category: { ms: 'Melukis', en: 'Drawing' }, value: 5, angle: 90, color: '#F59E0B' }
+        { category: { ms: "Bersukan", en: "Sports" }, value: 10, angle: 180, color: "#3B82F6" },
+        { category: { ms: "Membaca", en: "Reading" }, value: 5, angle: 90, color: "#10B981" },
+        { category: { ms: "Melukis", en: "Drawing" }, value: 5, angle: 90, color: "#F59E0B" }
       ],
       questions: [
         {
-          id: 'q-act-1',
-          prompt: { ms: 'Berapakah nisbah sudut 180° berbanding bulatan penuh 360°?', en: 'What is the ratio of 180° compared to a full circle of 360°?' },
-          correctAnswer: '1/2',
-          options: ['1/2', '1/4', '1/8', '1/3'],
-          explanation: { ms: '180° dibahagikan dengan 360° bersamaan dengan 1/2 (separuh bulatan).', en: '180° divided by 360° equals 1/2 (half circle).' }
+          id: "q-act-1",
+          prompt: { ms: "Berapakah nisbah sudut 180° berbanding bulatan penuh 360°?", en: "What is the ratio of 180° compared to a full circle of 360°?" },
+          correctAnswer: "1/2",
+          options: ["1/2", "1/4", "1/8", "1/3"],
+          explanation: { ms: "180° dibahagikan dengan 360° bersamaan dengan 1/2 (separuh bulatan).", en: "180° divided by 360° equals 1/2 (half circle)." }
         },
         {
-          id: 'q-act-2',
-          prompt: { ms: 'Jika kuantiti keseluruhan ialah 20 orang murid, berapakah bilangan murid yang mewakili sektor sudut 90°?', en: 'If total quantity is 20 students, how many students represent a 90° sector?' },
-          correctAnswer: '5',
-          options: ['10', '5', '2.5', '15'],
-          explanation: { ms: 'Sudut 90° ialah 1/4 daripada bulatan. (1/4) × 20 = 5 orang murid.', en: 'A 90° angle is 1/4 of a circle. (1/4) × 20 = 5 students.' }
+          id: "q-act-2",
+          prompt: { ms: "Jika kuantiti keseluruhan ialah 20 orang murid, berapakah bilangan murid yang mewakili sektor sudut 90°?", en: "If total quantity is 20 students, how many students represent a 90° sector?" },
+          correctAnswer: "5",
+          options: ["10", "5", "2.5", "15"],
+          explanation: { ms: "Sudut 90° ialah 1/4 daripada bulatan. (1/4) × 20 = 5 orang murid.", en: "A 90° angle is 1/4 of a circle. (1/4) × 20 = 5 students." }
         }
       ]
     },
     quiz: {
-      id: 'quiz-1',
-      title: { ms: 'Kuiz Kefahaman Carta Pai Tahun 6', en: 'Year 6 Pie Chart Quiz' },
-      description: { ms: 'Uji kefahaman kamu tentang nilai sudut dan mentafsir data carta pai!', en: 'Test your understanding of angles and data interpretation!' },
+      id: "quiz-1",
+      title: { ms: "Kuiz Kefahaman Carta Pai Tahun 6", en: "Year 6 Pie Chart Quiz" },
+      description: { ms: "Uji kefahaman kamu tentang nilai sudut dan mentafsir data carta pai!", en: "Test your understanding of angles and data interpretation!" },
       passingScore: 70,
       questions: [
         {
-          id: 'q1',
-          type: 'mcq',
-          question: { ms: 'Apakah jumlah keseluruhan nilai sudut di dalam satu bulatan lengkap?', en: 'What is the total sum of angles in a complete circle?' },
-          options: ['90°', '180°', '270°', '360°'],
-          correctAnswer: '360°',
-          explanation: { ms: 'Satu bulatan penuh sentiasa mempunyai sudut 360°.', en: 'A full circle always has an angle sum of 360°.' },
+          id: "q1",
+          type: "mcq",
+          question: { ms: "Apakah jumlah keseluruhan nilai sudut di dalam satu bulatan lengkap?", en: "What is the total sum of angles in a complete circle?" },
+          options: ["90°", "180°", "270°", "360°"],
+          correctAnswer: "360°",
+          explanation: { ms: "Satu bulatan penuh sentiasa mempunyai sudut 360°.", en: "A full circle always has an angle sum of 360°." },
           marks: 10,
-          difficulty: 'mudah'
+          difficulty: "mudah"
         },
         {
-          id: 'q2',
-          type: 'mcq',
-          question: { ms: 'Sudut 90° mewakili berapa pecahan daripada bulatan penuh?', en: 'What fraction of a full circle does a 90° angle represent?' },
-          options: ['1/2', '1/4', '1/8', '3/4'],
-          correctAnswer: '1/4',
-          explanation: { ms: '90° / 360° = 1/4 (suku bulatan).', en: '90° / 360° = 1/4 (quarter circle).' },
+          id: "q2",
+          type: "mcq",
+          question: { ms: "Sudut 90° mewakili berapa pecahan daripada bulatan penuh?", en: "What fraction of a full circle does a 90° angle represent?" },
+          options: ["1/2", "1/4", "1/8", "3/4"],
+          correctAnswer: "1/4",
+          explanation: { ms: "90° / 360° = 1/4 (suku bulatan).", en: "90° / 360° = 1/4 (quarter circle)." },
           marks: 10,
-          difficulty: 'mudah'
+          difficulty: "mudah"
         }
       ]
     }

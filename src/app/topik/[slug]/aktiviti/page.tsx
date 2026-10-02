@@ -6,6 +6,9 @@ import { notFound } from 'next/navigation';
 import { Topic } from '@/types';
 import { useLanguage } from '@/context/LanguageContext';
 import { InteractivePieChart } from '@/components/InteractivePieChart';
+import { InteractiveSudut } from '@/components/InteractiveSudut';
+import { InteractiveBulatan } from '@/components/InteractiveBulatan';
+import { InteractiveNisbah } from '@/components/InteractiveNisbah';
 import { BookOpen, ChevronRight, HelpCircle, Loader2 } from 'lucide-react';
 
 export default function ActivityPage({
@@ -46,6 +49,20 @@ export default function ActivityPage({
   }
 
   const topicTitle = tText(topic.title);
+
+  // Render appropriate interactive component based on code or slug
+  const renderInteractiveActivity = () => {
+    if (topic.code === '6.1' || topic.slug === 'sudut') {
+      return <InteractiveSudut questions={topic.activity?.questions} />;
+    }
+    if (topic.code === '6.2' || topic.slug === 'bulatan') {
+      return <InteractiveBulatan questions={topic.activity?.questions} />;
+    }
+    if (topic.code === '7.2' || topic.slug === 'nisbah') {
+      return <InteractiveNisbah questions={topic.activity?.questions} />;
+    }
+    return <InteractivePieChart activityData={topic.activity} />;
+  };
 
   return (
     <div className="space-y-8 pb-16">
@@ -95,8 +112,8 @@ export default function ActivityPage({
         </div>
       </div>
 
-      {/* Interactive Pie Chart Component */}
-      <InteractivePieChart activityData={topic.activity} />
+      {/* Dynamic Interactive Activity Component */}
+      {renderInteractiveActivity()}
     </div>
   );
 }

@@ -55,26 +55,28 @@ export interface QuizData {
   questions: Question[];
 }
 
+export interface ActivityQuestion {
+  id: string;
+  prompt: string | LocalizedString;
+  targetAngle?: number;
+  targetCategory?: string;
+  correctAnswer: string | number;
+  options?: (string | LocalizedString)[];
+  explanation: string | LocalizedString;
+}
+
 export interface PieChartActivityData {
   id: string;
   title: string | LocalizedString;
   description: string | LocalizedString;
-  initialData: {
+  initialData?: {
     category: string | LocalizedString;
     value: number;
     angle: number;
     color: string;
   }[];
-  totalQuantity: number;
-  questions: {
-    id: string;
-    prompt: string | LocalizedString;
-    targetAngle?: number;
-    targetCategory?: string;
-    correctAnswer: string | number;
-    options?: (string | LocalizedString)[];
-    explanation: string | LocalizedString;
-  }[];
+  totalQuantity?: number;
+  questions: ActivityQuestion[];
 }
 
 export interface Topic {
